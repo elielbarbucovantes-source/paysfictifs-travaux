@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<EngineRootPath>../engine</EngineRootPath>
+	</PropertyGroup>
+
+	<Import Project="$(EngineRootPath)/Directory.Build.props" />
+
+	<PropertyGroup>
+		<!-- Le générateur de cartes (MapGen) est rétroporté d'un moteur plus récent écrit en C# 12. -->
+		<LangVersion>12</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="$(EngineRootPath)/OpenRA.Game/OpenRA.Game.csproj">
+			<Private>False</Private>
+		</ProjectReference>
+
+		<ProjectReference Include="$(EngineRootPath)/OpenRA.Mods.Common/OpenRA.Mods.Common.csproj">
+			<Private>False</Private>
+		</ProjectReference>
+
+		<ProjectReference Include="$(EngineRootPath)/OpenRA.Mods.Cnc/OpenRA.Mods.Cnc.csproj">
+			<Private>False</Private>
+		</ProjectReference>
+	</ItemGroup>
+
+</Project>

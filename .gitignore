@@ -1,0 +1,84 @@
+# Configuration locale
+user.config
+
+# Moteur et fichiers générés : ignorés à la racine uniquement.
+/engine/
+/engine_temp/
+/engine.zip
+/Release/
+bin/
+obj/
+
+# Visual Studio
+*.ncb
+*.vcproj*
+*.suo
+*.user
+*.sln.cache
+*.manifest
+*.CodeAnalysisLog.xml
+*.lastcodeanalysissucceeded
+_ReSharper.*/
+/.vs
+
+# Visual Studio Code
+/.vscode/settings.json
+
+# backup files by various editors
+*~
+*.orig
+\#*
+.*.sw?
+
+# Monodevelop
+*.pidb
+*.userprefs
+
+# Mac OS X
+.DS_Store
+
+# SublimeText
+*.sublime-project
+*.sublime-workspace
+
+# NUnit
+/TestResult.xml
+/lib/
+
+# Support directory
+/Support
+
+# IntelliJ files
+.idea
+
+# Python
+__pycache__/
+*.pyc
+
+# Sauvegardes locales
+*.bak
+*.save
+
+# Mise à jour depuis le menu
+update.log
+update-result.txt
+.version-commit
+
+# Données géographiques téléchargées par tools/monde.py
+/tools/monde-cache/
+
+# Lanceur jouer.sh
+jouer.log
+.build-commit
+.pare-feu-ok
+
+# Fichiers temporaires
+*.tmp
+
+# Fichiers nécessaires au jeu : toujours versionnés (clean clone follows).
+!/mods/
+!/README.md
+!/WINDOWS.md
+!/mod.config
+!/JOUER.bat
+!/INSTALL.bat

@@ -1,0 +1,26 @@
+# Raccourcis propres au mod.
+
+ProductionTypeTrain: O
+	Description: Trains Tab
+	Types: Production
+	Contexts: Player
+
+TogglePlacementVariant: R
+	Description: Rotate building (placement)
+	Types: OrderGenerator
+	Contexts: Player
+
+Navette: L
+	Description: Program train shuttle
+	Types: Unit
+	Contexts: Player
+
+Debarquement: K
+	Description: Amphibious landing (zone or point)
+	Types: Unit
+	Contexts: Player
+
+NavetteAmphibie: J
+	Description: Program amphibious shuttle
+	Types: Unit
+	Contexts: Player

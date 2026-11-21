@@ -1,0 +1,466 @@
+# =====================================================================
+# PAYS FICTIFS — règles communes
+# Chaque pays a son dossier (elielistan/, rubenie/, ...). Ce fichier branche les pays
+# sur la base de Red Alert : factions, bâtiments, unités de départ.
+# =====================================================================
+
+^BaseWorld:
+	Faction@elielistan:
+		Name: Elielistan
+		InternalName: elielistan
+		Side: Allies
+		Description: Elielistan : frapper puis disparaître\nUnités rapides, reconnaissance, drones, hélicoptère Cóndor.\nPouvoirs : Ojo del Aguila, Aguila Gate, Aguila Bridge,\nFrappe Aguila, ordres prioritaires du président.
+	Faction@rubenie:
+		Name: Rubénie
+		InternalName: rubenie
+		Side: Soviet
+		Description: Rubénie : si ça tient, touche à rien\nDéfense, contre-attaques, artillerie lourde.\nTranchées, bunkers garnis, casemates antichars.\nUnités solides et lentes, qui gagnent les combats qui durent.
+	Faction@australouis:
+		Name: Australouis
+		InternalName: australouis
+		Side: Allies
+		Description: Australouis : le peuple des îles\nPuissance aérienne et navale.\nChasseur Albatros, Warthog, bombardier Manta,\ndrones kamikazes Moustique, hydravion Cormoran.
+	Faction@ananthanie:
+		Name: Ananthanie
+		InternalName: ananthanie
+		Side: Soviet
+		Description: Ananthanie : « Je contrôle le champ de bataille. »\nSuperpuissance technologique : blindés modernes, drones\nexplosifs, missiles, aviation. Quantité et qualité.\nPréparer, puis gagner la bataille en 7 minutes.
+	Faction@random:
+		RandomFactionMembers: RandomAllies, RandomSoviet, elielistan, rubenie, australouis, ananthanie
+
+World:
+	# Pathfinder qui abandonne tout de suite une cible inatteignable (autre île) : évite les ralentissements.
+	-PathFinder:
+	PathFinderFictifs:
+	UnitInfoPanel:
+	# Classement Elo : enregistre chaque partie terminée (IA comprises, Elo fixe par type).
+	ClassementElo:
+	# Ctrl enfoncé avec un Pelícano chargé sélectionné : ciblage du largage.
+	ParaDropHotkey:
+	# Joueur déconnecté : une IA de l'hôte prend le relais, et ses ordres sont acceptés.
+	ReprisePartie:
+	-ValidateOrder:
+	ValidateOrderFictifs:
+	StartingUnits@mcvonly:
+		Factions: allies, england, france, germany, soviet, russia, ukraine, elielistan, rubenie, australouis, ananthanie
+	StartingUnits@lightelielistan:
+		Class: light
+		ClassName: options-starting-units.light-support
+		Factions: elielistan
+		BaseActor: mcv
+		SupportActors: aguila,aguila,aguila,cazador,cazador,gavilan,jaguar
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@heavyelielistan:
+		Class: heavy
+		ClassName: options-starting-units.heavy-support
+		Factions: elielistan
+		BaseActor: mcv
+		SupportActors: aguila,aguila,aguila,cazador,cazador,gavilan,jaguar,jaguar,halcon,carro.aguila
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@lightrubenie:
+		Class: light
+		ClassName: options-starting-units.light-support
+		Factions: rubenie
+		BaseActor: mcv
+		SupportActors: fusilier,fusilier,fusilier,grenadier,chasseur.at,chasseur.at,reco.rub,contreattaque
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@heavyrubenie:
+		Class: heavy
+		ClassName: options-starting-units.heavy-support
+		Factions: rubenie
+		BaseActor: mcv
+		SupportActors: fusilier,fusilier,fusilier,grenadier,chasseur.at,chasseur.at,reco.rub,contreattaque,contreattaque,aa.rub,sicatient
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@lightananthanie:
+		Class: light
+		ClassName: options-starting-units.light-support
+		Factions: ananthanie
+		BaseActor: mcv
+		SupportActors: thal,thal,thal,thal,khesh.thal,khesh.thal,vidra,vidra
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@heavyananthanie:
+		Class: heavy
+		ClassName: options-starting-units.heavy-support
+		Factions: ananthanie
+		BaseActor: mcv
+		SupportActors: thal,thal,thal,thal,khesh.thal,khesh.thal,vidra,vidra,lunkra,ratha,ambarkesh
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	# Australouis : unités alliées, Cheaper à la place du char léger.
+	StartingUnits@lightaustralouis:
+		Class: light
+		ClassName: options-starting-units.light-support
+		Factions: australouis
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e3,e3,jeep,cheaper
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+	StartingUnits@heavyaustralouis:
+		Class: heavy
+		ClassName: options-starting-units.heavy-support
+		Factions: australouis
+		BaseActor: mcv
+		SupportActors: e1,e1,e1,e3,e3,jeep,cheaper,cheaper,2tnk,2tnk
+		InnerSupportRadius: 3
+		OuterSupportRadius: 5
+
+# ---------------------------------------------------------------------
+# Bâtiments : l'Elielistan construit la base alliée (structures, caserne,
+# héliport, chantier naval), mais son usine produit ses propres véhicules.
+# ---------------------------------------------------------------------
+FACT:
+	ProvidesPrerequisite@allies:
+		Factions: allies, england, france, germany, elielistan
+	ProvidesPrerequisite@elielistan:
+		Factions: elielistan
+		Prerequisite: structures.elielistan
+
+TENT:
+	ProvidesPrerequisite@allies:
+		Factions: allies, england, france, germany, elielistan
+	ProvidesPrerequisite@elielistan:
+		Factions: elielistan
+		Prerequisite: infantry.elielistan
+
+HPAD:
+	ProvidesPrerequisite@allies:
+		Factions: allies, england, france, germany, elielistan
+	ProvidesPrerequisite@elielistan:
+		Factions: elielistan
+		Prerequisite: aircraft.elielistan
+
+SYRD:
+	ProvidesPrerequisite@allies:
+		Factions: allies, england, france, germany, elielistan
+
+WEAP:
+	ProvidesPrerequisite@elielistan:
+		Factions: elielistan
+		Prerequisite: vehicles.elielistan
+	ProvidesPrerequisite@rubenie:
+		Factions: rubenie
+		Prerequisite: vehicles.rubenie
+	ProvidesPrerequisite@ananthanie:
+		Factions: ananthanie
+		Prerequisite: vehicles.ananthanie
+
+# ---------------------------------------------------------------------
+# La Rubénie construit la base soviétique (aérodrome, sous-marinier en
+# attendant son chantier naval), mais sa caserne et son usine produisent
+# ses propres unités, et elle a ses propres défenses.
+# ---------------------------------------------------------------------
+FACT:
+	ProvidesPrerequisite@soviet:
+		Factions: soviet, russia, ukraine, rubenie, ananthanie
+	ProvidesPrerequisite@rubenie:
+		Factions: rubenie
+		Prerequisite: structures.rubenie
+	ProvidesPrerequisite@ananthanie:
+		Factions: ananthanie
+		Prerequisite: structures.ananthanie
+
+BARR:
+	ProvidesPrerequisite@rubenie:
+		Factions: rubenie
+		Prerequisite: infantry.rubenie
+	ProvidesPrerequisite@ananthanie:
+		Factions: ananthanie
+		Prerequisite: infantry.ananthanie
+
+# La chronosphère fait doublon avec l'Aguila Gate.
+PDOX:
+	Buildable:
+		Prerequisites: atek, ~structures.allies, ~techlevel.unrestricted, ~!structures.elielistan
+	# Chronoshift capable d'envoyer les unités ennemies en terrain interdit, où elles sont détruites.
+	# Les pouvoirs d'origine restent (des cartes RA les modifient par leur nom) mais sont désactivés.
+	ChronoshiftPower@chronoshift:
+		Prerequisites: ~disabled
+	ChronoshiftPower@advancedchronoshift:
+		Prerequisites: ~disabled
+	HostileChronoshiftPower@chronoshift:
+		OrderName: HostileChronoshift
+		PauseOnCondition: disabled
+		Prerequisites: !pdox.germany
+		Icon: chrono
+		ChargeInterval: 3000
+		Name: Chronoshift
+		Description: Teleports a group of units across\nthe map for 20 seconds.\nLes véhicules ennemis envoyés dans l'eau (ou les\nnavires ennemis envoyés à terre) sont détruits.
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		BeginChargeSpeechNotification: ChronosphereCharging
+		EndChargeSpeechNotification: ChronosphereReady
+		SelectTargetTextNotification: Select target.
+		InsufficientPowerTextNotification: Insufficient power.
+		BeginChargeTextNotification: Chronosphere charging.
+		EndChargeTextNotification: Chronosphere ready.
+		Duration: 400
+		KillCargo: true
+		DisplayRadarPing: True
+		SupportPowerPaletteOrder: 20
+		Dimensions: 3, 3
+		Footprint: _x_ xxx _x_
+	HostileChronoshiftPower@advancedchronoshift:
+		OrderName: HostileAdvancedChronoshift
+		PauseOnCondition: disabled
+		Prerequisites: pdox.germany
+		Icon: chrono
+		ChargeInterval: 3000
+		Name: Advanced Chronoshift
+		Description: Teleports a large group of units across\nthe map for 20 seconds.\nLes véhicules ennemis envoyés dans l'eau (ou les\nnavires ennemis envoyés à terre) sont détruits.
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		BeginChargeSpeechNotification: ChronosphereCharging
+		EndChargeSpeechNotification: ChronosphereReady
+		SelectTargetTextNotification: Select target.
+		InsufficientPowerTextNotification: Insufficient power.
+		BeginChargeTextNotification: Chronosphere charging.
+		EndChargeTextNotification: Chronosphere ready.
+		Duration: 400
+		KillCargo: true
+		DisplayRadarPing: True
+		SupportPowerPaletteOrder: 30
+		Dimensions: 5, 5
+		Footprint: __x__ _xxx_ xxxxx _xxx_ __x__
+
+# Fusiliers et lance-roquettes génériques remplacés par l'Aguila et le Cazador
+# (Elielistan) et par l'infanterie rubénienne.
+E1:
+	Buildable:
+		Prerequisites: ~barracks, ~techlevel.infonly, ~!infantry.elielistan, ~!infantry.rubenie, ~!infantry.ananthanie
+E3:
+	Buildable:
+		Prerequisites: ~barracks, ~techlevel.infonly, ~!infantry.elielistan, ~!infantry.rubenie, ~!infantry.ananthanie
+
+# Unités et défenses soviétiques génériques remplacées par celles de la Rubénie
+# et de l'Ananthanie.
+E2:
+	Buildable:
+		Prerequisites: ~barr, ~techlevel.infonly, ~!structures.rubenie, ~!structures.ananthanie
+E4:
+	Buildable:
+		Prerequisites: ~barr, ftur, ~techlevel.low, ~!structures.rubenie, ~!structures.ananthanie
+APC:
+	Buildable:
+		Prerequisites: ~vehicles.soviet, ~techlevel.low, ~!structures.rubenie, ~!structures.ananthanie
+FTRK:
+	Buildable:
+		Prerequisites: ~vehicles.soviet, ~techlevel.low, ~!structures.rubenie, ~!structures.ananthanie
+V2RL:
+	Buildable:
+		Prerequisites: dome, ~vehicles.soviet, ~techlevel.medium, ~!structures.rubenie, ~!structures.ananthanie
+3TNK:
+	Buildable:
+		Prerequisites: fix, ~vehicles.soviet, ~techlevel.medium, ~!structures.rubenie, ~!structures.ananthanie
+4TNK:
+	Buildable:
+		Prerequisites: fix, stek, ~vehicles.soviet, ~techlevel.high, ~!structures.rubenie, ~!structures.ananthanie
+# Voleur : la Rubénie a sa propre version (RUBENLA.DEN, rubenie/rules.yaml).
+THF:
+	Buildable:
+		Prerequisites: ~barr, dome, ~techlevel.medium, ~!structures.rubenie, ~!structures.ananthanie
+QTNK:
+	Buildable:
+		Prerequisites: fix, stek, ~vehicles.soviet, ~techlevel.high, ~!structures.rubenie, ~!structures.ananthanie
+FTUR:
+	Buildable:
+		Prerequisites: barr, ~structures.soviet, ~techlevel.low, ~!structures.rubenie, ~!structures.ananthanie
+TSLA:
+	Buildable:
+		Prerequisites: weap, ~structures.soviet, ~techlevel.medium, ~!structures.rubenie, ~!structures.ananthanie
+SAM:
+	Buildable:
+		Prerequisites: dome, ~structures.soviet, ~techlevel.medium, ~!structures.rubenie, ~!structures.ananthanie
+# Aérodrome et sous-marinier remplacés par la base aérienne et le chantier
+# naval rubéniens (voir rubenie/aviation.yaml et rubenie/marine.yaml).
+AFLD:
+	Buildable:
+		Prerequisites: dome, ~structures.soviet, ~techlevel.medium, ~!structures.ukraine, ~!structures.rubenie, ~!structures.ananthanie
+SPEN:
+	Buildable:
+		Prerequisites: anypower, ~structures.soviet, ~techlevel.low, ~!structures.rubenie, ~!structures.ananthanie
+
+# ---------------------------------------------------------------------
+# Désignation de cible (drone Ojo, Explorador, Ojo del Aguila) :
+# +25 % de dégâts reçus, losange vert visible par l'adversaire.
+# ---------------------------------------------------------------------
+^Designatable:
+	ExternalCondition@DESIGNATED:
+		Condition: laser-designated
+	DamageMultiplier@DESIGNATED:
+		RequiresCondition: laser-designated
+		Modifier: 125
+	WithDecoration@DESIGNATED:
+		Image: lasermark
+		Sequence: idle
+		Palette: chrome
+		Position: Top
+		ValidRelationships: Enemy
+		RequiresCondition: laser-designated
+
+^Vehicle:
+	Inherits@DESIGNATABLE: ^Designatable
+	# Clic sur une bouche de tunnel (Aguila Gate, Opération Taupe) : l'unité s'y rend.
+	UsesAguilaGate:
+
+^Infantry:
+	Inherits@DESIGNATABLE: ^Designatable
+	# Clic sur une bouche de tunnel (Aguila Gate, Opération Taupe) : l'unité s'y rend.
+	UsesAguilaGate:
+
+^Ship:
+	Inherits@DESIGNATABLE: ^Designatable
+
+^Building:
+	Inherits@DESIGNATABLE: ^Designatable
+
+# ---------------------------------------------------------------------
+# Joueur : mandat présidentiel (utilisé par le palais de l'Elielistan).
+# 10 ordres prioritaires par quinquennat ; un quinquennat = 15 minutes.
+# ---------------------------------------------------------------------
+Player:
+	SuiviOrdres:
+	RepriseIA:
+	PresidentialMandate:
+		OrdersPerTerm: 10
+		TermLength: 22500
+		NewTermTextNotification: Nouveau quinquennat : {0} ordres prioritaires disponibles.
+
+# ---------------------------------------------------------------------
+# L'Australouis construit la base alliée (avec ses unités terrestres, en
+# attendant les siennes), plus sa base aéronavale. Son héliport produit
+# la Baleine (à la place du Chinook) et le drone Moustique.
+# ---------------------------------------------------------------------
+FACT:
+	ProvidesPrerequisite@allies:
+		Factions: allies, england, france, germany, elielistan, australouis
+	ProvidesPrerequisite@australouis:
+		Factions: australouis
+		Prerequisite: structures.australouis
+
+TENT:
+	ProvidesPrerequisite@allies:
+		Factions: allies, england, france, germany, elielistan, australouis
+
+WEAP:
+	ProvidesPrerequisite@allies:
+		Factions: allies, england, france, germany, australouis
+
+HPAD:
+	ProvidesPrerequisite@allies:
+		Factions: allies, england, france, germany, elielistan, australouis
+	ProvidesPrerequisite@australouis:
+		Factions: australouis
+		Prerequisite: aircraft.australouis
+
+SYRD:
+	ProvidesPrerequisite@allies:
+		Factions: allies, england, france, germany, elielistan, australouis
+
+TRAN:
+	Buildable:
+		Prerequisites: ~hpad, ~techlevel.medium, ~!aircraft.australouis
+
+# Caserne alliée de l'Australouis : jeu d'infanterie soviétique (elle
+# fournit « barr », et « ftur » pour le lance-flammes) plus le
+# Révolutionnaire ; plus d'infanterie spéciale alliée.
+TENT:
+	ProvidesPrerequisite@australouis:
+		Factions: australouis
+		Prerequisite: infantry.australouis
+	ProvidesPrerequisite@australouisbarr:
+		Factions: australouis
+		Prerequisite: barr
+	ProvidesPrerequisite@australouisftur:
+		Factions: australouis
+		Prerequisite: ftur
+SPY:
+	Buildable:
+		Prerequisites: ~!infantry.england, dome, ~tent, ~techlevel.medium, ~!infantry.australouis
+E7:
+	Buildable:
+		Prerequisites: ~tent, atek, ~techlevel.high, ~!infantry.australouis
+MEDI:
+	Buildable:
+		Prerequisites: ~tent, ~techlevel.infonly, ~!infantry.australouis
+MECH:
+	Buildable:
+		Prerequisites: ~tent, fix, ~techlevel.medium, ~!infantry.australouis
+
+# Usine : véhicules de base alliés + Cheaper, qui remplace le char léger.
+# Chantier naval : L-0U15.
+WEAP:
+	ProvidesPrerequisite@australouis:
+		Factions: australouis
+		Prerequisite: vehicles.australouis
+1TNK:
+	Buildable:
+		Prerequisites: ~vehicles.allies, ~techlevel.low, ~!vehicles.australouis
+SYRD:
+	ProvidesPrerequisite@australouis:
+		Factions: australouis
+		Prerequisite: ships.australouis
+
+# ---------------------------------------------------------------------
+# Système anti-drone : tout avion (pas les hélicoptères) de
+# l'Australouis ou de la Rubénie détruit automatiquement les drones
+# ennemis à 1 case ou moins autour de lui.
+# ---------------------------------------------------------------------
+^Plane:
+	DestroysNearbyDrones:
+		Range: 1c0
+		Factions: australouis, rubenie, ananthanie
+		Sound: gun13.aud
+
+# Le MH60 allié est remplacé chez l'Elielistan par son Black Hawk
+# transporteur (BLACKHAWK, elielistan/rules.yaml).
+MH60:
+	Buildable:
+		Prerequisites: ~hpad, ~techlevel.medium, ~!aircraft.elielistan
+
+# Avions alliés et soviétiques de base : peuvent aussi apponter sur les
+# porte-avions (Porta Aguila, porte-avions rubénien).
+MIG:
+	Rearmable:
+		RearmActors: afld, afld.ukraine, porta.aguila, porte.avions.rub
+	CarrierAircraft:
+
+YAK:
+	Rearmable:
+		RearmActors: afld, afld.ukraine, porta.aguila, porte.avions.rub
+	CarrierAircraft:
+
+# ^Helicopter hérite de ^Plane : les hélicoptères n'ont pas l'anti-drone.
+^Helicopter:
+	-DestroysNearbyDrones:
+
+# ---------------------------------------------------------------------
+# Ponts permanents des cartes « Monde immense (continents reliés) » :
+# travées de l'Aguila Bridge qui ne disparaissent pas. Très solides,
+# mais on peut les détruire pour couper un continent.
+# ---------------------------------------------------------------------
+^PontPermanent:
+	Inherits: ^AguilaBridgeSegment
+	-KillsSelf:
+	Tooltip:
+		Name: Pont
+	Health:
+		HP: 150000
+	Targetable:
+		TargetTypes: GroundActor, Structure, NoAutoTarget
+	MapEditorData:
+		Categories: Bridge
+
+PONT.NS:
+	Inherits: ^PontPermanent
+	WithSpriteBody:
+		Sequence: ns
+
+PONT.EW:
+	Inherits: ^PontPermanent
+	WithSpriteBody:
+		Sequence: ew

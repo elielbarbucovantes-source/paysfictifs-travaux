@@ -1,0 +1,51 @@
+# Drapeaux du salon : ceux de Red Alert + les pays fictifs (tools/drapeaux.py).
+flags:
+	Image: fictifs|uibits/flags.png
+	Image2x: fictifs|uibits/flags-2x.png
+	Image3x: fictifs|uibits/flags-3x.png
+	Regions:
+		england: 0, 0, 30, 15
+		germany: 0, 16, 30, 15
+		france: 0, 32, 30, 15
+		spain: 0, 48, 30, 15
+		turkey: 0, 64, 30, 15
+		greece: 0, 80, 30, 15
+		ukraine: 0, 96, 30, 15
+		russia: 0, 112, 30, 15
+		allies: 0, 128, 30, 15
+		soviet: 0, 144, 30, 15
+		RandomSoviet: 0, 160, 30, 15
+		RandomAllies: 0, 176, 30, 15
+		Random: 0, 192, 30, 15
+		elielistan: 0, 208, 30, 15
+		rubenie: 0, 224, 30, 15
+		australouis: 0, 240, 30, 15
+		ananthanie: 0, 256, 30, 15
+		spectator: 0, 192, 30, 15
+
+# Insignes de grade du classement Elo (tools/insignes.py).
+grades:
+	Image: fictifs|uibits/grades.png
+	Image2x: fictifs|uibits/grades-2x.png
+	Image3x: fictifs|uibits/grades-3x.png
+	Regions:
+		soldat: 0, 0, 16, 16
+		caporal: 16, 0, 16, 16
+		sergent: 32, 0, 16, 16
+		lieutenant: 48, 0, 16, 16
+		capitaine: 64, 0, 16, 16
+		commandant: 80, 0, 16, 16
+		colonel: 96, 0, 16, 16
+		general: 112, 0, 16, 16
+		marechal: 128, 0, 16, 16
+
+# Onglet de production « Trains » (tools/icone_train.py) : même style que
+# production-icons de RA (normal, désactivé, prêt).
+production-icons-train:
+	Image: fictifs|uibits/train-icons.png
+	Image2x: fictifs|uibits/train-icons-2x.png
+	Image3x: fictifs|uibits/train-icons-3x.png
+	Regions:
+		train: 0, 0, 16, 16
+		train-disabled: 16, 0, 16, 16
+		train-alert: 32, 0, 16, 16

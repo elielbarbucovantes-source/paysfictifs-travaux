@@ -1,0 +1,2628 @@
+============================================================================================
+                                 ENCYCLOPÉDIE ULTIME DU MOD                                 
+                             Pays fictifs pour OpenRA Red Alert                             
+============================================================================================
+
+Chaque bâtiment, défense, unité et pouvoir de soutien propre aux pays fictifs : un peu
+d'histoire, les statistiques et la façon de s'en servir. Les bâtiments et unités de Red
+Alert que ces pays partagent avec les autres nations (centrales, raffineries, casernes...)
+sont ceux du jeu de base.
+
+Les statistiques sont lues directement dans les règles du jeu par
+tools/encyclopedie/generer.py : après un rééquilibrage, relancez ce script pour mettre
+l'encyclopédie à jour.
+
+Repères :
+  • PV : points de vie. Une case = une case de la carte.
+  • Les durées sont données à la vitesse de jeu normale (25 images par seconde).
+  • Blindage : aucun (infanterie), léger, lourd, béton, léger de bâtiment (bois).
+
+Débarquement amphibie (tous les pays) : transports chargés ou Base logistique amphibie
+sélectionnés, bouton Débarquement (touche K), puis rectangle glissé sur la côte
+(débarquement étendu : les transports se répartissent le long de la zone et chaque unité
+part vers sa propre case) ou simple clic (débarquement concentré autour du point). Les cases
+inaccessibles sont évitées ; une zone sans case accessible est refusée. Navette amphibie
+(touche J) : transport sélectionné, escale de chargement puis de déchargement (Base
+logistique amphibie ou rectangle sur une plage) ; il fait la boucle seul, comme les navettes
+ferroviaires.
+
+IA : quand aucune route terrestre ne mène à l'ennemi (îles), l'IA construit un transport
+amphibie (ou une Base logistique amphibie), charge ses unités et débarque sur la côte la
+moins défendue près de la base adverse. Sur une carte toute terrestre, elle ne débarque pas.
+
+SOMMAIRE
+  0. LES PAYS (4)
+  1. BÂTIMENTS (17)
+  2. DÉFENSES (12)
+  3. INFANTERIE (16)
+  4. VÉHICULES (34)
+  5. AVIATION (27)
+  6. MARINE (19)
+  7. TRAINS (23)
+  8. POUVOIRS DE SOUTIEN (20)
+
+============================================================================================
+                                        0. LES PAYS                                         
+============================================================================================
+--------------------------------------------------------------------------------------------
+■ ELIELISTAN — « Frapper puis disparaître »
+  Camp : Alliés (base alliée, usine et héliport propres).
+  Doctrine : « Tu ne combats pas l'armée elielistanaise. Tu combats l'endroit où elle était
+  il y a dix secondes. »
+  L'Elielistan mise sur la vitesse, la reconnaissance et la projection : raids rapides,
+  drones, frappes aériennes, puis retraite. Ses unités sont moins blindées que leurs
+  équivalents étrangers, et il perd les combats qui durent.
+  Règles propres :
+  • Décrochage : après avoir tiré, une unité elielistanaise gagne +35 % de vitesse pendant 4
+    secondes (+60 % pour l'artillerie Trueno et Lanzador).
+  • Désignation laser : l'Explorador et l'Ojo del Aguila marquent leurs cibles (losange
+    vert) ; une cible désignée subit +25 % de dégâts.
+  • Mandat présidentiel : le Palacio dispose de 10 ordres prioritaires par quinquennat de 15
+    minutes.
+  • Largage : un véhicule déposé par le Cóndor ou parachuté par le Pelícano reste sonné 4
+    secondes (+50 % de dégâts reçus, vitesse réduite, ne tire pas).
+  • Transport : un fantassin occupe 1 place, un char (Carro Aguila, Aguila Nuclear) ou une
+    pièce d'artillerie (Trueno, Lanzador) en occupe 3. Aguila Carrier : 5 véhicules ;
+    Pelícano et porte-avions : 15 places (15 fantassins ou 5 véhicules).
+  • Projection : jusqu'à 3 antennes de gouvernement provisoire pour construire loin de la
+    base.
+--------------------------------------------------------------------------------------------
+■ RUBÉNIE — « Si ça tient, touche à rien »
+  Camp : Soviétiques (base soviétique, QG, chantier naval et base aérienne propres).
+  Doctrine : défendre, contre-attaquer, se replier, réparer, recommencer.
+  La Rubénie est une forteresse : tranchées, bunkers, casemates, défense aérienne en couches
+  et artillerie lourde. Ses unités sont plus solides, plus lentes et un peu plus chères que
+  celles de l'Elielistan ; ses armes frappent moins fort par coup mais avec des cadences
+  soutenues et de la portée.
+  Règles propres :
+  • Logistique : le chantier de construction, le QG, les centres logistiques et le véhicule
+    logistique ravitaillent les unités terrestres rubéniennes autour d'eux (efficacité
+    normale, réparation lente hors combat).
+  • Isolement : une unité hors de tout rayon de ravitaillement depuis 30 secondes est isolée
+    : −25 % de dégâts, −25 % de cadence, plus de réparation.
+  • Détection sismique : l'Éclaireur, le véhicule de reconnaissance et le QG repèrent le
+    Tunnelier ennemi sous terre.
+  • Aura du Second Galactique : +15 % de dégâts et −15 % de dégâts reçus pour les unités
+    rubéniennes à 5 cases.
+--------------------------------------------------------------------------------------------
+■ AUSTRALOUIS — « Le peuple des îles »
+  Camp : Alliés (base alliée, base aéronavale propre).
+  Doctrine : tenir le ciel et la mer. L'Australouis est un archipel ; sa puissance tient à
+  son aviation et à sa marine.
+  Il construit la base alliée, plus un chantier naval avancé et une centrale
+  d'enrichissement. Sa caserne forme l'infanterie soviétique et le Révolutionnaire ; son
+  usine produit les chars de base alliés et le Cheaper.
+  Règles propres :
+  • Écopage : le Cormoran se remplit en survolant l'eau (2 secondes au total) ; un plein =
+    un brouillard.
+  • Brouillard : les ennemis perdent tout ce qu'ils avaient découvert dans un rayon de 6
+    cases, sauf ce que leurs unités voient encore.
+  • Essaim : 3 drones Moustique suffisent à détruire un char léger ; 2 ne suffisent pas.
+  • Îles : le Mothership fait sortir de l'océan des îles de 8×8 cases (plage autour, terrain
+    constructible au centre) où un chantier de construction peut s'installer.
+  • Révolution : le Révolutionnaire fait passer dans votre camp tout ce qui est ennemi à 5
+    cases (recharge 5 minutes).
+  • Enrichissement : +5 % de revenus du minerai avec la centrale d'enrichissement, +20 % de
+    plus pendant le Raffinerie boost.
+--------------------------------------------------------------------------------------------
+■ ANANTHANIE — « Je contrôle le champ de bataille »
+  Camp : Soviétiques (base soviétique, Haut Commandement, fabrique de drones, institut
+  d'innovation, base aérienne et chantier naval propres).
+  Devise : « Prospérité, innovation, puissance, Fraternité. »
+  L'Ananthanie est une superpuissance technologique, démocratie parlementaire très stable.
+  Sa doctrine : blitzkrieg en attaque, usure en défense, quantité ET qualité. Blindés
+  modernes, drones explosifs et missiles : « L'Ananthanie gagne une bataille en 7 minutes. »
+  Règles propres :
+  • Masse : le Thal est formé très vite ; l'armée ananthanienne compte sur le nombre autant
+    que sur la technologie.
+  • Drones : la fabrique de drones produit 15 % plus vite le Nayrak, le Mukhar et la Ruche.
+  • Désignation : le Lunkar marque ses cibles (+25 % de dégâts reçus pendant 3 secondes).
+  • Protection active : le Karnvasha reçoit 35 % de dégâts en moins des missiles et
+    roquettes.
+  • Faiblesse : les montagnes. Les véhicules ananthaniens perdent 20 % de vitesse en terrain
+    accidenté.
+  • Anti-drone : les avions ananthaniens détruisent les drones ennemis à 1 case.
+  • Furtivité : le Lunkravyn est invisible tant qu'il ne tire pas.
+  • Avion radar : le Nayra-Ambar donne +20 % de portée aux avions ananthaniens et alliés à
+    10 cases.
+
+============================================================================================
+                                        1. BÂTIMENTS                                        
+============================================================================================
+
+  ▶ PAYS : ELIELISTAN
+
+--------------------------------------------------------------------------------------------
+■ AERÓDROMO
+  Pays : Elielistan
+  Lore :
+    Aérodrome elielistanais : il produit, répare et réarme les avions.
+    Le Pelícano s'y pose pour embarquer ses troupes.
+    Le point de départ de toute projection aérienne.
+  Statistiques :
+    Coût 500 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -20
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Un avion posé occupe l'aérodrome ; les Pelícanos en trop se posent sur le terrain dégagé
+    à côté. Placez-le à l'abri, au fond de la base.
+--------------------------------------------------------------------------------------------
+■ ANTENNE DE GOUVERNEMENT PROVISOIRE
+  Pays : Elielistan
+  Lore :
+    Un drapeau planté dans le territoire conquis.
+    Construite n'importe où, elle ouvre une petite zone où bâtir une base avancée.
+    Fragile et visible de l'ennemi : ce n'est pas une forteresse.
+  Statistiques :
+    Coût 1 000 $ · PV 30 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Arme : AntenaMG : 1 000 dégâts, rafale de 5, portée 4 cases, recharge 1,2 s
+    Énergie -30 · Limite 3 exemplaires
+    Prérequis : Palacio Presidencial · Niveau technologique : moyen
+  Stratégie :
+    Suivez votre armée : antenne, puis réparation, production et défenses légères autour,
+    puis nouvelle offensive. Trois au maximum, protégez-les.
+--------------------------------------------------------------------------------------------
+■ PALACIO PRESIDENCIAL
+  Pays : Elielistan
+  Lore :
+    Siège du pouvoir elielistanais, d'où le président commande les opérations.
+    Il porte les pouvoirs de l'Elielistan : Ojo del Aguila, Aguila Bridge, Aguila Gate, ordres prioritaires.
+    Un seul exemplaire : le perdre, c'est perdre la voix du président.
+  Statistiques :
+    Coût 1 500 $ · PV 80 000 · Blindage léger de bâtiment (bois) · Vision 6 cases
+    Énergie -150 · Limite 1 exemplaire
+    Prérequis : Radar Dome · Niveau technologique : moyen
+    Pouvoir de soutien : Ordre prioritaire (recharge 1 min)
+    Pouvoir de soutien : Ojo del Aguila (recharge 3 min)
+    Pouvoir de soutien : Aguila Bridge (recharge 4 min)
+    Pouvoir de soutien : Aguila Gate (recharge 5 min)
+  Stratégie :
+    Construisez-le dès que le radar est en place et protégez-le bien : sans lui, plus de
+    pouvoirs ni d'antennes de gouvernement provisoire.
+
+  ▶ PAYS : RUBÉNIE
+
+--------------------------------------------------------------------------------------------
+■ BASE AÉRIENNE
+  Pays : Rubénie
+  Lore :
+    Base qui produit, répare et réarme les avions rubéniens.
+    Chasseur polyvalent, intercepteur, avion d'attaque et avion de reconnaissance.
+    La couverture aérienne de la forteresse.
+  Statistiques :
+    Coût 500 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -20
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Placez-la au fond de la base, sous la protection de SAM et de tourelles AA.
+--------------------------------------------------------------------------------------------
+■ CENTRE LOGISTIQUE
+  Pays : Rubénie
+  Lore :
+    Grand dépôt qui ravitaille les unités terrestres dans un rayon de 14 cases.
+    Les unités ravitaillées gardent leur efficacité et se réparent lentement hors combat.
+    Plusieurs centres se relaient : en détruire un ne suffit pas.
+    Il se pose n'importe où sur la carte, mais n'étend pas la zone de construction.
+  Statistiques :
+    Coût 1 000 $ · PV 90 000 · Blindage léger de bâtiment (bois) · Vision 6 cases
+    Énergie -50
+    Prérequis : Raffinerie · Niveau technologique : bas
+  Stratégie :
+    Couvrez vos lignes de front de centres logistiques ; hors de leur rayon pendant 30 s,
+    vos unités deviennent isolées.
+--------------------------------------------------------------------------------------------
+■ CHANTIER NAVAL RUBÉNIEN
+  Pays : Rubénie
+  Lore :
+    Chantier qui produit et répare les navires rubéniens.
+    Escorteurs, frégates, sous-marins et porte-avions.
+    La porte de la marine lourde et défensive.
+  Statistiques :
+    Coût 1 000 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -30 · Détecte les furtifs (10 cases)
+    Prérequis : une centrale · Niveau technologique : bas
+  Stratégie :
+    Protégez-le avec de l'artillerie côtière : c'est la cible prioritaire des raids navals.
+--------------------------------------------------------------------------------------------
+■ QG RUBÉNIEN
+  Pays : Rubénie
+  Lore :
+    Quartier général et siège du commandement rubénien.
+    Il ravitaille les unités proches, détecte le Tunnelier et porte les cinq pouvoirs de soutien.
+    Un seul exemplaire : le cœur de la forteresse.
+  Statistiques :
+    Coût 1 500 $ · PV 100 000 · Blindage béton · Vision 7 cases
+    Énergie -100 · Limite 1 exemplaire
+    Prérequis : Radar Dome · Niveau technologique : moyen
+    Pouvoir de soutien : Contre-attaque éclair (recharge 3 min)
+    Pouvoir de soutien : Mobilisation défensive (recharge 5 min)
+    Pouvoir de soutien : Frappe de précision (recharge 6 min)
+    Pouvoir de soutien : Opération Taupe (recharge 6 min)
+    Pouvoir de soutien : Supériorité aérienne (recharge 4 min)
+  Stratégie :
+    Construisez-le au centre de votre base, bien protégé : il débloque le Second Galactique
+    et le Tunnelier.
+
+  ▶ PAYS : AUSTRALOUIS
+
+--------------------------------------------------------------------------------------------
+■ BASE AÉRONAVALE
+  Pays : Australouis
+  Lore :
+    Le cœur de la puissance australouisienne : pistes, hangars et ateliers.
+    Elle produit, répare et réarme les avions du pays.
+    Pour un peuple des îles, c'est elle qui relie tout l'archipel.
+  Statistiques :
+    Coût 500 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -20
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Construisez-la tôt et protégez-la de la défense antiaérienne : sans elle, vos avions ne
+    se réarment plus.
+--------------------------------------------------------------------------------------------
+■ CENTRALE D'ENRICHISSEMENT
+  Pays : Australouis
+  Lore :
+    Usine qui enrichit le minerai avant sa vente.
+    Tant qu'elle est debout, chaque chargement rapporte 5 % de plus.
+    Avec un silo, elle lance le Raffinerie boost.
+  Statistiques :
+    Coût 2 500 $ · PV 90 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -150 · Limite 1 exemplaire
+    Prérequis : Centre technique allié · Niveau technologique : élevé
+    Pouvoir de soutien : Raffinerie boost (recharge 4 min)
+  Stratégie :
+    Construisez-la tôt dans une économie à plusieurs raffineries et protégez-la : c'est une
+    cible de choix pour l'ennemi.
+--------------------------------------------------------------------------------------------
+■ CHANTIER NAVAL AVANCÉ
+  Pays : Australouis
+  Lore :
+    Chantier naval de haute technologie, 3 au maximum.
+    Seul capable de construire le sous-marin ICBM et le Mothership.
+    Il abrite aussi le centre d'écoute du Radar blink et les générateurs de houle de l'Engineered Tsunami.
+  Statistiques :
+    Coût 2 000 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -30 · Détecte les furtifs (10 cases) · Limite 3 exemplaires
+    Prérequis : Centre technique allié · Niveau technologique : élevé
+    Pouvoir de soutien : Radar blink (recharge 5 min)
+    Pouvoir de soutien : Engineered Tsunami (recharge 5 min)
+  Stratégie :
+    Construisez-en au moins un dès que le centre technique est prêt, dans une baie bien
+    défendue.
+--------------------------------------------------------------------------------------------
+■ GARE PORTUAIRE
+  Pays : Australouis
+  Lore :
+    Gare à cheval sur la côte : quai à terre et voie en haut, quai sur l'eau en bas.
+    Un transport naval à l'arrêt au quai passe ses passagers directement dans les wagons en gare.
+    Les navires montent dans le wagon porte-bateaux depuis le quai.
+  Statistiques :
+    Coût 960 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -30
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Le cœur de la logistique australouisienne : protégez-la côté mer comme côté terre.
+
+  ▶ PAYS : ANANTHANIE
+
+--------------------------------------------------------------------------------------------
+■ BASE AÉRIENNE ANANTHANIENNE
+  Pays : Ananthanie
+  Lore :
+    Aérodrome de l'aviation ananthanienne.
+    Elle produit, répare et réarme avions, drones Ulkar et hélicoptères Kheshar.
+    L'aviation est le cerveau et le bras armé de l'armée.
+  Statistiques :
+    Coût 500 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -20
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Construisez-en tôt : l'aviation est la force principale de l'Ananthanie.
+--------------------------------------------------------------------------------------------
+■ CHANTIER NAVAL ANANTHANIEN
+  Pays : Ananthanie
+  Lore :
+    Chantier naval de la grande façade maritime ananthanienne.
+    Produit et répare patrouilleurs, frégates, destroyers, sous-marins et navires amphibies.
+    La supériorité navale fait partie de la doctrine.
+  Statistiques :
+    Coût 1 000 $ · PV 100 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -30 · Détecte les furtifs (10 cases)
+    Prérequis : une centrale · Niveau technologique : bas
+  Stratégie :
+    Construisez-le dès que la carte a de l'eau : la flotte ouvre la côte aux offensives.
+--------------------------------------------------------------------------------------------
+■ FABRIQUE DE DRONES
+  Pays : Ananthanie
+  Lore :
+    Hall de production de drones et piste d'essai.
+    Débloque le Nayrak, le Mukhar et la Ruche.
+    Les unités à drones y sont produites 15 % plus vite.
+  Statistiques :
+    Coût 1 200 $ · PV 80 000 · Blindage léger de bâtiment (bois) · Vision 5 cases
+    Énergie -75
+    Prérequis : Usine d'armement · Niveau technologique : bas
+  Stratégie :
+    À construire tôt : les drones sont le domaine principal de l'Ananthanie.
+--------------------------------------------------------------------------------------------
+■ HAUT COMMANDEMENT
+  Pays : Ananthanie
+  Lore :
+    Siège de l'état-major ananthanien.
+    Un seul exemplaire : tour de verre en coin, héliport, radars.
+    C'est ici que se prépare la bataille de sept minutes.
+  Statistiques :
+    Coût 1 500 $ · PV 100 000 · Blindage béton · Vision 8 cases
+    Énergie -100 · Limite 1 exemplaire
+    Prérequis : Radar Dome · Niveau technologique : moyen
+    Pouvoir de soutien : Blitz 7 (recharge 7 min)
+    Pouvoir de soutien : Essaim (recharge 4 min)
+    Pouvoir de soutien : Salve Agni (recharge 5 min)
+    Pouvoir de soutien : Raid furtif (recharge 9 min)
+    Pouvoir de soutien : Œil d'Ambar (recharge 3 min)
+    Pouvoir de soutien : Pont aérien (recharge 5 min)
+    Pouvoir de soutien : Pacte de Fraternité (recharge 6 min)
+  Stratégie :
+    Construisez-le pour débloquer le Nayrath. Il portera les pouvoirs de soutien et la jauge
+    d'offensive.
+--------------------------------------------------------------------------------------------
+■ INSTITUT D'INNOVATION
+  Pays : Ananthanie
+  Lore :
+    Le centre de recherche ananthanien, sous son dôme d'observation.
+    L'innovation est la valeur fondamentale du pays.
+    Débloque le Karnvasha, l'Agnar et le Lunkar.
+  Statistiques :
+    Coût 2 000 $ · PV 70 000 · Blindage léger de bâtiment (bois) · Vision 6 cases
+    Énergie -150 · Limite 1 exemplaire
+    Prérequis : Usine d'armement, Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Un seul exemplaire, mais indispensable pour la fin de partie : protégez-le.
+
+  ▶ PAYS : TOUS LES PAYS
+
+--------------------------------------------------------------------------------------------
+■ BASE LOGISTIQUE AMPHIBIE
+  Pays : Tous les pays
+  Lore :
+    Quai, hangar et tour de contrôle des opérations, à cheval sur la côte.
+    Elle produit les transports amphibies du pays, abrite les troupes et remplit d'elle-même dix transports à quai.
+    Une seule commande, et toute la flotte de débarquement part vers la plage.
+  Statistiques :
+    Coût 1 500 $ · PV 110 000 · Blindage léger de bâtiment (bois) · Vision 6 cases
+    Énergie -40
+    Prérequis : une centrale, Usine d'armement · Niveau technologique : bas
+  Stratégie :
+    Envoyez vos unités dans la base (clic droit, ou point de ralliement d'une caserne ou
+    d'une usine posé sur la base) : elle en stocke 30 à pied et 15 véhicules. Jusqu'à 10
+    transports à quai sont remplis automatiquement avec ce stock. Base sélectionnée,
+    Débarquement (K) : glissez un rectangle sur la côte ennemie, tous les transports chargés
+    partent, débarquent chacun sur leur part de la zone, puis reviennent à quai pour la
+    vague suivante. Navette amphibie (J) : un transport fait la boucle entre deux escales
+    (base ou plage) ; il part plein, ou après 30 s sans nouvelle unité, décharge dans le
+    stock de la base ou débarque sur la plage, puis revient. Les troupes embarquées par la
+    base subissent 25 % de dégâts en moins pendant 20 s après le débarquement.
+
+============================================================================================
+                                        2. DÉFENSES                                         
+============================================================================================
+
+  ▶ PAYS : ELIELISTAN
+
+--------------------------------------------------------------------------------------------
+■ TRANCHÉE (EST-OUEST)
+  Pays : Elielistan
+  Lore :
+    Tranchée légère creusée pour tenir une position conquise.
+    Cinq fantassins y tirent à couvert et en ressortent si elle est détruite.
+    Moins solide qu'une fortification : elle se construit et s'abandonne vite.
+  Statistiques :
+    Coût 200 $ · PV 22 000 · Blindage lourd · Vision 5 cases
+    Transport 5 places
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Garnissez-la de Fusiliers Aguila ou de Cazador pour défendre une base avancée autour
+    d'une antenne.
+--------------------------------------------------------------------------------------------
+■ TRANCHÉE (NORD-SUD)
+  Pays : Elielistan
+  Lore :
+    Même tranchée légère, orientée nord-sud.
+    Cinq fantassins y tirent à couvert.
+    Choisissez l'orientation face à la menace.
+  Statistiques :
+    Coût 200 $ · PV 22 000 · Blindage lourd · Vision 5 cases
+    Transport 5 places
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Combinez les deux orientations pour fermer un passage.
+
+  ▶ PAYS : RUBÉNIE
+
+--------------------------------------------------------------------------------------------
+■ ARTILLERIE CÔTIÈRE
+  Pays : Rubénie
+  Lore :
+    Canon lourd de défense côtière, portée de 14 cases.
+    Il n'engage que les navires.
+    Aucun porte-avions ne s'approche de la côte sans en payer le prix.
+  Statistiques :
+    Coût 1 200 $ · PV 60 000 · Blindage lourd · Vision 8 cases
+    Arme : RubCotiere : 20 000 dégâts, portée 14 cases, recharge 4,8 s
+    Énergie -40 · Détecte les furtifs (6 cases)
+    Prérequis : Chantier naval rubénien · Niveau technologique : moyen
+  Stratégie :
+    Défendez vos côtes et votre chantier naval contre les débarquements elielistanais.
+--------------------------------------------------------------------------------------------
+■ BUNKER
+  Pays : Rubénie
+  Lore :
+    Casemate d'infanterie très résistante, livrée avec un fusilier.
+    Cinq occupants tirent par les meurtrières ; elle détecte les unités furtives.
+    Sa puissance dépend de sa garnison.
+  Statistiques :
+    Coût 700 $ · PV 65 000 · Blindage lourd · Vision 6 cases
+    Énergie -20 · Transport 5 places · Détecte les furtifs (6 cases)
+    Prérequis : Caserne soviétique · Niveau technologique : bas
+  Stratégie :
+    Garnissez-le de chasseurs antichars contre les blindés, de grenadiers contre
+    l'infanterie.
+--------------------------------------------------------------------------------------------
+■ CASEMATE ANTICHAR
+  Pays : Rubénie
+  Lore :
+    Canon antichar fixe à longue portée (8 cases).
+    Il tient les axes d'approche des blindés.
+    Impuissant contre l'infanterie et l'aviation.
+  Statistiques :
+    Coût 1 000 $ · PV 60 000 · Blindage lourd · Vision 6,5 cases
+    Arme : RubCasemate : 12 000 dégâts, portée 8 cases, recharge 2,4 s
+    Énergie -40 · Détecte les furtifs (6 cases)
+    Prérequis : Usine d'armement · Niveau technologique : moyen
+  Stratégie :
+    Couvrez-la avec des tranchées et une défense antiaérienne.
+--------------------------------------------------------------------------------------------
+■ SAM
+  Pays : Rubénie
+  Lore :
+    Missiles sol-air à longue portée (11 cases).
+    Priorité aux avions et aux hélicoptères.
+    La première couche de la défense aérienne.
+  Statistiques :
+    Coût 900 $ · PV 50 000 · Blindage lourd · Vision 8 cases
+    Arme : RubSAM : 4 500 dégâts, portée 11 cases, recharge 0,6 s
+    Énergie -40
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Placez-les en retrait des lignes pour couvrir toute la base.
+--------------------------------------------------------------------------------------------
+■ TOURELLE AA
+  Pays : Rubénie
+  Lore :
+    Défense antiaérienne rapprochée à canons rapides.
+    Elle abat avions et hélicoptères qui s'approchent trop.
+    La dernière couche de la défense aérienne.
+  Statistiques :
+    Coût 700 $ · PV 40 000 · Blindage lourd · Vision 6 cases
+    Arme : RubTourelleAA : 900 dégâts, rafale de 2, portée 8 cases, recharge 0,2 s
+    Énergie -50
+    Prérequis : Caserne soviétique · Niveau technologique : bas
+  Stratégie :
+    Associez-la aux SAM : les SAM frappent loin, les tourelles achèvent.
+--------------------------------------------------------------------------------------------
+■ TRANCHÉE (EST-OUEST)
+  Pays : Rubénie
+  Lore :
+    Tranchée rubénienne, plus solide que celle de l'Elielistan.
+    Cinq fantassins y tirent à couvert et en ressortent si elle est détruite.
+    La première ligne de la forteresse.
+  Statistiques :
+    Coût 250 $ · PV 30 000 · Blindage lourd · Vision 5 cases
+    Transport 5 places
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Garnissez-la de fusiliers et de grenadiers devant vos défenses lourdes.
+--------------------------------------------------------------------------------------------
+■ TRANCHÉE (NORD-SUD)
+  Pays : Rubénie
+  Lore :
+    Même tranchée rubénienne, orientée nord-sud.
+    Cinq fantassins y tirent à couvert.
+    Choisissez l'orientation face à la menace.
+  Statistiques :
+    Coût 250 $ · PV 30 000 · Blindage lourd · Vision 5 cases
+    Transport 5 places
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Combinez les deux orientations pour fermer un passage.
+
+  ▶ PAYS : ANANTHANIE
+
+--------------------------------------------------------------------------------------------
+■ BATTERIE AMBAR
+  Pays : Ananthanie
+  Lore :
+    Batterie de missiles sol-air à très longue portée (12 cases).
+    Lanceur vertical à six conteneurs.
+    Elle interdit le ciel au-dessus de la base.
+  Statistiques :
+    Coût 1 000 $ · PV 45 000 · Blindage lourd · Vision 8 cases
+    Arme : AmbarSAM : 5 000 dégâts, portée 12 cases, recharge 1 s
+    Énergie -40
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Deux batteries couvrent une base entière. Elles ne tirent pas au sol.
+--------------------------------------------------------------------------------------------
+■ KHESHKARN
+  Pays : Ananthanie
+  Lore :
+    Tourelle de missiles antichars, salve de deux missiles.
+    Portée de 7,5 cases.
+    La défense d'usure : chaque char qui approche paie le prix.
+  Statistiques :
+    Coût 900 $ · PV 45 000 · Blindage lourd · Vision 6,5 cases
+    Arme : KheshkarnATGM : 6 000 dégâts, rafale de 2, portée 7,5 cases, recharge 2,8 s
+    Énergie -40 · Détecte les furtifs (6 cases)
+    Prérequis : Caserne soviétique · Niveau technologique : bas
+  Stratégie :
+    Placez-les en profondeur sur les axes des blindés, appuyées par des Ruches contre
+    l'infanterie et l'aviation.
+--------------------------------------------------------------------------------------------
+■ RUCHE
+  Pays : Ananthanie
+  Lore :
+    Ruche de drones intercepteurs.
+    Elle lance des salves de trois drones explosifs sur tout ce qui approche, au sol comme dans les airs.
+    La défense la plus polyvalente de l'Ananthanie.
+  Statistiques :
+    Coût 1 100 $ · PV 40 000 · Blindage lourd · Vision 6,5 cases
+    Arme : RucheDrones : 4 000 dégâts, rafale de 3, portée 8 cases, recharge 4,4 s
+    Énergie -40 · Détecte les furtifs (6 cases)
+    Prérequis : Fabrique de drones · Niveau technologique : moyen
+  Stratégie :
+    Complète bien le Kheshkarn : elle traite hélicoptères, drones et véhicules légers.
+    Faible contre les chars lourds.
+
+============================================================================================
+                                       3. INFANTERIE                                        
+============================================================================================
+
+  ▶ PAYS : ELIELISTAN
+
+--------------------------------------------------------------------------------------------
+■ CAZADOR
+  Pays : Elielistan
+  Lore :
+    Chasseur de chars d'embuscade, formé à rester immobile des heures dans les rochers.
+    Invisible à l'arrêt, il ne se dévoile qu'au moment de tirer sa roquette.
+    Les équipages ennemis l'appellent « le rocher qui mord ».
+  Statistiques :
+    Coût 350 $ · PV 4 000 · Blindage aucun · Vitesse 63 · Vision 4 cases
+    Arme : RedEye : 2 400 dégâts, portée 7,5 cases, recharge 2 s
+    Arme : CazadorRocket : 6 500 dégâts, portée 5,5 cases, recharge 2,8 s
+    Furtif · Détecte les furtifs (1 case)
+    Prérequis : aucun · Niveau technologique : infanterie seule
+  Stratégie :
+    Postez-le sur les routes d'approche avant l'arrivée des blindés ennemis, puis déplacez-
+    le après chaque salve.
+--------------------------------------------------------------------------------------------
+■ EXPLORADOR (RECON AGUILA)
+  Pays : Elielistan
+  Lore :
+    Éclaireur d'élite, les yeux de toute l'armée elielistanaise.
+    Il voit très loin, repère les furtifs et illumine les cibles au laser.
+    Il ne combat jamais : s'il tire, c'est qu'il est déjà découvert.
+  Statistiques :
+    Coût 250 $ · PV 3 000 · Blindage aucun · Vitesse 71 · Vision 10 cases
+    Arme : AguilaDesignator : portée 7 cases, recharge 0,8 s
+    Furtif · Détecte les furtifs (6 cases)
+    Prérequis : Radar Dome · Niveau technologique : bas
+  Stratégie :
+    Placez-le en avant, immobile, pour guider le Trueno et les frappes aériennes. Chaque
+    cible qu'il désigne subit +25 % de dégâts.
+--------------------------------------------------------------------------------------------
+■ FUSILIER AGUILA
+  Pays : Elielistan
+  Lore :
+    Le fantassin de base de l'armée elielistanaise, recruté dans les hauts plateaux.
+    Léger, rapide, il porte un fusil un peu plus précis que celui des armées étrangères.
+    Sa devise : « Tire, bouge, recommence. »
+  Statistiques :
+    Coût 120 $ · PV 4 200 · Blindage aucun · Vitesse 71 · Vision 4 cases
+    Arme : AguilaRifle : 1 000 dégâts, portée 5,5 cases, recharge 0,8 s
+    Arme : Vulcan (en garnison) : 1 000 dégâts, portée 6 cases, recharge 1,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : aucun · Niveau technologique : infanterie seule
+  Stratégie :
+    Utilisez-le en petits groupes mobiles pour harceler et occuper le terrain. Abritez-le
+    dans une tranchée dès qu'il doit tenir une position.
+--------------------------------------------------------------------------------------------
+■ NATHAN
+  Pays : Elielistan
+  Lore :
+    Infiltré d'élite dont le vrai nom n'apparaît dans aucun registre.
+    Invisible à l'arrêt, il marque un bâtiment au laser et un avion le rase dans la seconde.
+    On ne le voit qu'une fois : au moment où la cible s'effondre.
+  Statistiques :
+    Coût 1 500 $ · PV 9 000 · Blindage aucun · Vitesse 50 · Vision 9 cases
+    Arme : AguilaRifle : 1 000 dégâts, portée 5,5 cases, recharge 0,8 s
+    Arme : Vulcan (en garnison) : 1 000 dégâts, portée 6 cases, recharge 1,4 s
+    Arme : NathanAirstrike : détruit la cible d'un seul coup, portée 8 cases, recharge 1 min
+    30 s
+    Furtif · Détecte les furtifs (1 case) · Limite 2 exemplaires
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Infiltrez-le près de la base ennemie, laissez-le immobile, puis désignez la cible la
+    plus précieuse (chantier de construction, radar, centrale). Repliez-le aussitôt : tirer
+    le dévoile, et les chiens le trouvent.
+
+  ▶ PAYS : RUBÉNIE
+
+--------------------------------------------------------------------------------------------
+■ CHASSEUR ANTICHAR
+  Pays : Rubénie
+  Lore :
+    Fantassin armé d'un missile antichar à longue portée, lent à recharger.
+    Il attend les blindés depuis un bunker ou une embuscade.
+    Le Tunnelier en emporte dix vers le cœur du dispositif ennemi.
+  Statistiques :
+    Coût 350 $ · PV 4 400 · Blindage aucun · Vitesse 46 · Vision 4 cases
+    Arme : RedEye : 2 400 dégâts, portée 7,5 cases, recharge 2 s
+    Arme : RubMissileAT : 5 500 dégâts, portée 6,5 cases, recharge 2,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : aucun · Niveau technologique : infanterie seule
+  Stratégie :
+    Placez-le en bunker sur les axes de passage des chars, ou faites-le surgir avec le
+    Tunnelier.
+--------------------------------------------------------------------------------------------
+■ FUSILIER RUBÉNIEN
+  Pays : Rubénie
+  Lore :
+    Le fantassin de base de la Rubénie, solide mais lent.
+    Son fusil tire avec une cadence soutenue plutôt que des coups puissants.
+    Il est à son meilleur derrière un parapet.
+  Statistiques :
+    Coût 120 $ · PV 5 000 · Blindage aucun · Vitesse 50 · Vision 4 cases
+    Arme : RubFusil : 1 000 dégâts, portée 5 cases, recharge 0,7 s
+    Détecte les furtifs (1 case)
+    Prérequis : aucun · Niveau technologique : infanterie seule
+  Stratégie :
+    Garnissez tranchées et bunkers de fusiliers : à couvert, ils gagnent les échanges de
+    tirs qui durent.
+--------------------------------------------------------------------------------------------
+■ GRENADIER
+  Pays : Rubénie
+  Lore :
+    Lanceur de grenades à zone d'effet élargie.
+    Redoutable contre les groupes, en ville et dans les tranchées ennemies.
+    Là où il passe, personne ne reste groupé.
+  Statistiques :
+    Coût 180 $ · PV 4 800 · Blindage aucun · Vitesse 50 · Vision 4 cases
+    Arme : RubGrenade : 5 000 dégâts, portée 4,5 cases, recharge 2,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : aucun · Niveau technologique : infanterie seule
+  Stratégie :
+    Visez l'infanterie groupée et les positions retranchées. Protégez-le des véhicules.
+--------------------------------------------------------------------------------------------
+■ RUBENLA-DEN
+  Pays : Rubénie
+  Description :
+    Steals enemy credits. Hijacks enemy vehicles.  Unarmed
+  Statistiques :
+    Coût 500 $ · PV 5 000 · Blindage aucun · Vitesse 68 · Vision 5 cases
+    Arme : aucune
+    Furtif · Détecte les furtifs (1 case)
+    Prérequis : Radar Dome · Niveau technologique : moyen
+--------------------------------------------------------------------------------------------
+■ SECOND GALACTIQUE
+  Pays : Rubénie
+  Lore :
+    Officier d'élite, à la fois chef et combattant.
+    Son aura renforce les unités rubéniennes proches ; il manie une décharge Tesla et pose des charges.
+    Un seul exemplaire : l'ennemi voudra l'abattre en priorité.
+  Statistiques :
+    Coût 2 000 $ · PV 13 000 · Blindage aucun · Vitesse 56 · Vision 7 cases
+    Arme : SecondGalactiqueTesla : 3 500 dégâts, portée 6 cases, recharge 2,4 s
+    Détecte les furtifs (1 case) · Limite 1 exemplaire
+    Prérequis : QG rubénien · Niveau technologique : élevé
+  Stratégie :
+    Gardez-le au milieu de vos troupes pour que son aura (5 cases) profite au plus grand
+    nombre. Ne l'exposez pas en tête.
+--------------------------------------------------------------------------------------------
+■ ÉCLAIREUR
+  Pays : Rubénie
+  Lore :
+    Éclaireur camouflé, invisible à l'arrêt.
+    Il voit très loin, repère les furtifs et même le Tunnelier sous terre.
+    Il ne tire que pour se défendre.
+  Statistiques :
+    Coût 300 $ · PV 3 100 · Blindage aucun · Vitesse 64 · Vision 10 cases
+    Arme : RubPistolet : 800 dégâts, portée 4 cases, recharge 1,2 s
+    Furtif · Détecte les furtifs (7 cases)
+    Prérequis : Radar Dome · Niveau technologique : bas
+  Stratégie :
+    Placez-le immobile en avant de vos lignes pour guider l'artillerie lourde et repérer les
+    raids.
+
+  ▶ PAYS : AUSTRALOUIS
+
+--------------------------------------------------------------------------------------------
+■ RÉVOLUTIONNAIRE
+  Pays : Australouis
+  Lore :
+    Meneur d'hommes, orateur, agitateur. Un seul à la fois.
+    Quand sa révolution est prête, tout ce qui l'entoure change de camp : soldats, chars, bâtiments.
+    Fragile : l'ennemi voudra l'abattre avant qu'il ne parle.
+  Statistiques :
+    Coût 1 500 $ · PV 8 000 · Blindage aucun · Vitesse 54 · Vision 4 cases
+    Arme : Pistol : 100 dégâts, portée 3 cases, recharge 0,3 s
+    Détecte les furtifs (1 case) · Limite 1 exemplaire
+    Prérequis : Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Attendez que la barre violette soit pleine (5 minutes), approchez-le discrètement d'un
+    groupe ennemi ou d'une base, puis déployez-le (F).
+
+  ▶ PAYS : ANANTHANIE
+
+--------------------------------------------------------------------------------------------
+■ KARNTHAL
+  Pays : Ananthanie
+  Lore :
+    Soldat en exosquelette, mitrailleuse lourde.
+    Très résistant ; les chars ne peuvent pas l'écraser.
+    Le « rempart » (« karn ») de l'infanterie.
+  Statistiques :
+    Coût 950 $ · PV 16 000 · Blindage léger · Vitesse 48 · Vision 5 cases
+    Arme : KarnMitrailleuse : 1 000 dégâts, portée 5 cases, recharge 1,6 s
+    Détecte les furtifs (1 case)
+    Prérequis : Usine d'armement · Niveau technologique : moyen
+  Stratégie :
+    Mettez-les en tête des assauts d'infanterie : ils encaissent pendant que les Thals
+    tirent.
+--------------------------------------------------------------------------------------------
+■ KHESH-THAL
+  Pays : Ananthanie
+  Lore :
+    Fantassin lance-missiles polyvalent.
+    Un missile antichar et un missile antiaérien : il ne choisit pas, il fait les deux.
+    La pointe de la lance (« khesh ») de l'infanterie ananthanienne.
+  Statistiques :
+    Coût 450 $ · PV 4 500 · Blindage aucun · Vitesse 56 · Vision 4 cases
+    Arme : KheshAA : 2 400 dégâts, portée 7 cases, recharge 2,2 s
+    Arme : KheshAT : 5 000 dégâts, portée 6 cases, recharge 2,2 s
+    Détecte les furtifs (1 case)
+    Prérequis : aucun · Niveau technologique : infanterie seule
+  Stratégie :
+    Mêlez-les aux Thals : ils couvrent la colonne contre les blindés comme contre les
+    hélicoptères.
+--------------------------------------------------------------------------------------------
+■ LUNKAR
+  Pays : Ananthanie
+  Lore :
+    Éclaireur camouflé, le « lynx » de l'armée.
+    Il marque véhicules et bâtiments au laser pour toute l'armée, et abat les fantassins de loin.
+    Invisible à l'arrêt.
+  Statistiques :
+    Coût 750 $ · PV 4 000 · Blindage aucun · Vitesse 64 · Vision 9 cases
+    Arme : LunkarDesignateur : portée 8 cases, recharge 1,6 s
+    Arme : LunkarPrecision : 5 000 dégâts, portée 7 cases, recharge 2,4 s
+    Furtif · Détecte les furtifs (6 cases)
+    Prérequis : Institut d'innovation · Niveau technologique : moyen
+  Stratégie :
+    Placez-le en avant avant l'offensive : chaque cible marquée prend +25 % de dégâts. Il
+    donne aussi des yeux à l'Agnar.
+--------------------------------------------------------------------------------------------
+■ NAYRAK
+  Pays : Ananthanie
+  Lore :
+    Opérateur de drones explosifs FPV.
+    Il pilote son drone jusqu'à la cible, puis en prépare un autre.
+    Le soldat ananthanien le plus craint des équipages de chars.
+  Statistiques :
+    Coût 600 $ · PV 4 500 · Blindage aucun · Vitesse 56 · Vision 4 cases
+    Arme : NayrakFPV : 8 500 dégâts, portée 7 cases, recharge 7 s
+    Détecte les furtifs (1 case)
+    Prérequis : Fabrique de drones · Niveau technologique : bas
+  Stratégie :
+    Gardez-les derrière la ligne : à 7 cases, leurs drones percent les véhicules. Protégez-
+    les de l'infanterie ennemie au contact.
+--------------------------------------------------------------------------------------------
+■ THAL
+  Pays : Ananthanie
+  Lore :
+    Le fusilier ananthanien, formé en masse dans des casernes modernes.
+    Bien équipé, un peu plus de portée que le fusilier standard.
+    L'Ananthanie ne manque jamais de Thals.
+  Statistiques :
+    Coût 125 $ · PV 5 000 · Blindage aucun · Vitesse 60 · Vision 4 cases
+    Arme : ThalFusil : 1 000 dégâts, portée 5,25 cases, recharge 0,8 s
+    Arme : Vulcan (en garnison) : 1 000 dégâts, portée 6 cases, recharge 1,4 s
+    Détecte les furtifs (1 case)
+    Prérequis : aucun · Niveau technologique : infanterie seule
+  Stratégie :
+    Produisez-les en grand nombre : ils sont formés très vite. Ils tiennent le terrain
+    pendant que blindés et drones frappent.
+
+============================================================================================
+                                        4. VÉHICULES                                        
+============================================================================================
+
+  ▶ PAYS : ELIELISTAN
+
+--------------------------------------------------------------------------------------------
+■ AGUILA CARRIER
+  Pays : Elielistan
+  Lore :
+    Énorme camion blindé capable d'emporter cinq chars ou pièces d'artillerie.
+    Aucune arme : il transforme cinq chars en force de raid mobile.
+    S'il est détruit en route, les véhicules à bord sont perdus.
+  Statistiques :
+    Coût 1 800 $ · PV 60 000 · Blindage lourd · Vitesse 90 · Vision 5 cases
+    Arme : aucune
+    Transport 15 places
+    Prérequis : Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Chargez des Aguila Nuclear ou des Carro Aguila, passez par l'Aguila Gate et débarquez-
+    les en territoire ennemi. Escortez-le toujours.
+--------------------------------------------------------------------------------------------
+■ AGUILA NUCLEAR
+  Pays : Elielistan
+  Lore :
+    Char lourd propulsé par un réacteur nucléaire compact : le paradoxe elielistanais.
+    Blindage de char lourd, canon de 125 mm et vitesse de char léger.
+    S'il est détruit, son réacteur explose et contamine la zone quelques secondes.
+  Statistiques :
+    Coût 2 600 $ · PV 70 000 · Blindage lourd · Vitesse 110 · Vision 6 cases
+    Arme : AguilaNuclear125 : 7 500 dégâts, rafale de 2, portée 5,5 cases, recharge 3,2 s
+    Prérequis : Service Depot, Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Arrivez très vite, détruisez la cible, repartez. Ne le laissez jamais mourir au milieu
+    de vos propres troupes : l'explosion et la zone contaminée touchent tout le monde.
+--------------------------------------------------------------------------------------------
+■ CARRO AGUILA
+  Pays : Elielistan
+  Lore :
+    Char de bataille principal, armé d'un canon de 120 mm.
+    Plus rapide qu'un char lourd, moins blindé que lui.
+    Le compromis elielistanais : frapper fort sans jamais s'immobiliser.
+  Statistiques :
+    Coût 1 300 $ · PV 50 000 · Blindage lourd · Vitesse 100 · Vision 6 cases
+    Arme : Aguila120mm : 4 000 dégâts, rafale de 2, portée 5,5 cases, recharge 2,8 s
+    Prérequis : Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Formez le cœur de vos colonnes blindées. Transportez-le en Aguila Carrier ou en Pelícano
+    pour frapper loin de votre base.
+--------------------------------------------------------------------------------------------
+■ GAVILÁN
+  Pays : Elielistan
+  Lore :
+    Véhicule de reconnaissance ultra-rapide des patrouilles frontalières.
+    Grande vision, mitrailleuse, et trois fantassins à bord.
+    Le Cóndor peut le déposer derrière les lignes ennemies.
+  Statistiques :
+    Coût 450 $ · PV 13 000 · Blindage léger · Vitesse 190 · Vision 9 cases
+    Arme : GavilanMG : 1 000 dégâts, rafale de 5, portée 5 cases, recharge 1,2 s
+    Transport 3 places
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Explorez la carte et harcelez l'infanterie isolée. Emmenez un Cazador ou un Explorador
+    pour une embuscade à distance.
+--------------------------------------------------------------------------------------------
+■ HALCÓN AT
+  Pays : Elielistan
+  Lore :
+    Chasseur de blindés armé d'un missile antichar filoguidé.
+    Invisible à l'arrêt, il attend que la colonne ennemie passe à portée.
+    Un tir, un char de moins, et il a déjà changé de colline.
+  Statistiques :
+    Coût 850 $ · PV 22 000 · Blindage léger · Vitesse 150 · Vision 7 cases
+    Arme : HalconATGM : 9 000 dégâts, portée 7,5 cases, recharge 3,6 s
+    Furtif
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Déployez-le en embuscade sur les flancs, jamais en première ligne. Le Cóndor permet de
+    le repositionner très vite.
+--------------------------------------------------------------------------------------------
+■ JAGUAR
+  Pays : Elielistan
+  Lore :
+    Char moyen rapide au canon de 90 mm à cadence élevée.
+    Moins blindé que ses rivaux, il compense par la vitesse et le volume de feu.
+    Il ouvre le chemin avant l'arrivée des chars lourds.
+  Statistiques :
+    Coût 800 $ · PV 30 000 · Blindage lourd · Vitesse 142 · Vision 5 cases
+    Arme : Jaguar90mm : 4 000 dégâts, portée 4,75 cases, recharge 1,8 s
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Char de manœuvre : attaquez les flancs et les unités de soutien, repliez-vous avant
+    l'arrivée des chars lourds ennemis.
+--------------------------------------------------------------------------------------------
+■ LANZADOR AGUILA
+  Pays : Elielistan
+  Lore :
+    Artillerie automotrice sur camion, héritière du canon César.
+    Trois obus en succession rapide, puis un long rechargement.
+    Assez rapide pour suivre les raids et disparaître après la salve.
+  Statistiques :
+    Coût 1 300 $ · PV 20 000 · Blindage léger · Vitesse 164 · Vision 5 cases
+    Arme : LanzadorObus : 4 500 dégâts, rafale de 3, portée 10 cases, recharge 15 s
+    Prérequis : Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Frappez les défenses et l'infanterie ennemies à distance, puis profitez de la doctrine
+    de décrochage pour vous replier.
+--------------------------------------------------------------------------------------------
+■ TRUENO
+  Pays : Elielistan
+  Lore :
+    Artillerie « tirer puis déménager » : trois obus à 14 cases, puis la fuite.
+    Elle voit à peine plus loin que son canon : il lui faut des yeux.
+    Après chaque salve, son moteur donne tout ce qu'il a.
+  Statistiques :
+    Coût 950 $ · PV 11 000 · Blindage léger · Vitesse 100 · Vision 4 cases
+    Arme : TruenoShell : 23 000 dégâts, rafale de 3, portée 14 cases, recharge 4,4 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Associez-la à un Explorador ou à un drone. Tirez, puis changez de position avant la
+    contre-batterie ennemie. Le Pelícano ou l'Aguila Carrier peuvent l'emmener loin derrière
+    les lignes.
+--------------------------------------------------------------------------------------------
+■ VIGÍA
+  Pays : Elielistan
+  Lore :
+    Défense antiaérienne mobile de l'armée elielistanaise.
+    Ses missiles sol-air protègent colonnes et bases avancées.
+    Transportable par Cóndor, elle suit les raids jusqu'au bout.
+  Statistiques :
+    Coût 650 $ · PV 14 000 · Blindage léger · Vitesse 140 · Vision 6 cases
+    Arme : VigiaSAM : 3 000 dégâts, rafale de 2, portée 8 cases, recharge 1,2 s
+    Arme : M60mg : 1 000 dégâts, rafale de 5, portée 4 cases, recharge 1,2 s
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Accompagnez chaque groupe de raid d'une ou deux Vigía : sans elles, la moindre aviation
+    ennemie décime vos colonnes.
+
+  ▶ PAYS : RUBÉNIE
+
+--------------------------------------------------------------------------------------------
+■ ARTILLERIE LOURDE
+  Pays : Rubénie
+  Lore :
+    Artillerie tractée à la portée extrême (18 cases) et aux dégâts énormes.
+    Sa cadence est très lente et elle se déplace à peine.
+    Installée, elle interdit toute une région.
+  Statistiques :
+    Coût 1 600 $ · PV 8 000 · Blindage léger · Vitesse 28 · Vision 4 cases
+    Arme : RubObusLourd : 16 000 dégâts, portée 18 cases, recharge 8,8 s
+    Prérequis : Centre technique soviétique · Niveau technologique : élevé
+  Stratégie :
+    Placez-la derrière une ligne défensive solide avec un Éclaireur en avant. Elle est sans
+    défense au contact.
+--------------------------------------------------------------------------------------------
+■ BASTION ROULANT
+  Pays : Rubénie
+  Lore :
+    Forteresse roulante : deux canons de 130 mm et un lanceur de missiles.
+    Ses armes ne tirent que si des fantassins sont à bord ; il est livré avec quatre hommes.
+    Il ravitaille les unités autour de lui et n'est jamais isolé.
+  Statistiques :
+    Coût 3 000 $ · PV 100 000 · Blindage lourd · Vitesse 40 · Vision 6 cases
+    Arme : RubBastion130mm : 7 500 dégâts, portée 6 cases, recharge 2,8 s
+    Arme : RubBastionMissiles : 4 000 dégâts, rafale de 4, portée 8 cases, recharge 2,4 s
+    Transport 8 places · Limite 3 exemplaires
+    Prérequis : Service Depot, Centre technique soviétique · Niveau technologique : élevé
+  Stratégie :
+    Faites-en le centre d'une contre-attaque : il porte sa propre logistique. Gardez-le
+    toujours garni et protégez-le de l'artillerie. Trois au maximum.
+--------------------------------------------------------------------------------------------
+■ CANON AUTOMOTEUR
+  Pays : Rubénie
+  Lore :
+    Artillerie automotrice à obus de 152 mm, portée de 11 cases.
+    Assez mobile pour suivre les blindés.
+    L'appui feu de toutes les contre-attaques.
+  Statistiques :
+    Coût 1 000 $ · PV 14 000 · Blindage lourd · Vitesse 72 · Vision 5 cases
+    Arme : RubObus152 : 23 000 dégâts, portée 11 cases, recharge 4 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Suivez vos chars à distance et pilonnez les positions ennemies avant l'assaut.
+--------------------------------------------------------------------------------------------
+■ CHAR DE CONTRE-ATTAQUE
+  Pays : Rubénie
+  Lore :
+    Char rapide conçu pour sortir, frapper et rentrer.
+    Canon de 90 mm à cadence rapide, blindage léger pour un char.
+    L'arme de la seconde moitié de la doctrine : la contre-attaque.
+  Statistiques :
+    Coût 1 000 $ · PV 30 000 · Blindage lourd · Vitesse 128 · Vision 5 cases
+    Arme : RubContreAttaque90mm : 4 000 dégâts, portée 4,75 cases, recharge 1,6 s
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Gardez-le derrière vos défenses et lancez-le quand l'assaut ennemi s'essouffle,
+    idéalement sous Contre-attaque éclair.
+--------------------------------------------------------------------------------------------
+■ CHAR LOURD DE FORTERESSE
+  Pays : Rubénie
+  Lore :
+    Char lourd défensif au blindage extrême.
+    Canon de 140 mm et missiles antichars et antiaériens.
+    Très lent : il ne recule pas, il n'avance guère non plus.
+  Statistiques :
+    Coût 2 600 $ · PV 115 000 · Blindage lourd · Vitesse 32 · Vision 6 cases
+    Arme : RubForteresse140mm : 7 000 dégâts, rafale de 2, portée 6,5 cases, recharge 3,6 s
+    Arme : MammothTusk : 5 000 dégâts, rafale de 2, portée 6,5 cases, recharge 2,4 s
+    Prérequis : Service Depot, Centre technique soviétique · Niveau technologique : élevé
+  Stratégie :
+    Point d'ancrage d'une ligne défensive. Protégez-le de l'artillerie ennemie, son seul
+    vrai prédateur.
+--------------------------------------------------------------------------------------------
+■ FERDINAND DE LESSEPS
+  Pays : Rubénie
+  Lore :
+    Trancheuse de génie à chaîne excavatrice, sans arme, partagée par la Rubénie et l'Australouis.
+    Elle creuse des tranchées case par case ; dès qu'une tranchée touche la mer, l'eau s'y engouffre
+    et la transforme en canal navigable. Ceux qui se trouvent au fond se noient.
+  Statistiques :
+    Coût 1 200 $ · PV 40 000 · Blindage lourd · Vitesse 60 · Vision 5 cases
+    Arme : aucune
+    Limite 2 exemplaires
+    Prérequis : Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Tracez le canal depuis l'intérieur vers la côte : la tranchée reste sèche jusqu'au
+    dernier coup de pelle, puis la mer envahit tout d'un coup. De quoi couper une route,
+    isoler une base ou ouvrir un passage à la flotte.
+--------------------------------------------------------------------------------------------
+■ LANCE-MISSILES MOBILE
+  Pays : Rubénie
+  Lore :
+    Missile balistique à très longue portée (13 cases).
+    Rechargement lent : tirer, changer de position, tirer.
+    Une seule salve peut ouvrir une brèche.
+  Statistiques :
+    Coût 1 300 $ · PV 16 000 · Blindage léger · Vitesse 72 · Vision 5 cases
+    Arme : RubMissileBalistique : 6 000 dégâts, portée 13 cases, recharge 12 s
+    Prérequis : Centre technique soviétique · Niveau technologique : élevé
+  Stratégie :
+    Frappez les bâtiments et les concentrations de loin. Il ne survit pas au contact :
+    gardez-le bien en arrière.
+--------------------------------------------------------------------------------------------
+■ LANCE-ROQUETTES MULTIPLE
+  Pays : Rubénie
+  Lore :
+    Salve de 12 roquettes sur une zone, puis long rechargement.
+    Il écrase l'infanterie, les convois et les concentrations.
+    Le vacarme de sa salve s'entend à des kilomètres.
+  Statistiques :
+    Coût 700 $ · PV 15 000 · Blindage léger · Vitesse 49 · Vision 5 cases
+    Arme : RubRoquettes : 5 000 dégâts, rafale de 3, portée 8,75 cases, recharge 9,6 s
+    Arme : RubRoquettesLarge : 5 000 dégâts, rafale de 3, portée 8,75 cases, recharge 9,6 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Visez les groupes et les convois. Repliez-le pendant le rechargement.
+--------------------------------------------------------------------------------------------
+■ RAVITAILLEUR
+  Pays : Rubénie
+  Lore :
+    Camion de troupes bâché, robuste et bon marché.
+    Il emmène huit fantassins au front et les garde ravitaillés autour de lui.
+    Aucune arme : il dépose ses hommes et se met à l'abri.
+  Statistiques :
+    Coût 600 $ · PV 16 000 · Blindage léger · Vitesse 120 · Vision 5 cases
+    Arme : aucune
+    Transport 8 places
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Débarquez l'infanterie dans son rayon de 5 cases : elle reste ravitaillée tant que le
+    camion est là. Gardez-le derrière la ligne de feu.
+--------------------------------------------------------------------------------------------
+■ TUNNELIER
+  Pays : Rubénie
+  Lore :
+    Engin de sape qui avance sous terre, invisible et intouchable.
+    Il emporte dix chasseurs antichars jusqu'au cœur du dispositif ennemi.
+    En émergeant, il reste quelques secondes immobile et vulnérable.
+  Statistiques :
+    Coût 5 000 $ · PV 52 000 · Blindage lourd · Vitesse 90 · Vision 5 cases
+    Arme : aucune
+    Transport 10 places · Limite 2 exemplaires
+    Prérequis : QG rubénien, Centre technique soviétique · Niveau technologique : élevé
+  Stratégie :
+    Faites-le émerger à l'abri des vues, puis débarquez les chasseurs antichars (F) sur les
+    blindés ou l'artillerie ennemis. Seuls les détecteurs sismiques le repèrent.
+--------------------------------------------------------------------------------------------
+■ VÉHICULE ANTIAÉRIEN
+  Pays : Rubénie
+  Lore :
+    Défense antiaérienne mobile à canons de 30 mm.
+    Plus de portée que le Flak classique.
+    Il protège convois, chars, artillerie et bases avancées.
+  Statistiques :
+    Coût 700 $ · PV 16 000 · Blindage léger · Vitesse 100 · Vision 6 cases
+    Arme : RubFlakAA : 1 200 dégâts, portée 7 cases, recharge 0,4 s
+    Arme : RubFlakAG : 2 000 dégâts, portée 6 cases, recharge 0,4 s
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Accompagnez chaque groupe blindé et chaque batterie d'artillerie d'au moins un véhicule
+    antiaérien.
+--------------------------------------------------------------------------------------------
+■ VÉHICULE DE RECONNAISSANCE
+  Pays : Rubénie
+  Lore :
+    Véhicule rapide à grande vision, avec deux fantassins à bord.
+    Il détecte les furtifs et le Tunnelier sous terre.
+    Les yeux mobiles de l'armée rubénienne.
+  Statistiques :
+    Coût 450 $ · PV 13 000 · Blindage léger · Vitesse 150 · Vision 9 cases
+    Arme : RubRecoMG : 1 000 dégâts, rafale de 5, portée 5 cases, recharge 1,2 s
+    Transport 2 places · Détecte les furtifs (5 cases)
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Patrouillez devant vos lignes pour repérer les raids elielistanais et les unités
+    camouflées.
+--------------------------------------------------------------------------------------------
+■ VÉHICULE LOGISTIQUE
+  Pays : Rubénie
+  Lore :
+    Ravitaillement mobile et atelier de campagne.
+    Il prolonge la logistique loin de la base et répare vite les unités proches, même au combat.
+    Aucune arme : sa perte isole toute une colonne.
+  Statistiques :
+    Coût 800 $ · PV 17 500 · Blindage léger · Vitesse 100 · Vision 5 cases
+    Arme : aucune
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Faites-le suivre chaque offensive pour éviter l'isolement (−25 % de dégâts et de
+    cadence). Protégez-le.
+--------------------------------------------------------------------------------------------
+■ « SI ÇA TIENT, TOUCHE À RIEN »
+  Pays : Rubénie
+  Lore :
+    Char de bataille principal, canon de 115 mm et gros blindage.
+    Son nom est aussi la devise du pays.
+    Hors combat, son équipage le remet en état, tant qu'il reste ravitaillé.
+  Statistiques :
+    Coût 1 350 $ · PV 60 000 · Blindage lourd · Vitesse 56 · Vision 6 cases
+    Arme : Rub115mm : 4 000 dégâts, rafale de 2, portée 5,5 cases, recharge 2,6 s
+    Prérequis : Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Char de ligne : tenez la position, laissez l'ennemi s'épuiser, réparez-vous,
+    recommencez. Restez dans le rayon de ravitaillement.
+
+  ▶ PAYS : AUSTRALOUIS
+
+--------------------------------------------------------------------------------------------
+■ CHEAPER
+  Pays : Australouis
+  Lore :
+    Char produit à la chaîne dans les usines de l'archipel.
+    Petit canon, blindage léger : seul, il ne vaut presque rien.
+    Par dizaines, il submerge.
+  Statistiques :
+    Coût 350 $ · PV 14 000 · Blindage léger · Vitesse 104 · Vision 5 cases
+    Arme : CheaperCanon : 1 800 dégâts, portée 4,75 cases, recharge 0,8 s
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Produisez-en en continu et attaquez en masse. Ne les envoyez pas seuls contre des chars
+    lourds ou des défenses.
+
+  ▶ PAYS : ANANTHANIE
+
+--------------------------------------------------------------------------------------------
+■ AGNAR
+  Pays : Ananthanie
+  Lore :
+    Lanceur de missiles de croisière.
+    Portée extrême, missile guidé très précis et gros dégâts ; cadence lente.
+    Le « feu » (« agni ») de l'Ananthanie tombe toujours au bon endroit.
+  Statistiques :
+    Coût 1 900 $ · PV 18 000 · Blindage léger · Vitesse 84 · Vision 5 cases
+    Arme : AgnarCroisiere : 12 000 dégâts, portée 16 cases, recharge 13 s
+    Prérequis : Institut d'innovation · Niveau technologique : élevé
+  Stratégie :
+    Il lui faut des yeux : Lunkar, Nayrath, drones. Tirez, puis changez de position.
+    Prioritaires : défenses et bâtiments.
+--------------------------------------------------------------------------------------------
+■ AMBARKESH
+  Pays : Ananthanie
+  Lore :
+    Défense antiaérienne mobile : canons rapides et missiles sol-air.
+    La « lance du ciel » accompagne chaque colonne blindée.
+    Elle abat aussi les drones ennemis.
+  Statistiques :
+    Coût 1 100 $ · PV 18 000 · Blindage léger · Vitesse 113 · Vision 6 cases
+    Arme : AmbarkeshCanon : 1 200 dégâts, portée 6,5 cases, recharge 0,4 s
+    Arme : AmbarkeshSol : 2 000 dégâts, portée 6 cases, recharge 0,4 s
+    Arme : AmbarkeshMissile : 4 000 dégâts, rafale de 2, portée 9 cases, recharge 3,6 s
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Une ou deux par colonne suffisent à décourager hélicoptères et drones. Gardez-la
+    derrière les chars.
+--------------------------------------------------------------------------------------------
+■ ANANTA
+  Pays : Ananthanie
+  Lore :
+    Véhicule expérimental à laser de défense.
+    Il abat avions et drones, détruit en vol les missiles ennemis et tire aussi au sol.
+    « L'infini » : le bouclier de l'armée ananthanienne.
+  Statistiques :
+    Coût 3 750 $ · PV 50 000 · Blindage lourd · Vitesse 80 · Vision 6 cases
+    Arme : AnantaLaserAA : 5 500 dégâts, portée 9 cases, recharge 0,8 s
+    Arme : AnantaLaserSol : 4 000 dégâts, portée 7 cases, recharge 1,2 s
+    Limite 1 exemplaire
+    Prérequis : Institut d'innovation · Niveau technologique : élevé
+  Stratégie :
+    Accompagnez vos colonnes : il les protège des missiles antichars, des drones et des
+    frappes de missiles.
+--------------------------------------------------------------------------------------------
+■ KARNVASHA
+  Pays : Ananthanie
+  Lore :
+    Char lourd de rupture, tourelle inhabitée.
+    Canon de 130 mm, mitrailleuse téléopérée, protection active contre missiles et roquettes.
+    « Tempête contre le rempart » : il enfonce les lignes fortifiées.
+  Statistiques :
+    Coût 2 100 $ · PV 80 000 · Blindage lourd · Vitesse 60 · Vision 6 cases
+    Arme : Karnvasha130mm : 10 000 dégâts, portée 6,5 cases, recharge 2,4 s
+    Arme : KarnvashaMG : 1 000 dégâts, rafale de 5, portée 5 cases, recharge 1,2 s
+    Prérequis : Service Depot, Institut d'innovation · Niveau technologique : élevé
+  Stratégie :
+    Menez les assauts contre les défenses : sa protection active réduit les dégâts des
+    missiles antichars. Méfiez-vous de l'artillerie et des avions.
+--------------------------------------------------------------------------------------------
+■ LUNKRA
+  Pays : Ananthanie
+  Lore :
+    Char de combat principal, emblème du blindé ananthanien.
+    Canon de 120 mm à chargement automatique, tourelle rapide, bonne mobilité.
+    Ni le plus lourd ni le plus rapide : le meilleur compromis.
+  Statistiques :
+    Coût 1 250 $ · PV 46 000 · Blindage lourd · Vitesse 92 · Vision 6 cases
+    Arme : Lunkra120mm : 5 000 dégâts, portée 5,75 cases, recharge 1,7 s
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Le cœur des colonnes blindées. En nombre, appuyé par les Nayrak et le Lunkar, il gagne
+    la plupart des combats de chars.
+--------------------------------------------------------------------------------------------
+■ MUKHAR
+  Pays : Ananthanie
+  Lore :
+    Lance-drones sur camion blindé.
+    Il fabrique lui-même quatre munitions rôdeuses qui tournent au-dessus de lui.
+    Le lot suivant arrive 15 secondes après la destruction de la dernière munition.
+  Statistiques :
+    Coût 1 500 $ · PV 22 000 · Blindage léger · Vitesse 100 · Vision 7 cases
+    Arme : aucune
+    Prérequis : Fabrique de drones · Niveau technologique : moyen
+  Stratégie :
+    Clic droit sur un blindé ennemi pour envoyer une munition. Gardez-le derrière vos chars
+    et à l'abri de la DCA.
+--------------------------------------------------------------------------------------------
+■ NAYRATH
+  Pays : Ananthanie
+  Lore :
+    Poste de commandement mobile.
+    Radar, très grande vision, détection des unités furtives.
+    « L'œil » (« nayra ») de l'état-major, au plus près du front.
+  Statistiques :
+    Coût 1 400 $ · PV 20 000 · Blindage léger · Vitesse 100 · Vision 12 cases
+    Arme : aucune
+    Détecte les furtifs (7 cases) · Limite 2 exemplaires
+    Prérequis : Haut Commandement · Niveau technologique : moyen
+  Stratégie :
+    Suivez l'offensive avec lui : il donne la mini-carte et les yeux de l'Agnar. Sans arme :
+    protégez-le.
+--------------------------------------------------------------------------------------------
+■ RATHA
+  Pays : Ananthanie
+  Lore :
+    Véhicule de combat d'infanterie : cinq fantassins à bord.
+    Canon automatique de 30 mm qui tire au sol comme dans les airs.
+    Le « char de guerre » des fantassins ananthaniens.
+  Statistiques :
+    Coût 1 000 $ · PV 32 000 · Blindage lourd · Vitesse 128 · Vision 5 cases
+    Arme : RathaCanonAG : 1 800 dégâts, portée 5 cases, recharge 0,6 s
+    Arme : RathaCanonAA : 1 200 dégâts, portée 6 cases, recharge 0,4 s
+    Transport 5 places
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Transportez Khesh-Thals ou Nayraks au plus près, puis couvrez-les avec le canon. Utile
+    aussi contre les hélicoptères.
+--------------------------------------------------------------------------------------------
+■ VIDRA
+  Pays : Ananthanie
+  Lore :
+    Char léger de percée, très rapide.
+    Canon-mitrailleur de 40 mm à cadence élevée.
+    « L'éclair » : il ouvre la brèche, les autres s'y engouffrent.
+  Statistiques :
+    Coût 800 $ · PV 24 000 · Blindage lourd · Vitesse 142 · Vision 5 cases
+    Arme : Vidra40mm : 2 800 dégâts, portée 5,25 cases, recharge 0,7 s
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Exploitez la vitesse : contournez, frappez l'artillerie et les collecteurs, repliez-
+    vous. Évitez les chars lourds.
+--------------------------------------------------------------------------------------------
+■ VIDRAKARN
+  Pays : Ananthanie
+  Lore :
+    Char expérimental à canon électromagnétique.
+    Son projectile traverse tout ce qui se trouve sur sa trajectoire, sur 9 cases.
+    « Le rempart de l'éclair » : une seule ligne de tir suffit à briser une colonne.
+  Statistiques :
+    Coût 4 400 $ · PV 95 000 · Blindage lourd · Vitesse 54 · Vision 6 cases
+    Arme : VidrakarnRail : 24 000 dégâts, portée 9 cases, recharge 6 s
+    Limite 1 exemplaire
+    Prérequis : Service Depot, Institut d'innovation · Niveau technologique : élevé
+  Stratégie :
+    Placez-le face à l'axe d'arrivée de l'ennemi pour aligner plusieurs cibles. Protégez-le
+    de l'infanterie et des avions.
+
+============================================================================================
+                                        5. AVIATION                                         
+============================================================================================
+
+  ▶ PAYS : ELIELISTAN
+
+--------------------------------------------------------------------------------------------
+■ AVISPA
+  Pays : Elielistan
+  Lore :
+    Drone suicide piloté en vue subjective, le cauchemar des fantassins.
+    Il fonce sur un soldat et le tue d'un seul coup, en se détruisant.
+    Minuscule et fragile : un seul tir antiaérien suffit à l'abattre.
+  Statistiques :
+    Coût 300 $ · PV 800 · Blindage léger · Vitesse 220 · Vision 6 cases
+    Arme : AvispaDive : 20 000 dégâts, portée 2,5 cases, recharge 2 s
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Envoyez-les par deux ou trois sur l'infanterie ennemie, surtout les unités d'élite.
+    Contournez la défense antiaérienne : ils n'y survivent pas.
+--------------------------------------------------------------------------------------------
+■ B-2 SPIRIT
+  Pays : Elielistan
+  Lore :
+    Bombardier furtif lourd, invisible au radar ennemi.
+    Deux passages de six bombes incendiaires lourdes.
+    Deux appareils au maximum : chaque perte coûte très cher.
+  Statistiques :
+    Coût 2 800 $ · PV 30 000 · Blindage léger · Vitesse 200 · Vision 11 cases
+    Arme : B2FireBombs : 16 000 dégâts, rafale de 6, portée 3 cases, recharge 2 s
+    Limite 2 exemplaires
+    Prérequis : Aeródromo, Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Frappez les bâtiments clés loin derrière les lignes. Il est invisible au radar, pas aux
+    yeux : évitez les zones couvertes par la DCA.
+--------------------------------------------------------------------------------------------
+■ BLACK HAWK
+  Pays : Elielistan
+  Lore :
+    Hélicoptère de combat à deux mitrailleuses, version elielistanaise du Black Hawk.
+    Sa soute accueille un char (Jaguar, Halcón, Carro Aguila, Aguila Nuclear, Trueno, Lanzador) ou trois fantassins.
+    Il se pose pour embarquer et débarquer.
+  Statistiques :
+    Coût 1 500 $ · PV 10 000 · Blindage léger · Vitesse 112 · Vision 10 cases
+    Arme : ChainGun : 2 500 dégâts, portée 5 cases, recharge 0,4 s
+    Transport 3 places
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Déposez un char ou une équipe de trois fantassins derrière les lignes, puis couvrez le
+    débarquement avec ses mitrailleuses. Il reste fragile face à la DCA et aux chasseurs.
+--------------------------------------------------------------------------------------------
+■ BOMBARDIER TACTIQUE
+  Pays : Elielistan
+  Lore :
+    Bombardier moyen qui dépose un tapis de bombes incendiaires.
+    Redoutable contre l'infanterie et les véhicules légers.
+    Repris de l'arsenal de la Troisième Guerre mondiale.
+  Statistiques :
+    Coût 2 000 $ · PV 17 500 · Blindage léger · Vitesse 130 · Vision 11 cases
+    Arme : TactiqueFireBombs : 4 500 dégâts, portée 3 cases, recharge 0,4 s
+    Prérequis : Aeródromo, Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Visez les concentrations d'infanterie et les bases avancées. Escortez-le ou frappez là
+    où la DCA a été détruite.
+--------------------------------------------------------------------------------------------
+■ CÓNDOR
+  Pays : Elielistan
+  Lore :
+    Hélicoptère de transport lourd, capable de soulever un véhicule entier.
+    Il dépose Gavilán, Halcón, Jaguar, Vigía ou Trueno n'importe où.
+    Le véhicule largué reste sonné quelques secondes.
+  Statistiques :
+    Coût 1 400 $ · PV 20 000 · Blindage léger · Vitesse 140 · Vision 8 cases
+    Arme : aucune
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Utilisez-le pour repositionner l'artillerie et les chasseurs de chars, ou pour déposer
+    des Jaguar derrière les lignes. Évitez les zones couvertes par la DCA.
+--------------------------------------------------------------------------------------------
+■ GARRA
+  Pays : Elielistan
+  Lore :
+    Drone antichar qui emporte deux missiles puissants.
+    Après ses deux tirs, il rentre se réarmer à l'héliport.
+    Deux missiles, souvent un char de moins.
+  Statistiques :
+    Coût 900 $ · PV 5 000 · Blindage léger · Vitesse 180 · Vision 8 cases
+    Arme : GarraMissile : 12 000 dégâts, portée 6 cases, recharge 1,4 s
+    Prérequis : Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Visez les chars isolés ou endommagés, puis renvoyez-le se réarmer. En groupe, il arrête
+    une percée blindée.
+--------------------------------------------------------------------------------------------
+■ HARPÍA
+  Pays : Elielistan
+  Lore :
+    Avion d'attaque à décollage vertical, armé de missiles air-sol.
+    Il peut apponter sur le porte-avions Aguila, qui le réarme à bord.
+    Sa silhouette annonce toujours le débarquement qui va suivre.
+  Statistiques :
+    Coût 1 600 $ · PV 8 000 · Blindage léger · Vitesse 223 · Vision 13 cases
+    Arme : HarpiaMissile : 7 000 dégâts, rafale de 2, portée 9 cases, recharge 2 s
+    Prérequis : Aeródromo · Niveau technologique : moyen
+  Stratégie :
+    Opérez depuis le porte-avions pour frapper la côte ennemie. À court de munitions, il
+    rentre seul au porte-avions ou à l'aérodrome le plus proche.
+--------------------------------------------------------------------------------------------
+■ KIROV
+  Pays : Elielistan
+  Lore :
+    Dirigeable blindé, lent comme une procession, chargé de bombes énormes.
+    Il recharge ses bombes en vol et encaisse des coups terribles.
+    Quand son ombre recouvre une base, il est souvent trop tard.
+  Statistiques :
+    Coût 2 500 $ · PV 130 000 · Blindage lourd · Vitesse 50 · Vision 10 cases
+    Arme : KirovBomb : 4 500 dégâts, portée 1 case, recharge 1,4 s
+    Limite 3 exemplaires
+    Prérequis : Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Escortez-le de Vigía et de chasseurs, et visez une base dont la DCA est affaiblie. Trois
+    au maximum.
+--------------------------------------------------------------------------------------------
+■ PELÍCANO
+  Pays : Elielistan
+  Lore :
+    Avion de transport stratégique, le plus gros appareil elielistanais.
+    Il largue en parachute quinze fantassins ou cinq chars (ou pièces d'artillerie) n'importe où.
+    Très cher et sans défense : un seul chasseur peut tout ruiner.
+  Statistiques :
+    Coût 2 500 $ · PV 30 000 · Blindage léger · Vision 7 cases
+    Arme : aucune
+    Transport 15 places
+    Prérequis : Aeródromo, Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Posé sur une piste ou sur un terrain dégagé, faites-y monter votre force, puis maintenez
+    Ctrl et cliquez sur la zone (glisser pour l'axe) pour la larguer. Choisissez une zone
+    dégagée et sans DCA ; les chars restent vulnérables 4 secondes après l'atterrissage.
+--------------------------------------------------------------------------------------------
+■ PICO
+  Pays : Elielistan
+  Lore :
+    Drone d'attaque légère armé d'une mitrailleuse.
+    Peu coûteux, il harcèle l'infanterie et les véhicules légers.
+    Les soldats ennemis finissent par craindre le bourdonnement.
+  Statistiques :
+    Coût 550 $ · PV 4 000 · Blindage léger · Vitesse 180 · Vision 8 cases
+    Arme : PicoMG : 1 000 dégâts, rafale de 5, portée 4,5 cases, recharge 1,2 s
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Harcelez les camions de minerai et l'infanterie isolée. Gardez-le loin de la défense
+    antiaérienne.
+
+  ▶ PAYS : RUBÉNIE
+
+--------------------------------------------------------------------------------------------
+■ AVION D'ATTAQUE
+  Pays : Rubénie
+  Lore :
+    Avion d'attaque au sol, lent mais blindé.
+    Huit missiles antichars lourds.
+    L'appui aérien des contre-attaques.
+  Statistiques :
+    Coût 1 800 $ · PV 16 000 · Blindage lourd · Vitesse 170 · Vision 13 cases
+    Arme : RubAttaqueMissile : 9 000 dégâts, rafale de 2, portée 7 cases, recharge 2 s
+    Prérequis : Base aérienne, Centre technique soviétique · Niveau technologique : élevé
+  Stratégie :
+    Frappez les colonnes blindées une fois la DCA ennemie neutralisée.
+--------------------------------------------------------------------------------------------
+■ AVION DE RECONNAISSANCE
+  Pays : Rubénie
+  Lore :
+    Avion très rapide à la vision immense (16 cases), sans arme.
+    Il détecte les unités furtives et tourne au-dessus de la zone demandée.
+    Il sait où l'ennemi se cache.
+  Statistiques :
+    Coût 900 $ · PV 7 000 · Blindage léger · Vitesse 340 · Vision 16 cases
+    Arme : aucune
+    Détecte les furtifs (8 cases)
+    Prérequis : Base aérienne · Niveau technologique : moyen
+  Stratégie :
+    Envoyez-le repérer les raids et les unités camouflées avant de lancer l'artillerie
+    lourde.
+--------------------------------------------------------------------------------------------
+■ CHASSEUR POLYVALENT
+  Pays : Rubénie
+  Lore :
+    Le « couteau suisse » de l'aviation rubénienne.
+    Missiles air-air et air-sol, aussi contre les navires ; grande vision.
+    Seul avion capable d'apponter sur le porte-avions rubénien.
+  Statistiques :
+    Coût 2 000 $ · PV 10 000 · Blindage léger · Vitesse 230 · Vision 14 cases
+    Arme : RubChasseurAG : 7 000 dégâts, rafale de 2, portée 8 cases, recharge 2 s
+    Arme : RubChasseurAA : 4 000 dégâts, rafale de 2, portée 6 cases, recharge 1,2 s
+    Prérequis : Base aérienne · Niveau technologique : moyen
+  Stratégie :
+    Utilisez-le pour la supériorité aérienne comme pour les frappes. Il rentre seul se
+    réarmer à court de munitions.
+--------------------------------------------------------------------------------------------
+■ INTERCEPTEUR
+  Pays : Rubénie
+  Lore :
+    Intercepteur très rapide armé de missiles air-air lourds.
+    Il ne peut pas attaquer le sol.
+    En position défensive, il engage seul les avions ennemis.
+  Statistiques :
+    Coût 1 600 $ · PV 8 000 · Blindage léger · Vitesse 300 · Vision 13 cases
+    Arme : RubIntercepteurAA : 5 000 dégâts, rafale de 2, portée 7 cases, recharge 0,8 s
+    Prérequis : Base aérienne · Niveau technologique : moyen
+  Stratégie :
+    Laissez-le en défense au-dessus de la base contre les bombardiers et les Pelícano
+    ennemis.
+
+  ▶ PAYS : AUSTRALOUIS
+
+--------------------------------------------------------------------------------------------
+■ ALBATROS
+  Pays : Australouis
+  Lore :
+    Le chasseur multirôle de l'aéronavale, fierté des îles.
+    Missiles air-air et air-sol, qui frappent aussi les navires.
+    Il porte le nom de l'oiseau qui traverse les océans sans se poser.
+  Statistiques :
+    Coût 2 100 $ · PV 9 000 · Blindage léger · Vitesse 240 · Vision 13 cases
+    Arme : AlbatrosAG : 7 000 dégâts, rafale de 2, portée 8 cases, recharge 2 s
+    Arme : AlbatrosAA : 4 000 dégâts, rafale de 2, portée 6 cases, recharge 1,2 s
+    Prérequis : Base aéronavale · Niveau technologique : moyen
+  Stratégie :
+    Chasseur polyvalent : escortez les Manta, chassez les avions ennemis, puis frappez les
+    blindés et les navires.
+--------------------------------------------------------------------------------------------
+■ BALEINE
+  Pays : Australouis
+  Lore :
+    Hélicoptère de transport lourd, le Chinook des îles.
+    Dix fantassins d'une île à l'autre, plus vite et plus solide que le modèle allié.
+    Aucune arme : il compte sur l'escorte.
+  Statistiques :
+    Coût 1 000 $ · PV 17 000 · Blindage léger · Vitesse 140 · Vision 8 cases
+    Arme : aucune
+    Transport 10 places
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Débarquez l'infanterie derrière les lignes ou sur une île voisine, sous la couverture
+    des Albatros.
+--------------------------------------------------------------------------------------------
+■ CORMORAN
+  Pays : Australouis
+  Lore :
+    Hydravion bombardier d'eau, unité spéciale de l'Australouis.
+    Il écope en survolant la mer, puis pulvérise un brouillard sur une zone.
+    L'ennemi y perd tout ce qu'il avait découvert : la carte redevient noire.
+  Statistiques :
+    Coût 1 500 $ · PV 12 000 · Blindage léger · Vitesse 170 · Vision 10 cases
+    Arme : CormoranBrume : portée 2 cases, recharge 2,4 s
+    Limite 2 exemplaires
+    Prérequis : Base aéronavale · Niveau technologique : moyen
+  Stratégie :
+    Faites-lui survoler l'eau 2 secondes, puis Ctrl + clic sur la zone à cacher (base,
+    flotte, colonne en marche). Idéal avant une attaque surprise.
+--------------------------------------------------------------------------------------------
+■ MANTA
+  Pays : Australouis
+  Lore :
+    Bombardier lourd sur le modèle du B-2 de la carte WW3, en moins furtif.
+    Un seul passage de six bombes incendiaires, puis retour à la base.
+    Il glisse au-dessus de l'ennemi comme une raie dans l'eau.
+  Statistiques :
+    Coût 2 200 $ · PV 22 000 · Blindage léger · Vitesse 180 · Vision 11 cases
+    Arme : MantaBombs : 13 000 dégâts, rafale de 6, portée 3 cases, recharge 2 s
+    Limite 2 exemplaires
+    Prérequis : Base aéronavale, Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Visez les bâtiments et l'infanterie groupée. Escortez-le avec des Albatros : il est
+    visible au radar.
+--------------------------------------------------------------------------------------------
+■ MOUSTIQUE
+  Pays : Australouis
+  Lore :
+    Drone kamikaze antichar, bon marché et très fragile.
+    Il plonge sur un véhicule ou un navire et explose.
+    Seul, il pique ; en essaim de trois, il tue un char léger.
+  Statistiques :
+    Coût 250 $ · PV 600 · Blindage léger · Vitesse 200 · Vision 6 cases
+    Arme : MoustiqueDive : 10 000 dégâts, portée 2,5 cases, recharge 2 s
+    Prérequis : aucun · Niveau technologique : moyen
+  Stratégie :
+    Lancez-les par groupes de trois ou plus sur les véhicules. Gardez-les loin de la défense
+    antiaérienne, qui les abat d'un coup.
+--------------------------------------------------------------------------------------------
+■ WARTHOG
+  Pays : Australouis
+  Lore :
+    Chasseur de chars blindé, repris de la carte WW3.
+    Son canon de 30 mm déchire les blindés, ses missiles finissent le travail.
+    Lent, mais presque impossible à abattre.
+  Statistiques :
+    Coût 2 500 $ · PV 35 000 · Blindage léger · Vitesse 180 · Vision 11 cases
+    Arme : WarthogCanon : 6 000 dégâts, portée 5 cases, recharge 0,1 s
+    Arme : WarthogMissile : 7 000 dégâts, rafale de 2, portée 9 cases, recharge 2 s
+    Limite 5 exemplaires
+    Prérequis : Base aéronavale, Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Envoyez-le contre les colonnes de chars. Évitez les SAM et les chasseurs, contre
+    lesquels il ne peut rien.
+
+  ▶ PAYS : ANANTHANIE
+
+--------------------------------------------------------------------------------------------
+■ AGNIVYN
+  Pays : Ananthanie
+  Lore :
+    Bombardier d'attaque à aile volante.
+    Missiles de croisière légers tirés à 10 cases, hors de portée de la plupart des défenses.
+    Le « feu volant ».
+  Statistiques :
+    Coût 2 250 $ · PV 15 000 · Blindage léger · Vitesse 190 · Vision 13 cases
+    Arme : AgnivynMissile : 9 000 dégâts, rafale de 2, portée 10 cases, recharge 2,4 s
+    Prérequis : Base aérienne ananthanienne, Institut d'innovation · Niveau technologique :
+    élevé
+  Stratégie :
+    Visez les défenses et bâtiments depuis la limite de portée. Évitez les SAM à longue
+    portée et escortez-le de Vidravyn.
+--------------------------------------------------------------------------------------------
+■ AMBAROTH
+  Pays : Ananthanie
+  Lore :
+    Forteresse volante expérimentale, très lente et très blindée.
+    Elle lâche des vagues de six drones explosifs et se défend avec des canons antiaériens.
+    La « porte du ciel » : quand elle apparaît, la bataille est presque finie.
+  Statistiques :
+    Coût 6 250 $ · PV 150 000 · Blindage lourd · Vitesse 45 · Vision 10 cases
+    Arme : AmbarothFlak : 1 200 dégâts, portée 8 cases, recharge 0,3 s
+    Limite 1 exemplaire
+    Prérequis : Base aérienne ananthanienne, Institut d'innovation, Fabrique de drones ·
+    Niveau technologique : élevé
+  Stratégie :
+    Escortez-la de Vidravyn et d'Ananta. Elle avance lentement : préparez son arrivée.
+--------------------------------------------------------------------------------------------
+■ KHESHAR
+  Pays : Ananthanie
+  Lore :
+    Hélicoptère d'attaque en tandem.
+    Canon de 30 mm et quatre missiles antichars.
+    La « lance » de l'aviation légère, au plus près du sol.
+  Statistiques :
+    Coût 1 400 $ · PV 11 000 · Blindage léger · Vitesse 135 · Vision 10 cases
+    Arme : KhesharCanon : 2 500 dégâts, portée 5,5 cases, recharge 0,4 s
+    Arme : KhesharATGM : 7 000 dégâts, portée 6,5 cases, recharge 1,6 s
+    Prérequis : Base aérienne ananthanienne · Niveau technologique : moyen
+  Stratégie :
+    Appui rapproché des offensives : missiles sur les chars, canon sur l'infanterie. Craint
+    la DCA mobile.
+--------------------------------------------------------------------------------------------
+■ LUNKRAVYN
+  Pays : Ananthanie
+  Lore :
+    Chasseur furtif multirôle, emblème de l'Ananthanie.
+    Invisible tant qu'il ne tire pas ; missiles air-air et bombes guidées.
+    Le « lynx volant » : on ne le voit qu'au moment où il frappe.
+  Statistiques :
+    Coût 2 500 $ · PV 11 000 · Blindage léger · Vitesse 260 · Vision 12 cases
+    Arme : LunkravynBombe : 10 000 dégâts, portée 7 cases, recharge 1,6 s
+    Arme : LunkravynAA : 4 500 dégâts, rafale de 2, portée 7 cases, recharge 1,2 s
+    Furtif
+    Prérequis : Base aérienne ananthanienne · Niveau technologique : moyen
+  Stratégie :
+    Frappez les cibles prioritaires (défenses AA, artillerie, chars lourds), puis rentrez
+    vous réarmer. Les unités anti-furtives le repèrent.
+--------------------------------------------------------------------------------------------
+■ NAYRA-AMBAR
+  Pays : Ananthanie
+  Lore :
+    Avion radar, « l'œil du ciel ».
+    Très grande vision, détection des unités furtives, aucune arme.
+    Les avions ananthaniens et alliés proches gagnent 20 % de portée.
+  Statistiques :
+    Coût 1 900 $ · PV 12 000 · Blindage léger · Vitesse 200 · Vision 18 cases
+    Arme : aucune
+    Détecte les furtifs (10 cases) · Limite 1 exemplaire
+    Prérequis : Base aérienne ananthanienne, Haut Commandement · Niveau technologique :
+    moyen
+  Stratégie :
+    Gardez-le derrière la zone de combat, protégé par des Vidravyn : il voit tout et allonge
+    la portée de votre aviation.
+--------------------------------------------------------------------------------------------
+■ ULKAR
+  Pays : Ananthanie
+  Lore :
+    Drone armé longue endurance, de la famille Reaper.
+    Lent, vole haut, grande vision, six missiles antichars.
+    Bon marché : la quantité au service de la qualité.
+  Statistiques :
+    Coût 1 100 $ · PV 6 000 · Blindage léger · Vitesse 140 · Vision 11 cases
+    Arme : UlkarMissile : 5 500 dégâts, portée 7 cases, recharge 1,8 s
+    Prérequis : Base aérienne ananthanienne, Fabrique de drones · Niveau technologique :
+    moyen
+  Stratégie :
+    Envoyez-les par trois ou quatre chasser les blindés isolés. Fragiles face aux systèmes
+    anti-drone et aux intercepteurs.
+--------------------------------------------------------------------------------------------
+■ VIDRAVYN
+  Pays : Ananthanie
+  Lore :
+    Intercepteur léger et rapide, produit en nombre.
+    Missiles air-air seulement.
+    L'« éclair volant » qui tient le ciel pendant que les autres frappent.
+  Statistiques :
+    Coût 1 500 $ · PV 8 000 · Blindage léger · Vitesse 310 · Vision 13 cases
+    Arme : VidravynAA : 4 500 dégâts, rafale de 2, portée 7,5 cases, recharge 1 s
+    Prérequis : Base aérienne ananthanienne · Niveau technologique : moyen
+  Stratégie :
+    Laissez-les en position défensive au-dessus de la base ou de l'offensive : ils engagent
+    seuls les avions et drones ennemis.
+
+============================================================================================
+                                         6. MARINE                                          
+============================================================================================
+
+  ▶ PAYS : ELIELISTAN
+
+--------------------------------------------------------------------------------------------
+■ BARCAZA
+  Pays : Elielistan
+  Lore :
+    Péniche de débarquement rapide, à peine blindée, construite à la Base logistique amphibie.
+    Six places : une section d'infanterie ou deux chars, débarqués en un éclair.
+    L'outil des raids côtiers : toucher la plage, vider, repartir.
+  Statistiques :
+    Coût 550 $ · PV 24 000 · Blindage lourd · Vitesse 170 · Vision 6 cases
+    Arme : aucune
+    Transport 6 places
+    Prérequis : transports.elielistan · Niveau technologique : bas
+  Stratégie :
+    Lancez plusieurs Barcaza ensemble avec le Débarquement (K) en rectangle : elles se
+    répartissent le long de la plage et déchargent toutes en même temps. Ne les laissez pas
+    à portée des défenses côtières une fois vides.
+--------------------------------------------------------------------------------------------
+■ CENTINELA
+  Pays : Elielistan
+  Lore :
+    Escorteur rapide, gardien du groupe naval elielistanais.
+    Missiles antiaériens, canon léger et grenades anti-sous-marines.
+    Il repère les sous-marins avant qu'ils ne frappent.
+  Statistiques :
+    Coût 700 $ · PV 26 000 · Blindage lourd · Vitesse 132 · Vision 8 cases
+    Arme : 2Inch : 2 500 dégâts, portée 5,5 cases, recharge 2,4 s
+    Arme : DepthCharge : 6 000 dégâts, portée 5 cases, recharge 2,4 s
+    Arme : CentinelaAA : 1 650 dégâts, rafale de 2, portée 8 cases, recharge 1,8 s
+    Détecte les furtifs (4 cases)
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Placez-en un ou deux autour de chaque porte-avions et de chaque frégate : ils couvrent
+    l'air et le dessous de l'eau.
+--------------------------------------------------------------------------------------------
+■ PORTE-AVIONS AGUILA
+  Pays : Elielistan
+  Lore :
+    Porte-avions amphibie, plus polyvalent que tout ce que l'ennemi aligne.
+    Cinq Harpía à bord, et quinze fantassins ou cinq chars ou canons à débarquer.
+    Frappe aérienne et projection terrestre au même endroit.
+  Statistiques :
+    Coût 3 000 $ · PV 80 000 · Blindage lourd · Vitesse 64 · Vision 9 cases
+    Arme : PortaAguilaAA : 1 650 dégâts, rafale de 2, portée 6 cases, recharge 2,4 s
+    Transport 15 places
+    Prérequis : Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Approchez de la côte ennemie sous escorte, faites décoller les Harpía, puis collez-vous
+    au rivage pour débarquer les troupes. La touche F fait les deux.
+--------------------------------------------------------------------------------------------
+■ TIBURÓN
+  Pays : Elielistan
+  Lore :
+    Sous-marin d'attaque, invisible en plongée.
+    Ses torpilles lourdes visent les grands bâtiments : porte-avions et croiseurs.
+    La terreur des flottes lentes.
+  Statistiques :
+    Coût 1 100 $ · PV 25 000 · Blindage léger · Vitesse 96 · Vision 8 cases
+    Arme : TiburonTorpedo : 5 000 dégâts, rafale de 2, portée 9 cases, recharge 4 s
+    Furtif · Détecte les furtifs (5 cases)
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Chassez les gros navires ennemis en embuscade. Évitez les escorteurs et destroyers, qui
+    le détectent.
+--------------------------------------------------------------------------------------------
+■ TORMENTA
+  Pays : Elielistan
+  Lore :
+    Frégate lance-missiles, la frappe à distance de la marine.
+    Ses missiles antinavires portent très loin et frappent aussi la côte.
+    Aucune défense antiaérienne : elle dépend de son escorte.
+  Statistiques :
+    Coût 1 300 $ · PV 36 000 · Blindage lourd · Vitesse 100 · Vision 5 cases
+    Arme : TormentaMissile : 4 000 dégâts, rafale de 2, portée 11 cases, recharge 3,6 s
+    Détecte les furtifs (4 cases)
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Restez à distance maximale des navires ennemis et escortez-la d'une Centinela.
+
+  ▶ PAYS : RUBÉNIE
+
+--------------------------------------------------------------------------------------------
+■ CHALAND LOURD
+  Pays : Rubénie
+  Lore :
+    Grand bâtiment de débarquement blindé, sorti de la Base logistique amphibie.
+    Douze places et deux mitrailleuses pour nettoyer la plage pendant que la rampe s'abaisse.
+    Lent, mais il arrive presque toujours.
+  Statistiques :
+    Coût 1 100 $ · PV 60 000 · Blindage lourd · Vitesse 90 · Vision 6 cases
+    Arme : M60mg : 1 000 dégâts, rafale de 5, portée 4 cases, recharge 1,2 s
+    Transport 12 places
+    Prérequis : transports.rubenie · Niveau technologique : bas
+  Stratégie :
+    Chargez-le à la base logistique pour que les troupes débarquent préparées (−25 % de
+    dégâts pendant 20 s), puis débarquez en rectangle avec les autres chalands : chaque
+    transport prend sa part de la plage.
+--------------------------------------------------------------------------------------------
+■ ESCORTEUR
+  Pays : Rubénie
+  Lore :
+    Escorteur de la marine rubénienne.
+    Missiles antiaériens à longue portée, missiles antinavires, grenades anti-sous-marines.
+    Il détecte les sous-marins.
+  Statistiques :
+    Coût 1 000 $ · PV 42 000 · Blindage lourd · Vitesse 88 · Vision 5 cases
+    Arme : RubEscorteurSSM : 2 500 dégâts, rafale de 2, portée 7 cases, recharge 2,4 s
+    Arme : DepthCharge : 6 000 dégâts, portée 5 cases, recharge 2,4 s
+    Arme : RubEscorteurAA : 1 650 dégâts, rafale de 2, portée 9 cases, recharge 2,4 s
+    Détecte les furtifs (4 cases)
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Escortez le porte-avions et les frégates : il couvre l'air et le dessous de l'eau.
+--------------------------------------------------------------------------------------------
+■ FRÉGATE LANCE-MISSILES
+  Pays : Rubénie
+  Lore :
+    Frégate armée de missiles antinavires à 13 cases.
+    Elle frappe aussi les cibles côtières.
+    Aucune défense antiaérienne : elle a besoin d'escorte.
+  Statistiques :
+    Coût 1 700 $ · PV 60 000 · Blindage lourd · Vitesse 64 · Vision 7 cases
+    Arme : RubMissileAntiNavire : 9 000 dégâts, rafale de 2, portée 13 cases, recharge 6 s
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Restez à distance maximale et escortez-la d'un escorteur.
+--------------------------------------------------------------------------------------------
+■ PORTE-AVIONS RUBÉNIEN
+  Pays : Rubénie
+  Lore :
+    Base aérienne mobile, plus résistante que son équivalent elielistanais.
+    Trois chasseurs polyvalents au maximum, réarmés à bord.
+    Défense antiaérienne rapprochée, mais aucune arme contre les sous-marins.
+  Statistiques :
+    Coût 2 500 $ · PV 90 000 · Blindage lourd · Vitesse 56 · Vision 9 cases
+    Arme : RubPorteAvionsAA : 1 650 dégâts, rafale de 2, portée 6 cases, recharge 2,4 s
+    Prérequis : Centre technique soviétique · Niveau technologique : élevé
+  Stratégie :
+    Faites-le escorter par des escorteurs et utilisez ses chasseurs pour couvrir vos côtes
+    et votre flotte.
+--------------------------------------------------------------------------------------------
+■ SOUS-MARIN
+  Pays : Rubénie
+  Lore :
+    Sous-marin d'attaque, invisible en plongée.
+    Ses torpilles lourdes frappent les navires en embuscade.
+    La menace invisible des routes maritimes.
+  Statistiques :
+    Coût 1 000 $ · PV 30 000 · Blindage léger · Vitesse 72 · Vision 8 cases
+    Arme : RubTorpille : 18 000 dégâts, rafale de 2, portée 8 cases, recharge 4 s
+    Furtif · Détecte les furtifs (5 cases)
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Embusquez-le sur le trajet des porte-avions ennemis. Évitez les escorteurs.
+
+  ▶ PAYS : AUSTRALOUIS
+
+--------------------------------------------------------------------------------------------
+■ L-0U15
+  Pays : Australouis
+  Lore :
+    Destroyer léger, mal armé et peu blindé.
+    Son sonar est le meilleur de toutes les mers : aucun sous-marin ne lui échappe à 18 cases.
+    Il ne gagne pas les combats : il dit à la flotte où tirer.
+  Statistiques :
+    Coût 900 $ · PV 25 000 · Blindage lourd · Vitesse 92 · Vision 9 cases
+    Arme : L0U15Canon : 1 600 dégâts, portée 5,5 cases, recharge 0,8 s
+    Arme : StingerAA : 1 650 dégâts, rafale de 2, portée 7,5 cases, recharge 2,4 s
+    Détecte les furtifs (18 cases)
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Placez-le au milieu de votre flotte, jamais en tête : il révèle les sous-marins, vos
+    destroyers et vos avions les détruisent.
+--------------------------------------------------------------------------------------------
+■ MOTHERSHIP
+  Pays : Australouis
+  Lore :
+    Le navire-mère de l'archipel, immense et presque sans armes.
+    Sous son blindage dort une machine à faire naître des îles : 2 min 50 pour sortir 8×8 cases de terre de l'océan.
+    Là où il jette l'ancre, l'Australouis peut bâtir une nouvelle base.
+  Statistiques :
+    Coût 3 500 $ · PV 200 000 · Blindage lourd · Vitesse 36 · Vision 9 cases
+    Arme : MothershipAA : 1 500 dégâts, rafale de 2, portée 10 cases, recharge 0,2 s
+    Limite 2 exemplaires
+    Prérequis : Chantier naval avancé · Niveau technologique : élevé
+  Stratégie :
+    Escortez-le jusqu'à un point stratégique, déployez-le (F) et ne le bougez plus jusqu'à
+    la fin. Amenez ensuite un chantier de construction avec un transport.
+--------------------------------------------------------------------------------------------
+■ PORTE-DRONE
+  Pays : Australouis
+  Lore :
+    Pas un porte-avions : une plateforme navale de production d'essaims kamikazes.
+    Sans arme et peu blindé, il fabrique lui-même, gratuitement, six drones à la fois, sans base ni munitions.
+    Le lot suivant ne sort des ateliers que 20 secondes après la chute du sixième drone : tant qu'un seul vole encore, rien ne se régénère.
+  Statistiques :
+    Coût 2 000 $ · PV 50 000 · Blindage léger · Vitesse 71 · Vision 8 cases
+    Arme : aucune
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Clic droit sur un véhicule ou un navire ennemi : un drone part (cliquez plusieurs cibles
+    pour répartir l'essaim). Réfléchissez avant de sacrifier le dernier drone : vous restez
+    20 s sans défense. Plusieurs Porte-Drones ont chacun leur propre cycle.
+--------------------------------------------------------------------------------------------
+■ SOUS-MARIN ICBM
+  Pays : Australouis
+  Lore :
+    Sous-marin lance-missiles repris de la carte WW3 (Ukraine).
+    Ses missiles V3 frappent les côtes et les bases jusqu'à 24 cases.
+    En plongée, il reste invisible sauf pour les sonars.
+  Statistiques :
+    Coût 2 000 $ · PV 45 000 · Blindage léger · Vitesse 42 · Vision 8 cases
+    Arme : SousMarinV3 : 4 200 dégâts, portée 24 cases, recharge 10,4 s
+    Furtif · Détecte les furtifs (4 cases)
+    Prérequis : Chantier naval avancé · Niveau technologique : élevé
+  Stratégie :
+    Approchez-vous des côtes ennemies en plongée et pilonnez la base de loin. Fuyez les
+    destroyers et le L-0U15 adverse.
+
+  ▶ PAYS : ANANTHANIE
+
+--------------------------------------------------------------------------------------------
+■ AGNIKHESH
+  Pays : Ananthanie
+  Lore :
+    Destroyer lance-missiles furtif.
+    Salves de missiles de croisière à 17 cases, contre la terre comme contre les navires.
+    La « lance de feu » : la flotte frappe loin à l'intérieur des terres.
+  Statistiques :
+    Coût 2 250 $ · PV 60 000 · Blindage lourd · Vitesse 64 · Vision 7 cases
+    Arme : AgnikheshCroisiere : 10 000 dégâts, rafale de 2, portée 17 cases, recharge 12 s
+    Prérequis : Institut d'innovation · Niveau technologique : élevé
+  Stratégie :
+    Restez au large, guidé par le Nayra-Ambar ou un Lunkar, et détruisez défenses et
+    bâtiments côtiers. À escorter.
+--------------------------------------------------------------------------------------------
+■ AMBARKARN
+  Pays : Ananthanie
+  Lore :
+    Frégate de défense aérienne.
+    Missiles sol-air à 11 cases, canon, grenades anti-sous-marines.
+    Le « rempart du ciel » de la flotte.
+  Statistiques :
+    Coût 1 600 $ · PV 45 000 · Blindage lourd · Vitesse 90 · Vision 8 cases
+    Arme : AmbarkarnCanon : 2 500 dégâts, portée 7 cases, recharge 1,2 s
+    Arme : DepthCharge : 6 000 dégâts, portée 5 cases, recharge 2,4 s
+    Arme : AmbarkarnSAM : 4 000 dégâts, rafale de 2, portée 11 cases, recharge 1,8 s
+    Détecte les furtifs (4 cases)
+    Prérequis : Radar Dome · Niveau technologique : moyen
+  Stratégie :
+    Toujours une Ambarkarn par groupe naval : elle protège l'Agnikhesh des avions et repère
+    les sous-marins.
+--------------------------------------------------------------------------------------------
+■ RATHAMBAR
+  Pays : Ananthanie
+  Lore :
+    Navire amphibie : huit places, chars comme fantassins.
+    Il débarque sur les plages et la côte.
+    Indispensable aux offensives d'une puissance maritime.
+  Statistiques :
+    Coût 1 250 $ · PV 45 000 · Blindage lourd · Vitesse 120 · Vision 6 cases
+    Arme : M60mg : 1 000 dégâts, rafale de 5, portée 4 cases, recharge 1,2 s
+    Transport 8 places
+    Prérequis : transports.ananthanie · Niveau technologique : bas
+  Stratégie :
+    Chargez Vidra, Lunkra et Ratha, débarquez sous la couverture de la flotte, et frappez là
+    où l'ennemi ne vous attend pas.
+--------------------------------------------------------------------------------------------
+■ ULMAR
+  Pays : Ananthanie
+  Lore :
+    Sous-marin d'attaque moderne, rapide et silencieux.
+    Invisible en plongée, torpilles lourdes à longue portée.
+    La « vague » qui frappe sans prévenir.
+  Statistiques :
+    Coût 1 500 $ · PV 30 000 · Blindage léger · Vitesse 90 · Vision 8 cases
+    Arme : UlmarTorpille : 18 000 dégâts, rafale de 2, portée 8,5 cases, recharge 3,2 s
+    Furtif · Détecte les furtifs (5 cases)
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Embusquez-le sur les routes des navires ennemis. Fuyez frégates et patrouilleurs qui
+    détectent les sous-marins.
+--------------------------------------------------------------------------------------------
+■ VASHA
+  Pays : Ananthanie
+  Lore :
+    Patrouilleur rapide lance-drones.
+    Salves de drones explosifs contre les navires et la côte, grenades anti-sous-marines.
+    La « tempête » des eaux côtières.
+  Statistiques :
+    Coût 750 $ · PV 18 000 · Blindage lourd · Vitesse 160 · Vision 8 cases
+    Arme : VashaDrones : 5 000 dégâts, rafale de 2, portée 7 cases, recharge 4,8 s
+    Arme : DepthCharge : 6 000 dégâts, portée 5 cases, recharge 2,4 s
+    Détecte les furtifs (4 cases)
+    Prérequis : aucun · Niveau technologique : bas
+  Stratégie :
+    Chassez les navires légers et harcelez la côte. Restez loin des destroyers et de
+    l'aviation.
+
+============================================================================================
+                                         7. TRAINS                                          
+============================================================================================
+
+  ▶ PAYS : ELIELISTAN
+
+--------------------------------------------------------------------------------------------
+■ KRAJINA EKSPRES
+  Pays : Elielistan
+  Lore :
+    Train blindé rapide, bien plus vif que les trains rubéniens.
+    Trois voitures : locomotive blindée, wagon lance-roquettes (salve de huit, longue à recharger), wagon canon de 30 mm.
+    Arriver vite, frapper fort, repartir avant la réaction ennemie.
+  Statistiques :
+    Coût 2 200 $ · PV 50 000 · Blindage lourd · Vision 6 cases
+    Arme : M60mg : 1 000 dégâts, rafale de 5, portée 4 cases, recharge 1,2 s
+    Transport 3 places
+    Prérequis : Chantier ferroviaire, Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Raid éclair sur les renforts et les gares ennemies : tirez la salve puis repliez-vous,
+    il ne gagne pas les combats prolongés.
+--------------------------------------------------------------------------------------------
+■ LOCOMOTIVE DU TRAIN AÉRIEN
+  Pays : Elielistan
+  Lore :
+    Locomotive du train aérien mobile, une base aérienne sur rails.
+    Elle tire les quatre wagons aériens : munitions, kérosène et deux ateliers.
+    Lente et peu blindée : une cible prioritaire pour l'ennemi.
+  Statistiques :
+    Coût 1 500 $ · PV 50 000 · Blindage léger · Vision 6 cases
+    Limite 1 exemplaire
+    Prérequis : Chantier ferroviaire, Aeródromo · Niveau technologique : moyen
+  Stratégie :
+    Faites rouler le train sous la route de vos avions : ils se réarment et se réparent sans
+    rentrer à l'aérodrome.
+--------------------------------------------------------------------------------------------
+■ LOCOMOTIVE NUCLÉAIRE
+  Pays : Elielistan
+  Lore :
+    Locomotive blindée à réacteur nucléaire : rapide, endurante, elle tire jusqu'à 12 wagons sans ralentir.
+    Une seule à la fois. Son réacteur est son point faible : détruite, elle explose violemment
+    (gros dégâts sur 6 cases, alliés compris) et laisse une zone contaminée.
+  Statistiques :
+    Coût 3 000 $ · PV 130 000 · Blindage lourd · Vision 7 cases
+    Limite 1 exemplaire
+    Prérequis : Chantier ferroviaire, Centre technique allié · Niveau technologique : élevé
+  Stratégie :
+    Le convoi géant de l'Elielistan : toute une armée d'un coup sur le front. Mais ne la
+    faites jamais entrer dans votre base ni la garer près de vos troupes.
+--------------------------------------------------------------------------------------------
+■ LOCOMOTIVE RAPIDE
+  Pays : Elielistan
+  Lore :
+    Locomotive du train rapide : la plus rapide du jeu ; 2 wagons (10 véhicules ou 14 fantassins).
+    Base, front, récupération, nouvelle position : tout en quelques secondes.
+    Peu blindée.
+  Statistiques :
+    Coût 700 $ · PV 45 000 · Blindage léger · Vision 6 cases
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Ne la laissez jamais à l'arrêt sous le feu : chargez, partez.
+--------------------------------------------------------------------------------------------
+■ WAGON DE MUNITIONS
+  Pays : Elielistan
+  Lore :
+    Wagon-plateforme : réarme les avions alliés à 3 cases, en vol, même quand le train roule.
+    Stock de 30 munitions, refait lentement sur la voie et vite en gare.
+    Un avion ou un hélicoptère elielistanais peut s'y poser, même train en marche : réarmé et réparé à bord.
+  Statistiques :
+    Coût 1 500 $ · PV 35 000 · Blindage léger · Vision 5 cases
+    Limite 1 exemplaire
+    Prérequis : Chantier ferroviaire, Aeródromo · Niveau technologique : moyen
+  Stratégie :
+    Gardez un œil sur ses pips : un wagon vide doit repasser en gare.
+--------------------------------------------------------------------------------------------
+■ WAGON RAPIDE LOURD
+  Pays : Elielistan
+  Lore :
+    Wagon plat à véhicules : 5 places (un char lourd en prend 3).
+    Chargement et déchargement deux fois plus rapides en gare, trois fois sur la voie.
+  Statistiques :
+    Coût 400 $ · PV 30 000 · Blindage léger · Vision 5 cases
+    Transport 5 places
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Idéal pour déposer des chars hors gare, en pleine campagne, sans perdre de temps.
+--------------------------------------------------------------------------------------------
+■ WAGON RAPIDE LÉGER
+  Pays : Elielistan
+  Lore :
+    Wagon de troupes : 7 fantassins, débarquement éclair.
+  Statistiques :
+    Coût 250 $ · PV 24 000 · Blindage léger · Vision 5 cases
+    Transport 7 places
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Lâchez l'infanterie derrière la ligne ennemie et repartez avant la riposte.
+--------------------------------------------------------------------------------------------
+■ WAGON-ATELIER AÉRIEN
+  Pays : Elielistan
+  Lore :
+    Wagon-plateforme : répare lentement les avions alliés à 3 cases (1 % par seconde), même en vol.
+    Deux ateliers : deux fois plus vite. Jamais de réparation instantanée.
+    Un avion ou un hélicoptère elielistanais peut s'y poser : réarmé et réparé à bord.
+  Statistiques :
+    Coût 1 200 $ · PV 35 000 · Blindage léger · Vision 5 cases
+    Limite 2 exemplaires
+    Prérequis : Chantier ferroviaire, Aeródromo · Niveau technologique : moyen
+  Stratégie :
+    Faites tourner les avions abîmés au-dessus du train entre deux passes.
+--------------------------------------------------------------------------------------------
+■ WAGON-CITERNE DE KÉROSÈNE
+  Pays : Elielistan
+  Lore :
+    Les avions alliés qui passent à 3 cases font le plein :
+    +20 % de vitesse, encore 20 secondes après.
+  Statistiques :
+    Coût 1 000 $ · PV 35 000 · Blindage léger · Vision 5 cases
+    Limite 1 exemplaire
+    Prérequis : Chantier ferroviaire, Aeródromo · Niveau technologique : moyen
+  Stratégie :
+    Faites passer les raids au-dessus du train juste avant l'attaque.
+
+  ▶ PAYS : RUBÉNIE
+
+--------------------------------------------------------------------------------------------
+■ BP-42
+  Pays : Rubénie
+  Lore :
+    Train blindé polyvalent de 4 voitures : locomotive blindée PR-35 (mitrailleuse, cinq fantassins),
+    deux wagons d'artillerie PL-37 de 76 mm et une plate-forme antiaérienne.
+    Il escorte les trains logistiques et soutient les troupes le long des voies.
+  Statistiques :
+    Coût 2 400 $ · PV 70 000 · Blindage lourd · Vision 6 cases
+    Arme : BP42Mitrailleuse : 1 000 dégâts, rafale de 5, portée 5 cases, recharge 1,2 s
+    Transport 5 places
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Accompagnez vos renforts ferroviaires et sécurisez les lignes ; débarquez ses fantassins
+    en gare pour tenir un point.
+--------------------------------------------------------------------------------------------
+■ BP-43
+  Pays : Rubénie
+  Lore :
+    Train blindé lourd offensif de 7 voitures : locomotive blindée, quatre wagons à tourelle
+    de T-34-85 et deux plates-formes antiaériennes. Plus lent et plus cher que le BP-42,
+    il fait d'une voie ferrée un axe d'attaque. Deux fantassins seulement à bord.
+  Statistiques :
+    Coût 4 500 $ · PV 90 000 · Blindage lourd · Vision 6 cases
+    Arme : BP42Mitrailleuse : 1 000 dégâts, rafale de 5, portée 5 cases, recharge 1,2 s
+    Transport 2 places
+    Prérequis : Chantier ferroviaire, un centre technique · Niveau technologique : élevé
+  Stratégie :
+    Poussez la voie vers le front, puis bombardez les positions ennemies depuis les rails, à
+    l'abri derrière vos lignes.
+--------------------------------------------------------------------------------------------
+■ LOCOMOTIVE LOGISTIQUE
+  Pays : Rubénie
+  Lore :
+    Locomotive du train logistique lourd : la plus grande capacité du jeu.
+    Elle tire 3 wagons (21 véhicules ou 30 fantassins), roule vite et ravitaille les unités rubéniennes à 6 cases.
+    Peu blindée et bon marché : un camion sur rails, pas un char.
+  Statistiques :
+    Coût 600 $ · PV 45 000 · Blindage léger · Vision 6 cases
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Faites-en la colonne vertébrale du front : elle amène renforts et ravitaillement au même
+    endroit. Escortez-la d'un train blindé.
+--------------------------------------------------------------------------------------------
+■ WAGON LOGISTIQUE LOURD
+  Pays : Rubénie
+  Lore :
+    Wagon plat à véhicules : 7 places.
+    Il ravitaille lui aussi les unités rubéniennes à 6 cases.
+  Statistiques :
+    Coût 300 $ · PV 30 000 · Blindage léger · Vision 5 cases
+    Transport 7 places
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Garé au bout de la ligne, il sert de dépôt de ravitaillement avancé.
+--------------------------------------------------------------------------------------------
+■ WAGON LOGISTIQUE LÉGER
+  Pays : Rubénie
+  Lore :
+    Wagon de troupes : 10 fantassins.
+    Fragile : un obus bien placé coûte une compagnie.
+  Statistiques :
+    Coût 200 $ · PV 22 000 · Blindage léger · Vision 5 cases
+    Transport 10 places
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Débarquez en gare, à l'abri : hors gare, la descente est lente et désordonnée.
+--------------------------------------------------------------------------------------------
+■ ZAAMURETS
+  Pays : Rubénie
+  Lore :
+    Autorail blindé lourd, d'une seule voiture : deux canons de 107 mm et un affût antiaérien jumelé.
+    Son blindage très épais encaisse un cinquième de dégâts en moins.
+    Il tient les lignes et protège les infrastructures ferroviaires.
+  Statistiques :
+    Coût 2 200 $ · PV 160 000 · Blindage lourd · Vision 6 cases
+    Arme : ZaamuretsCanon : 6 000 dégâts, rafale de 2, portée 6 cases, recharge 2,8 s
+    Arme : ZaamuretsDCA : 900 dégâts, rafale de 2, portée 10 cases, recharge 0,2 s
+    Transport 3 places
+    Prérequis : Chantier ferroviaire, Service Depot · Niveau technologique : moyen
+  Stratégie :
+    Stationnez-le près des gares et des nœuds du réseau : il repousse aussi bien les raids
+    terrestres qu'aériens.
+
+  ▶ PAYS : AUSTRALOUIS
+
+--------------------------------------------------------------------------------------------
+■ LOCOMOTIVE CÔTIÈRE
+  Pays : Australouis
+  Lore :
+    Locomotive du train logistique côtier : marine, port, rail, front.
+    Elle tire 3 wagons, dont le wagon porte-bateaux.
+  Statistiques :
+    Coût 800 $ · PV 55 000 · Blindage lourd · Vision 6 cases
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Reliez une gare portuaire au front : ce que la flotte débarque part aussitôt par le
+    rail.
+--------------------------------------------------------------------------------------------
+■ WAGON CÔTIER LOURD
+  Pays : Australouis
+  Lore :
+    Wagon plat à véhicules : 7 places.
+    À la gare portuaire, il reçoit directement les véhicules des transports navals.
+  Statistiques :
+    Coût 400 $ · PV 40 000 · Blindage lourd · Vision 5 cases
+    Transport 7 places
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Garez-le en gare portuaire avant l'arrivée du convoi naval.
+--------------------------------------------------------------------------------------------
+■ WAGON CÔTIER LÉGER
+  Pays : Australouis
+  Lore :
+    Wagon de troupes : 10 fantassins.
+    À la gare portuaire, il reçoit directement l'infanterie des transports navals.
+  Statistiques :
+    Coût 300 $ · PV 30 000 · Blindage léger · Vision 5 cases
+    Transport 10 places
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Même usage que le wagon lourd, pour l'infanterie.
+--------------------------------------------------------------------------------------------
+■ WAGON PORTE-BATEAUX
+  Pays : Australouis
+  Lore :
+    Transporte des navires d'un plan d'eau à l'autre : 2 places
+    (vedette ou sous-marin 1, destroyer ou transport 2 ; pas de croiseurs ni de porte-avions).
+    Les navires embarquent et débarquent depuis l'eau qui borde la voie.
+  Statistiques :
+    Coût 600 $ · PV 50 000 · Blindage lourd · Vision 5 cases
+    Transport 2 places
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Faites passer une flottille d'un lac à la mer, ou d'une côte à l'autre, là où l'ennemi
+    ne l'attend pas.
+
+  ▶ PAYS : ANANTHANIE
+
+--------------------------------------------------------------------------------------------
+■ LOCOMOTIVE INDUSTRIELLE
+  Pays : Ananthanie
+  Lore :
+    Locomotive du train industriel : lente, robuste, deux wagons seulement.
+    Le matériel lourd de l'industrie ananthanienne, livré sur le front.
+  Statistiques :
+    Coût 950 $ · PV 80 000 · Blindage lourd · Vision 6 cases
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Moins de troupes, mais les plus lourdes : réservez-la aux expérimentaux et aux chars.
+--------------------------------------------------------------------------------------------
+■ SCHWERER GUSTAV
+  Pays : Ananthanie
+  Lore :
+    Canon ferroviaire géant de 800 mm sur un affût de cinq cases, encadré de deux locomotives D311 : un obus par minute, à 40 cases.
+    Il doit se mettre en batterie (10 secondes, immobile) avant de tirer, puis se replier pour repartir.
+    Très lent et unique : l'ennemi en fera sa cible prioritaire.
+  Statistiques :
+    Coût 7 500 $ · PV 220 000 · Blindage lourd · Vision 8 cases
+    Arme : GustavObus : 45 000 dégâts, portée 40 cases, recharge 1 min
+    Limite 1 exemplaire
+    Prérequis : Chantier ferroviaire, un centre technique · Niveau technologique : élevé
+  Stratégie :
+    Mettez-le en batterie loin derrière le front, éclairez les cibles (bâtiments, colonnes
+    de véhicules) et gardez-le bien défendu.
+--------------------------------------------------------------------------------------------
+■ WAGON DE PERSONNEL
+  Pays : Ananthanie
+  Lore :
+    Wagon de troupes blindé : 12 fantassins.
+  Statistiques :
+    Coût 300 $ · PV 35 000 · Blindage lourd · Vision 5 cases
+    Transport 12 places
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Plus solide que les wagons des autres pays : il survit à une embuscade.
+--------------------------------------------------------------------------------------------
+■ WAGON INDUSTRIEL
+  Pays : Ananthanie
+  Lore :
+    Porte un véhicule super-lourd (Vidrakarn, Ananta, Bastion roulant), un char lourd ou 5 véhicules.
+    Les véhicules qui en descendent sont réparés vite (2 % par seconde) et encaissent mieux (−10 %) pendant 20 secondes.
+  Statistiques :
+    Coût 600 $ · PV 55 000 · Blindage lourd · Vision 5 cases
+    Transport 5 places
+    Prérequis : Chantier ferroviaire · Niveau technologique : bas
+  Stratégie :
+    Débarquez juste avant l'assaut : les chars arrivent réparés et plus solides.
+
+============================================================================================
+                                   8. POUVOIRS DE SOUTIEN                                   
+============================================================================================
+
+  ▶ PAYS : ELIELISTAN
+
+--------------------------------------------------------------------------------------------
+■ AGUILA BRIDGE
+  Lore :
+    Pont temporaire de 10 cases au plus, posé au-dessus de n'importe quel obstacle.
+    Il dure 10 minutes et peut être détruit.
+    Attention : tout le monde peut l'emprunter, ennemis compris.
+  Statistiques :
+    Porté par : Palacio Presidencial, recharge 4 min
+  Stratégie :
+    Franchissez une rivière ou un bras de mer là où l'ennemi ne vous attend pas, puis
+    laissez le pont expirer derrière vous.
+--------------------------------------------------------------------------------------------
+■ AGUILA GATE
+  Lore :
+    Tunnel temporaire entre deux zones explorées de la carte.
+    Vos unités terrestres entrent par une bouche et ressortent par l'autre, dans les deux sens ; en sortant, elles s'écartent d'elles-mêmes de la bouche pour ne pas repartir aussitôt.
+    Douze passages, 60 secondes : l'aller, puis la retraite.
+  Statistiques :
+    Porté par : Palacio Presidencial, recharge 5 min
+  Stratégie :
+    Ouvrez-le avec un Aguila Carrier chargé de chars : cinq chars passent en un seul
+    passage.
+--------------------------------------------------------------------------------------------
+■ FRAPPE AGUILA
+  Lore :
+    Trois avions d'attaque Rayo traversent la zone à très grande vitesse.
+    Ils bombardent et repartent aussitôt.
+    Frapper puis disparaître, version aérienne.
+    Il faut un Helipad et un Radar Dome ; un Helipad bâti depuis un chantier capturé d'un autre pays compte aussi.
+  Statistiques :
+    Porté par : Helipad, recharge 4 min
+  Stratégie :
+    Visez les défenses ou les groupes d'artillerie qui bloquent votre raid.
+--------------------------------------------------------------------------------------------
+■ OJO DEL AGUILA
+  Lore :
+    Reconnaissance totale d'une zone pendant 30 secondes.
+    Les furtifs sont révélés et tous les ennemis de la zone sont désignés (+25 % de dégâts reçus).
+    Trouver la faiblesse, première étape de toute opération elielistanaise.
+  Statistiques :
+    Porté par : Palacio Presidencial, recharge 3 min
+  Stratégie :
+    Lancez-le juste avant une frappe ou un raid, sur la zone que vous allez attaquer.
+--------------------------------------------------------------------------------------------
+■ ORDRE PRIORITAIRE
+  Lore :
+    Le président impose une priorité absolue sur une zone.
+    Pendant 30 secondes, les unités elielistanaises de la zone gagnent +25 % de vitesse, de puissance de feu et de cadence.
+    Dix ordres par quinquennat (15 minutes de jeu) : ils sont comptés.
+  Statistiques :
+    Porté par : Palacio Presidencial, recharge 1 min
+  Stratégie :
+    Gardez-les pour les moments décisifs : l'assaut final, ou sauver un raid qui tourne mal.
+
+  ▶ PAYS : RUBÉNIE
+
+--------------------------------------------------------------------------------------------
+■ CONTRE-ATTAQUE ÉCLAIR
+  Lore :
+    Les unités terrestres rubéniennes de la zone (5 cases) gagnent +40 % de vitesse et −25 % de temps de rechargement pendant 20 secondes.
+    Le signal de la sortie.
+    Défendre, puis frapper au moment où l'ennemi s'essouffle.
+  Statistiques :
+    Porté par : QG rubénien, recharge 3 min
+  Stratégie :
+    Déclenchez-la quand l'assaut ennemi se brise sur vos défenses, sur vos chars de contre-
+    attaque.
+--------------------------------------------------------------------------------------------
+■ FRAPPE DE PRÉCISION
+  Lore :
+    Un missile de croisière frappe un point précis.
+    Il détruit presque n'importe quel bâtiment, mais n'abîme presque rien autour.
+    La décapitation plutôt que la destruction.
+  Statistiques :
+    Porté par : QG rubénien, recharge 6 min
+  Stratégie :
+    Visez le bâtiment clé : Palacio, radar, chantier de construction, aérodrome.
+--------------------------------------------------------------------------------------------
+■ MOBILISATION DÉFENSIVE
+  Lore :
+    Pendant 45 secondes, toute la base se mobilise.
+    Construction deux fois plus rapide, bâtiments +25 % de blindage et réparation automatique.
+    S'applique aussi aux bunkers et aux tranchées.
+  Statistiques :
+    Porté par : QG rubénien, recharge 5 min
+  Stratégie :
+    Lancez-la au début d'un assaut ennemi, ou pour relever très vite une ligne de défense.
+--------------------------------------------------------------------------------------------
+■ OPÉRATION TAUPE
+  Lore :
+    Tunnel creusé entre deux zones explorées de terre ferme.
+    Réservé aux unités rubéniennes : 20 passages, 90 secondes.
+    Contourner la ligne ennemie plutôt que la percer.
+  Statistiques :
+    Porté par : QG rubénien, recharge 6 min
+  Stratégie :
+    Faites passer une force de contre-attaque derrière l'ennemi, puis refermez le piège.
+--------------------------------------------------------------------------------------------
+■ SUPÉRIORITÉ AÉRIENNE
+  Lore :
+    Quatre chasseurs arrivent du bord de la carte.
+    Ils patrouillent 30 secondes au-dessus de la zone et abattent tout appareil ennemi.
+    Puis ils repartent.
+  Statistiques :
+    Porté par : QG rubénien, recharge 4 min
+  Stratégie :
+    Couvrez une opération ou contrez une vague de bombardiers, de Pelícano ou de drones
+    elielistanais.
+
+  ▶ PAYS : AUSTRALOUIS
+
+--------------------------------------------------------------------------------------------
+■ ENGINEERED TSUNAMI
+  Lore :
+    Les ingénieurs australouisiens savent lever la mer contre une côte choisie.
+    Une vague géante naît au large et balaie une bande de 10 cases de large sur 8 cases dans les terres, dans le sens choisi.
+    Tous les joueurs sont prévenus 10 secondes avant l'impact, sans savoir quelle côte est visée.
+    Pleine puissance sur les 2 premières cases, puis la vague s'affaiblit : l'infanterie du rivage est balayée,
+    les véhicules et les bâtiments lourds sont très abîmés mais ne sont pas détruits d'office.
+    Arrache les arbres, renverse les murs et emporte le minerai. Aviation en vol et navires presque épargnés ;
+    les îles du Mothership résistent. Frappe aussi vos propres troupes. Porté par le chantier naval avancé.
+  Statistiques :
+    Porté par : Chantier naval avancé, recharge 5 min
+  Stratégie :
+    Visez les raffineries, centrales et chantiers navals construits au bord de l'eau, puis
+    débarquez juste après la vague. Contre lui : ne concentrez pas toute votre base sur le
+    rivage et éloignez vos troupes de la côte dès l'alerte.
+--------------------------------------------------------------------------------------------
+■ RADAR BLINK
+  Lore :
+    Le réseau d'écoute australouisien capte les sonars de toutes les mers.
+    Pendant 1 minute, vous voyez ce que voit chaque sous-marin de la carte, et les sous-marins ennemis sont révélés.
+    Porté par le chantier naval avancé.
+  Statistiques :
+    Porté par : Chantier naval avancé, recharge 5 min
+  Stratégie :
+    Lancez-le avant une opération navale pour chasser les sous-marins ennemis, ou pour
+    espionner la côte adverse grâce à eux.
+--------------------------------------------------------------------------------------------
+■ RAFFINERIE BOOST
+  Lore :
+    Toutes les raffineries tournent à plein régime.
+    Pendant 40 secondes, le minerai livré rapporte 20 % de plus (en plus des 5 % de la centrale).
+    Nécessite la centrale d'enrichissement et un silo.
+  Statistiques :
+    Porté par : Centrale d'enrichissement, recharge 4 min
+  Stratégie :
+    Lancez-le quand plusieurs collecteurs sont sur le point de décharger.
+
+  ▶ PAYS : ANANTHANIE
+
+--------------------------------------------------------------------------------------------
+■ BLITZ 7
+  Lore :
+    La jauge d'offensive ananthanienne : « L'Ananthanie gagne une bataille en 7 minutes. »
+    Elle se remplit en 7 minutes, seulement quand l'armée n'est pas au combat, plus vite avec des réserves au repos et des Nayrath.
+    Déclenchée, elle donne 70 s de Blitz à toute l'armée (+30 % de vitesse, +25 % de cadence, +15 % de dégâts), puis 30 s de fatigue.
+  Statistiques :
+    Porté par : Haut Commandement, recharge 7 min
+  Stratégie :
+    Préparez : regroupez vos forces loin du front, laissez la jauge se remplir, puis lancez
+    tout en même temps. Ne gâchez pas la fatigue en restant exposé.
+--------------------------------------------------------------------------------------------
+■ ESSAIM
+  Lore :
+    Douze drones kamikazes décollent du Haut Commandement.
+    Ils foncent sur la zone choisie et plongent sur les véhicules, fantassins et défenses qu'ils y trouvent.
+    Le domaine principal de la technologie ananthanienne.
+  Statistiques :
+    Porté par : Haut Commandement, recharge 4 min
+  Stratégie :
+    Lancez-le sur une colonne blindée ou une ligne de défense juste avant votre Blitz.
+--------------------------------------------------------------------------------------------
+■ PACTE DE FRATERNITÉ
+  Lore :
+    Le pouvoir de coalition de l'Ananthanie.
+    Pendant 45 s, dans la zone, vos unités ET celles de vos alliés gagnent +15 % de dégâts et se réparent, et la zone est révélée.
+    Plus il reste d'alliés en jeu, plus vite il se recharge.
+  Statistiques :
+    Porté par : Haut Commandement, recharge 6 min
+  Stratégie :
+    En partie à plusieurs, lancez-le sur l'offensive commune : l'Ananthanie est encore plus
+    dangereuse avec ses alliés.
+--------------------------------------------------------------------------------------------
+■ PONT AÉRIEN
+  Lore :
+    Un avion de transport parachute deux chars Vidra, quatre Thals et deux Khesh-Thals.
+    Une tête de pont en quelques secondes.
+    La guerre de mouvement, par les airs.
+  Statistiques :
+    Porté par : Haut Commandement, recharge 5 min
+  Stratégie :
+    Larguez derrière les lignes ennemies pendant votre Blitz pour prendre l'adversaire à
+    revers.
+--------------------------------------------------------------------------------------------
+■ RAID FURTIF
+  Lore :
+    Trois bombardiers furtifs traversent la zone dans la direction choisie.
+    Invisibles sauf aux détecteurs, ils la couvrent d'un tapis de bombes.
+    L'aviation, bras armé de l'armée.
+  Statistiques :
+    Porté par : Haut Commandement, recharge 9 min
+  Stratégie :
+    Choisissez la direction pour que le tapis suive l'axe de la cible (colonne, ligne de
+    défenses).
+--------------------------------------------------------------------------------------------
+■ SALVE AGNI
+  Lore :
+    Six missiles de croisière partent du Haut Commandement.
+    Ils frappent la zone choisie, dispersés sur deux cases.
+    Le « feu » d'Agni, sans préavis.
+  Statistiques :
+    Porté par : Haut Commandement, recharge 5 min
+  Stratégie :
+    Idéal contre une base, une batterie de défenses ou des unités groupées. Une Ananta
+    ennemie peut en abattre une partie.
+--------------------------------------------------------------------------------------------
+■ ŒIL D'AMBAR
+  Lore :
+    Un drone de reconnaissance révèle une zone de 8 cases pendant 30 secondes.
+    Un renseignement « moyen » : utile, mais limité.
+    Voir avant de frapper.
+  Statistiques :
+    Porté par : Haut Commandement, recharge 3 min
+  Stratégie :
+    Utilisez-le pour guider l'Agnar, l'Agnikhesh ou la Salve Agni sur une cible lointaine.
+
+============================================================================================
+                                   Fin de l'encyclopédie.                                   
+============================================================================================

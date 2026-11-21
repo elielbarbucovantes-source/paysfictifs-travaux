@@ -1,0 +1,579 @@
+# =====================================================================
+# ANANTHANIE — armes
+# Principe : précision et technologie. Missiles guidés, drones explosifs,
+# canons modernes à bonne cadence. Des armes efficaces partout, sans
+# les pics de dégâts de l'Elielistan ni l'endurance de la Rubénie.
+# =====================================================================
+
+# Thal : fusil d'assaut moderne, un peu plus de portée que le fusil standard.
+ThalFusil:
+	Inherits: M1Carbine
+	Range: 5c256
+
+# Khesh-Thal : missile polyvalent, une version contre les blindés...
+KheshAT:
+	Inherits: Dragon
+	Range: 6c0
+	ReloadDelay: 55
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+
+# ... et une contre les avions.
+KheshAA:
+	Inherits: RedEye
+	Range: 7c0
+	ReloadDelay: 55
+
+# Nayrak : drone explosif FPV piloté. Long rechargement (on prépare le drone
+# suivant), gros dégâts sur les véhicules.
+NayrakFPV:
+	ReloadDelay: 175
+	Range: 7c0
+	Report: missile6.aud
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	Projectile: Missile
+		Image: avispa
+		Sequences: idle
+		Palette: player
+		IsPlayerPalette: true
+		Speed: 170
+		Arm: 0
+		Blockable: false
+		Inaccuracy: 0
+		HorizontalRateOfTurn: 60
+		VerticalRateOfTurn: 60
+		CloseEnough: 256
+		RangeLimit: 10c0
+		Shadow: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 8500
+		ValidTargets: GroundActor, WaterActor
+		Versus:
+			None: 50
+			Wood: 60
+			Light: 100
+			Heavy: 90
+			Concrete: 35
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: small_explosion
+		ImpactSounds: kaboom12.aud
+		ValidTargets: Ground, GroundActor, Water, WaterActor
+
+# Lunkar : désignateur laser longue durée (la cible marquée subit +25 %
+# de dégâts de toute l'armée pendant 3 s) ; ne vise que véhicules,
+# navires et bâtiments.
+LunkarDesignateur:
+	Inherits: AguilaDesignator
+	ReloadDelay: 40
+	Range: 8c0
+	InvalidTargets: Infantry
+	Projectile: LaserZap
+		Color: 7ED32190
+	Warhead@1Designate: GrantExternalCondition
+		Duration: 75
+
+# Lunkar : fusil de précision silencieux, contre l'infanterie seulement.
+LunkarPrecision:
+	Inherits: SilencedPPK
+	Range: 7c0
+	ReloadDelay: 60
+	ValidTargets: Infantry
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+		ValidTargets: Infantry
+
+# Karnthal : mitrailleuse lourde de l'exosquelette.
+KarnMitrailleuse:
+	Inherits: Vulcan
+	ReloadDelay: 40
+	Range: 5c0
+
+# ---------------------------------------------------------------------
+# Chars
+# ---------------------------------------------------------------------
+# Vidra : canon-mitrailleur de 40 mm à cadence rapide.
+Vidra40mm:
+	Inherits: 25mm
+	ReloadDelay: 18
+	Range: 5c256
+	Warhead@1Dam: SpreadDamage
+		Damage: 2800
+
+# Lunkra : canon de 120 mm à chargement automatique, un obus à la fois.
+Lunkra120mm:
+	Inherits: 105mm
+	ReloadDelay: 42
+	Burst: 1
+	Range: 5c768
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+
+# Karnvasha : canon de 130 mm, gros dégâts, portée longue.
+Karnvasha130mm:
+	Inherits: 120mm
+	Burst: 1
+	ReloadDelay: 60
+	Range: 6c512
+	Warhead@1Dam: SpreadDamage
+		Damage: 10000
+
+# Karnvasha : mitrailleuse téléopérée contre l'infanterie.
+KarnvashaMG:
+	Inherits: M60mg
+	Range: 5c0
+
+# ---------------------------------------------------------------------
+# Véhicules
+# ---------------------------------------------------------------------
+# Ratha : canon automatique de 30 mm, sol et air.
+RathaCanonAG:
+	Inherits: 25mm
+	ReloadDelay: 14
+	Range: 5c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 1800
+
+RathaCanonAA:
+	Inherits: FLAK-23-AA
+	Range: 6c0
+
+# Agnar : missile de croisière. Vole bas, très loin, très précis.
+AgnarCroisiere:
+	ReloadDelay: 325
+	Range: 16c0
+	MinRange: 3c0
+	Report: missile1.aud
+	ValidTargets: Ground, Water, GroundActor, WaterActor, Trees
+	TargetActorCenter: true
+	Projectile: Missile
+		Image: MISSILE
+		Speed: 230
+		Arm: 4
+		Blockable: false
+		Inaccuracy: 128
+		HorizontalRateOfTurn: 24
+		VerticalRateOfTurn: 24
+		RangeLimit: 20c0
+		TrailImage: smokey
+		Shadow: true
+		AllowSnapping: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 512
+		Damage: 12000
+		Falloff: 100, 50, 20, 0
+		ValidTargets: GroundActor, WaterActor, Trees
+		Versus:
+			None: 80
+			Wood: 100
+			Tree: 75
+			Light: 90
+			Heavy: 60
+			Concrete: 100
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Smu: LeaveSmudge
+		SmudgeType: Crater
+		InvalidTargets: Vehicle, Structure, Wall, Husk, Trees
+	Warhead@3Eff: CreateEffect
+		Explosions: large_explosion
+		ImpactSounds: kaboom15.aud
+		ValidTargets: Ground, GroundActor, Trees
+	Warhead@4EffWater: CreateEffect
+		Explosions: large_splash
+		ImpactSounds: splash9.aud
+		ValidTargets: Water, Underwater
+		InvalidTargets: Ship, Structure, Bridge
+
+# Ambarkesh : canons rapides et missiles sol-air.
+AmbarkeshCanon:
+	Inherits: FLAK-23-AA
+	Range: 6c512
+
+AmbarkeshMissile:
+	Inherits: Nike
+	ReloadDelay: 90
+	Range: 9c0
+	Burst: 2
+	BurstDelays: 8
+	Warhead@1Dam: SpreadDamage
+		Damage: 4000
+
+AmbarkeshSol:
+	Inherits: FLAK-23-AG
+
+# ---------------------------------------------------------------------
+# Défenses
+# ---------------------------------------------------------------------
+# Kheshkarn : double missile antichar.
+KheshkarnATGM:
+	Inherits: APTusk
+	ReloadDelay: 70
+	Range: 7c512
+	Burst: 2
+	BurstDelays: 10
+	Projectile: Missile
+		RangeLimit: 10c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 6000
+
+# Batterie Ambar : missiles sol-air à très longue portée.
+AmbarSAM:
+	Inherits: Nike
+	Range: 12c0
+	ReloadDelay: 25
+	Projectile: Missile
+		RangeLimit: 15c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+
+# Ruche : drones intercepteurs, contre tout ce qui approche (sol et air).
+RucheDrones:
+	ReloadDelay: 110
+	Range: 8c0
+	Burst: 3
+	BurstDelays: 8
+	Report: missile6.aud
+	ValidTargets: Ground, Water, Air, GroundActor, WaterActor, AirborneActor
+	Projectile: Missile
+		Image: avispa
+		Sequences: idle
+		Palette: player
+		IsPlayerPalette: true
+		Speed: 200
+		Arm: 0
+		Blockable: false
+		Inaccuracy: 0
+		HorizontalRateOfTurn: 70
+		VerticalRateOfTurn: 70
+		CloseEnough: 256
+		RangeLimit: 11c0
+		Shadow: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 4000
+		ValidTargets: GroundActor, WaterActor, AirborneActor
+		Versus:
+			None: 70
+			Wood: 40
+			Light: 100
+			Heavy: 70
+			Concrete: 25
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: small_explosion
+		ImpactSounds: kaboom12.aud
+		ValidTargets: Ground, GroundActor, Water, WaterActor
+	Warhead@3EffAir: CreateEffect
+		Explosions: small_explosion_air
+		ImpactSounds: kaboom12.aud
+		ValidTargets: Air, AirborneActor
+
+# Munition rôdeuse du Mukhar : même charge que le Moustique, un peu plus faible.
+RodeusePlongee:
+	Inherits: MoustiqueDive
+	Projectile: Missile
+		Image: rodeuse
+	Warhead@1Dam: SpreadDamage
+		Damage: 9000
+
+# ---------------------------------------------------------------------
+# Aviation
+# ---------------------------------------------------------------------
+# Lunkravyn : bombes planantes guidées (aussi contre les navires).
+LunkravynBombe:
+	Inherits: Maverick
+	Range: 7c0
+	Burst: 1
+	ReloadDelay: 40
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	Warhead@1Dam: SpreadDamage
+		Spread: 384
+		Damage: 10000
+
+# Lunkravyn : missiles air-air.
+LunkravynAA:
+	Inherits: HellfireAA
+	Range: 7c0
+	Projectile: Missile
+		RangeLimit: 10c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 4500
+
+# Vidravyn : missiles air-air, cadence élevée.
+VidravynAA:
+	Inherits: HellfireAA
+	Range: 7c512
+	ReloadDelay: 25
+	Projectile: Missile
+		RangeLimit: 10c512
+	Warhead@1Dam: SpreadDamage
+		Damage: 4500
+
+# Agnivyn : missiles de croisière légers tirés à distance de sécurité.
+AgnivynMissile:
+	Inherits: Maverick
+	Range: 10c0
+	MinRange: 3c0
+	ReloadDelay: 60
+	Projectile: Missile
+		RangeLimit: 15c0
+		Inaccuracy: 128
+	Warhead@1Dam: SpreadDamage
+		Spread: 448
+		Damage: 9000
+		Versus:
+			None: 60
+			Wood: 100
+			Light: 90
+			Heavy: 80
+			Concrete: 100
+
+# Ulkar : missile antichar guidé (famille Hellfire).
+UlkarMissile:
+	Inherits: HellfireAG
+	Range: 7c0
+	Burst: 1
+	ReloadDelay: 45
+	Projectile: Missile
+		RangeLimit: 10c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 5500
+
+# Kheshar : canon de 30 mm et missiles antichars.
+KhesharCanon:
+	Inherits: ChainGun
+	Range: 5c512
+
+KhesharATGM:
+	Inherits: HellfireAG
+	Range: 6c512
+	Burst: 1
+	ReloadDelay: 40
+	Warhead@1Dam: SpreadDamage
+		Damage: 7000
+
+# ---------------------------------------------------------------------
+# Marine
+# ---------------------------------------------------------------------
+# Vasha : drones explosifs contre les navires et la côte.
+VashaDrones:
+	Inherits: RucheDrones
+	ReloadDelay: 120
+	Range: 7c0
+	Burst: 2
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	Warhead@1Dam: SpreadDamage
+		Damage: 5000
+		ValidTargets: GroundActor, WaterActor
+		Versus:
+			None: 50
+			Wood: 60
+			Light: 100
+			Heavy: 90
+			Concrete: 40
+
+# Ambarkarn : canon de 76 mm (navires, côte) et missiles sol-air longue portée.
+AmbarkarnCanon:
+	Inherits: 2Inch
+	Range: 7c0
+	ReloadDelay: 30
+
+AmbarkarnSAM:
+	Inherits: StingerAA
+	Range: 11c0
+	ReloadDelay: 45
+	Projectile: Missile
+		RangeLimit: 14c0
+	Warhead@1Dam: SpreadDamage
+		Damage: 4000
+
+# Agnikhesh : salve de 2 missiles de croisière.
+AgnikheshCroisiere:
+	Inherits: AgnarCroisiere
+	Range: 17c0
+	ReloadDelay: 300
+	Burst: 2
+	BurstDelays: 15
+	Warhead@1Dam: SpreadDamage
+		Damage: 10000
+
+# Ulmar : torpilles lourdes à longue portée.
+UlmarTorpille:
+	Inherits: TorpTube
+	Range: 8c512
+	ReloadDelay: 80
+
+# ---------------------------------------------------------------------
+# Pouvoirs (lot 3)
+# ---------------------------------------------------------------------
+# Salve Agni : missile de croisière tiré depuis le Haut Commandement, portée illimitée.
+SalveAgni:
+	Inherits: AgnarCroisiere
+	Range: 200c0
+	MinRange: 0c0
+	Projectile: Missile
+		RangeLimit: 250c0
+		Speed: 300
+		Inaccuracy: 0
+	Warhead@1Dam: SpreadDamage
+		Damage: 14000
+
+# Drone de l'Essaim : frappe tout ce qui est au sol (pas les bâtiments civils).
+EssaimPlongee:
+	Inherits: MoustiqueDive
+	ValidTargets: Vehicle, Ship, Infantry, Defense
+	Projectile: Missile
+		Image: rodeuse
+	Warhead@1Dam: SpreadDamage
+		Spread: 384
+		Damage: 9000
+		Versus:
+			None: 90
+			Wood: 50
+			Light: 110
+			Heavy: 100
+			Concrete: 40
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+
+# Raid furtif : bombes à guidage, tapis serré.
+RaidBombe:
+	Inherits: ParaBomb
+	ReloadDelay: 6
+	Projectile: GravityBomb
+		Image: BOMBLET
+		OpenSequence: idle
+		Velocity: 0, 0, -86
+	Warhead@1Dam: SpreadDamage
+		Spread: 768
+		Damage: 18000
+
+# ---------------------------------------------------------------------
+# Unités expérimentales (lot 3)
+# ---------------------------------------------------------------------
+# Vidrakarn : canon électromagnétique, le projectile traverse la ligne.
+VidrakarnRail:
+	ReloadDelay: 150
+	Range: 9c0
+	Report: tesla1.aud
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	# Faisceau instantané qui continue 5 cases après la cible : tout ce qui est
+	# aligné est touché une fois.
+	Projectile: AreaBeam
+		Speed: 20c0
+		Duration: 4
+		DamageInterval: 3
+		Width: 0c384
+		BeyondTargetRange: 5c0
+		Color: B4FF5AD0
+		Shape: Flat
+	Warhead@1Dam: SpreadDamage
+		Spread: 256
+		Damage: 24000
+		ValidTargets: GroundActor, WaterActor
+		Versus:
+			None: 60
+			Wood: 80
+			Light: 100
+			Heavy: 100
+			Concrete: 80
+		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: med_explosion
+		ImpactSounds: kaboom25.aud
+		ValidTargets: Ground, GroundActor, Water, WaterActor
+
+# Ananta : lasers contre les airs et le sol.
+AnantaLaserAA:
+	ReloadDelay: 20
+	Range: 9c0
+	Report: tesla1.aud
+	ValidTargets: Air, AirborneActor
+	Projectile: LaserZap
+		Width: 48
+		Duration: 8
+		Color: FDB827E0
+		TrackTarget: true
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 5500
+		ValidTargets: AirborneActor
+		Versus:
+			None: 100
+			Wood: 100
+			Light: 100
+			Heavy: 80
+			Concrete: 50
+		DamageTypes: Prone50Percent, TriggerProne, FireDeath
+	Warhead@2Eff: CreateEffect
+		Explosions: small_explosion_air
+		ValidTargets: Air, AirborneActor
+
+AnantaLaserSol:
+	Inherits: AnantaLaserAA
+	ReloadDelay: 30
+	Range: 7c0
+	ValidTargets: Ground, Water, GroundActor, WaterActor
+	Warhead@1Dam: SpreadDamage
+		Damage: 4000
+		ValidTargets: GroundActor, WaterActor
+		Versus:
+			None: 120
+			Wood: 60
+			Light: 80
+			Heavy: 40
+			Concrete: 30
+	Warhead@2Eff: CreateEffect
+		Explosions: small_explosion
+		ValidTargets: Ground, GroundActor, Water, WaterActor
+
+# Ananta : effet de l'interception d'un missile (aucun dégât).
+AnantaInterception:
+	Range: 8c0
+	Report: tesla1.aud
+	Projectile: LaserZap
+		Width: 40
+		Duration: 6
+		Color: FDB827E0
+	Warhead@1Eff: CreateEffect
+		Explosions: small_explosion_air
+		ValidTargets: Ground, Water, Air
+
+# Ambaroth : canons antiaériens.
+AmbarothFlak:
+	Inherits: FLAK-23-AA
+	Range: 8c0
+	ReloadDelay: 8
+
+# ---------------------------------------------------------------------
+# Schwerer Gustav (ananthanie/trains.yaml) : obus de 800 mm, 40 cases,
+# un tir par minute.
+# ---------------------------------------------------------------------
+GustavObus:
+	Inherits: 8Inch
+	MinRange: 6c0
+	Range: 40c0
+	ReloadDelay: 1500
+	Burst: 1
+	Report: turret1.aud
+	Projectile: Bullet
+		Speed: 400
+		Inaccuracy: 1c0
+		ContrailLength: 60
+	Warhead@1Dam: SpreadDamage
+		Spread: 512
+		Damage: 45000
+		Falloff: 1000, 650, 350, 150, 50, 0
+		Versus:
+			None: 100
+			Wood: 100
+			Light: 100
+			Heavy: 80
+			Concrete: 100
+	Warhead@3Eff: CreateEffect
+		Explosions: large_napalm, large_explosion
+		ImpactSounds: kaboom1.aud
+	Warhead@Shake: ShakeScreen
+		Duration: 15
+		Intensity: 4
+		Multiplier: 1,1

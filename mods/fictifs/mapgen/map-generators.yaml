@@ -1,0 +1,1045 @@
+# Générateur de cartes aléatoires, rétroporté d'OpenRA playtest-20260222
+# (mods/ra/rules/map-generators.yaml). Les libellés sont traduits en français.
+# Les cartes retenues sont enregistrées dans les cartes personnalisées.
+EditorWorld:
+	ClassicMapGenerator@classic:
+		Type: classic
+		Name: Générateur de cartes
+		Tilesets: TEMPERAT, SNOW, DESERT
+		MapTitle: Carte aléatoire
+		WorldRegionFolder: fictifs|mapgen/monde/
+		MultiBrushFiles:
+			TEMPERAT: fictifs|mapgen/brushes-temperat.yaml
+			SNOW: fictifs|mapgen/brushes-snow.yaml
+			DESERT: fictifs|mapgen/brushes-desert.yaml
+		Settings:
+			MultiChoiceOption@hidden_defaults:
+				Choice@hidden_defaults:
+					Settings:
+						TerrainFeatureSize: 20480
+						ForestFeatureSize: 20480
+						ResourceFeatureSize: 20480
+						CivilianBuildingsFeatureSize: 10240
+						Water: 200
+						Mountains: 100
+						Forests: 25
+						ForestCutout: 2
+						MaximumCutoutSpacing: 12
+						TerrainSmoothing: 4
+						SmoothingThreshold: 833
+						MinimumCoastStraight: 1
+						MinimumLandSeaThickness: 5
+						MinimumMountainThickness: 5
+						MaximumAltitude: 8
+						RoughnessRadius: 5
+						Roughness: 500
+						WaterRoughness: 200
+						MinimumTerrainContourSpacing: 5
+						MinimumBeachLength: 10
+						MinimumWaterCliffLength: 10
+						MinimumCliffLength: 10
+						ForestClumpiness: 1
+						DenyWalledAreas: True
+						EnforceSymmetry: 0
+						Roads: True
+						RoadSpacing: 5
+						RoadShrink: 0
+						CreateEntities: True
+						CentralSpawnReservationFraction: 250
+						ResourceSpawnReservation: 8
+						SpawnRegionSize: 12
+						SpawnBuildSize: 8
+						MinimumSpawnRadius: 5
+						SpawnResourceSpawns: 3
+						SpawnReservation: 16
+						SpawnResourceBias: 1150
+						ResourcesPerPlayer: 50000
+						OreUniformity: 250
+						OreClumpiness: 2
+						MaximumExpansionResourceSpawns: 5
+						MaximumResourceSpawnsPerExpansion: 2
+						MinimumExpansionSize: 2
+						MaximumExpansionSize: 12
+						ExpansionInner: 2
+						ExpansionBorder: 1
+						CivilianBuildings: 125
+						CivilianBuildingDensity: 500
+						MinimumCivilianBuildingDensity: 90
+						CivilianBuildingDensityRadius: 3
+						DefaultResource: Ore
+						ResourceSpawnSeeds:
+							mine: Ore
+							gmine: Gems
+						ClearTerrain: Clear
+						PlayableTerrain: Beach,Bridge,Clear,Gems,Ore,Road,Rough,Wall,Water
+						DominantTerrain: River,Rock,Tree,Water
+						ZoneableTerrain: Clear,Road
+						ClearSegmentTypes: Clear
+						BeachSegmentTypes: Beach
+						CliffSegmentTypes: Cliff
+						WaterCliffSegmentTypes: WaterCliff
+						RoadSegmentTypes: Road
+						ForestObstacles: Trees
+						UnplayableObstacles: Obstructions
+						CivilianBuildingsObstacles: CivilianBuildings
+						Mirror: None
+						Rotations: 1
+			MultiChoiceOption@hidden_tileset_overrides:
+				Choice@desert:
+					Tileset: DESERT
+					Settings:
+						MinimumBeachLength: 15
+						MinimumCoastStraight: 3
+						LandTile: 255
+						WaterTile: 256
+				Choice@temperat:
+					Tileset: TEMPERAT
+					Settings:
+						LandTile: 255
+						WaterTile: 1
+				Choice@snow:
+					Tileset: SNOW
+					Settings:
+						LandTile: 255
+						WaterTile: 1
+			MultiChoiceOption@WorldRegion:
+				Label: Région du monde
+				Default: Random
+				Priority: 0
+				Choice@Random:
+					Label: Aléatoire
+					Settings:
+				Choice@monde:
+					Label: Monde entier
+					Settings:
+						WorldRegion: monde
+				Choice@monde-realiste:
+					Label: Monde immense (réaliste)
+					Settings:
+						WorldRegion: monde-realiste
+						WorldRegionMapWidth: 512
+				Choice@monde-separe:
+					Label: Monde immense (continents séparés)
+					Settings:
+						WorldRegion: monde-separe
+						WorldRegionMapWidth: 512
+				Choice@monde-ponts:
+					Label: Monde immense (continents reliés par des ponts)
+					Settings:
+						WorldRegion: monde-ponts
+						WorldRegionMapWidth: 512
+				Choice@europe:
+					Label: Europe
+					Settings:
+						WorldRegion: europe
+				Choice@mediterranee:
+					Label: Méditerranée
+					Settings:
+						WorldRegion: mediterranee
+				Choice@france:
+					Label: France
+					Settings:
+						WorldRegion: france
+				Choice@royaume-uni:
+					Label: Îles Britanniques
+					Settings:
+						WorldRegion: royaume-uni
+				Choice@iberie:
+					Label: Espagne et Portugal
+					Settings:
+						WorldRegion: iberie
+				Choice@italie:
+					Label: Italie
+					Settings:
+						WorldRegion: italie
+				Choice@balkans:
+					Label: Balkans
+					Settings:
+						WorldRegion: balkans
+				Choice@scandinavie:
+					Label: Scandinavie
+					Settings:
+						WorldRegion: scandinavie
+				Choice@mer-noire:
+					Label: Mer Noire et Ukraine
+					Settings:
+						WorldRegion: mer-noire
+				Choice@moyen-orient:
+					Label: Moyen-Orient
+					Settings:
+						WorldRegion: moyen-orient
+				Choice@golfe:
+					Label: Golfe Persique
+					Settings:
+						WorldRegion: golfe
+				Choice@afrique-nord:
+					Label: Afrique du Nord
+					Settings:
+						WorldRegion: afrique-nord
+				Choice@afrique:
+					Label: Afrique
+					Settings:
+						WorldRegion: afrique
+				Choice@amerique-nord:
+					Label: Amérique du Nord
+					Settings:
+						WorldRegion: amerique-nord
+				Choice@caraibes:
+					Label: Caraïbes
+					Settings:
+						WorldRegion: caraibes
+				Choice@amerique-sud:
+					Label: Amérique du Sud
+					Settings:
+						WorldRegion: amerique-sud
+				Choice@inde:
+					Label: Inde
+					Settings:
+						WorldRegion: inde
+				Choice@asie-est:
+					Label: Chine, Corée et Japon
+					Settings:
+						WorldRegion: asie-est
+				Choice@japon:
+					Label: Japon
+					Settings:
+						WorldRegion: japon
+				Choice@asie-sud-est:
+					Label: Asie du Sud-Est
+					Settings:
+						WorldRegion: asie-sud-est
+				Choice@australie:
+					Label: Australie
+					Settings:
+						WorldRegion: australie
+				Choice@nouvelle-zelande:
+					Label: Nouvelle-Zélande
+					Settings:
+						WorldRegion: nouvelle-zelande
+				Choice@islande:
+					Label: Islande
+					Settings:
+						WorldRegion: islande
+			MultiChoiceOption@IndustrialZones:
+				Label: Zones industrielles
+				Default: Auto
+				Priority: 3
+				Choice@Auto:
+					Label: Au lancement (option de partie)
+					Settings:
+				Choice@N1:
+					Label: 1
+					Settings:
+						IndustrialZones: 1
+				Choice@N2:
+					Label: 2
+					Settings:
+						IndustrialZones: 2
+				Choice@N3:
+					Label: 3
+					Settings:
+						IndustrialZones: 3
+				Choice@N4:
+					Label: 4
+					Settings:
+						IndustrialZones: 4
+				Choice@N5:
+					Label: 5
+					Settings:
+						IndustrialZones: 5
+				Choice@N6:
+					Label: 6
+					Settings:
+						IndustrialZones: 6
+			MultiChoiceOption@OilDerricks:
+				Label: Oil derricks
+				Default: Auto
+				Priority: 3
+				Choice@Auto:
+					Label: Auto (bâtiments tech.)
+					Settings:
+				Choice@N1:
+					Label: 1
+					Settings:
+						OilDerricks: 1
+				Choice@N2:
+					Label: 2
+					Settings:
+						OilDerricks: 2
+				Choice@N3:
+					Label: 3
+					Settings:
+						OilDerricks: 3
+				Choice@N4:
+					Label: 4
+					Settings:
+						OilDerricks: 4
+				Choice@N5:
+					Label: 5
+					Settings:
+						OilDerricks: 5
+				Choice@N6:
+					Label: 6
+					Settings:
+						OilDerricks: 6
+				Choice@N7:
+					Label: 7
+					Settings:
+						OilDerricks: 7
+				Choice@N8:
+					Label: 8
+					Settings:
+						OilDerricks: 8
+				Choice@N9:
+					Label: 9
+					Settings:
+						OilDerricks: 9
+				Choice@N10:
+					Label: 10
+					Settings:
+						OilDerricks: 10
+				Choice@N11:
+					Label: 11
+					Settings:
+						OilDerricks: 11
+				Choice@N12:
+					Label: 12
+					Settings:
+						OilDerricks: 12
+				Choice@N13:
+					Label: 13
+					Settings:
+						OilDerricks: 13
+				Choice@N14:
+					Label: 14
+					Settings:
+						OilDerricks: 14
+				Choice@N15:
+					Label: 15
+					Settings:
+						OilDerricks: 15
+				Choice@N16:
+					Label: 16
+					Settings:
+						OilDerricks: 16
+				Choice@N17:
+					Label: 17
+					Settings:
+						OilDerricks: 17
+				Choice@N18:
+					Label: 18
+					Settings:
+						OilDerricks: 18
+				Choice@N19:
+					Label: 19
+					Settings:
+						OilDerricks: 19
+				Choice@N20:
+					Label: 20
+					Settings:
+						OilDerricks: 20
+				Choice@N21:
+					Label: 21
+					Settings:
+						OilDerricks: 21
+				Choice@N22:
+					Label: 22
+					Settings:
+						OilDerricks: 22
+				Choice@N23:
+					Label: 23
+					Settings:
+						OilDerricks: 23
+				Choice@N24:
+					Label: 24
+					Settings:
+						OilDerricks: 24
+				Choice@N25:
+					Label: 25
+					Settings:
+						OilDerricks: 25
+				Choice@N26:
+					Label: 26
+					Settings:
+						OilDerricks: 26
+				Choice@N27:
+					Label: 27
+					Settings:
+						OilDerricks: 27
+				Choice@N28:
+					Label: 28
+					Settings:
+						OilDerricks: 28
+				Choice@N29:
+					Label: 29
+					Settings:
+						OilDerricks: 29
+				Choice@N30:
+					Label: 30
+					Settings:
+						OilDerricks: 30
+				Choice@N31:
+					Label: 31
+					Settings:
+						OilDerricks: 31
+				Choice@N32:
+					Label: 32
+					Settings:
+						OilDerricks: 32
+				Choice@N33:
+					Label: 33
+					Settings:
+						OilDerricks: 33
+				Choice@N34:
+					Label: 34
+					Settings:
+						OilDerricks: 34
+				Choice@N35:
+					Label: 35
+					Settings:
+						OilDerricks: 35
+				Choice@N36:
+					Label: 36
+					Settings:
+						OilDerricks: 36
+				Choice@N37:
+					Label: 37
+					Settings:
+						OilDerricks: 37
+				Choice@N38:
+					Label: 38
+					Settings:
+						OilDerricks: 38
+				Choice@N39:
+					Label: 39
+					Settings:
+						OilDerricks: 39
+				Choice@N40:
+					Label: 40
+					Settings:
+						OilDerricks: 40
+				Choice@N41:
+					Label: 41
+					Settings:
+						OilDerricks: 41
+				Choice@N42:
+					Label: 42
+					Settings:
+						OilDerricks: 42
+				Choice@N43:
+					Label: 43
+					Settings:
+						OilDerricks: 43
+				Choice@N44:
+					Label: 44
+					Settings:
+						OilDerricks: 44
+				Choice@N45:
+					Label: 45
+					Settings:
+						OilDerricks: 45
+				Choice@N46:
+					Label: 46
+					Settings:
+						OilDerricks: 46
+				Choice@N47:
+					Label: 47
+					Settings:
+						OilDerricks: 47
+				Choice@N48:
+					Label: 48
+					Settings:
+						OilDerricks: 48
+				Choice@N49:
+					Label: 49
+					Settings:
+						OilDerricks: 49
+				Choice@N50:
+					Label: 50
+					Settings:
+						OilDerricks: 50
+				Choice@N51:
+					Label: 51
+					Settings:
+						OilDerricks: 51
+				Choice@N52:
+					Label: 52
+					Settings:
+						OilDerricks: 52
+				Choice@N53:
+					Label: 53
+					Settings:
+						OilDerricks: 53
+				Choice@N54:
+					Label: 54
+					Settings:
+						OilDerricks: 54
+				Choice@N55:
+					Label: 55
+					Settings:
+						OilDerricks: 55
+				Choice@N56:
+					Label: 56
+					Settings:
+						OilDerricks: 56
+				Choice@N57:
+					Label: 57
+					Settings:
+						OilDerricks: 57
+				Choice@N58:
+					Label: 58
+					Settings:
+						OilDerricks: 58
+				Choice@N59:
+					Label: 59
+					Settings:
+						OilDerricks: 59
+				Choice@N60:
+					Label: 60
+					Settings:
+						OilDerricks: 60
+				Choice@N61:
+					Label: 61
+					Settings:
+						OilDerricks: 61
+				Choice@N62:
+					Label: 62
+					Settings:
+						OilDerricks: 62
+				Choice@N63:
+					Label: 63
+					Settings:
+						OilDerricks: 63
+				Choice@N64:
+					Label: 64
+					Settings:
+						OilDerricks: 64
+				Choice@N65:
+					Label: 65
+					Settings:
+						OilDerricks: 65
+				Choice@N66:
+					Label: 66
+					Settings:
+						OilDerricks: 66
+				Choice@N67:
+					Label: 67
+					Settings:
+						OilDerricks: 67
+				Choice@N68:
+					Label: 68
+					Settings:
+						OilDerricks: 68
+				Choice@N69:
+					Label: 69
+					Settings:
+						OilDerricks: 69
+				Choice@N70:
+					Label: 70
+					Settings:
+						OilDerricks: 70
+				Choice@N71:
+					Label: 71
+					Settings:
+						OilDerricks: 71
+				Choice@N72:
+					Label: 72
+					Settings:
+						OilDerricks: 72
+				Choice@N73:
+					Label: 73
+					Settings:
+						OilDerricks: 73
+				Choice@N74:
+					Label: 74
+					Settings:
+						OilDerricks: 74
+				Choice@N75:
+					Label: 75
+					Settings:
+						OilDerricks: 75
+				Choice@N76:
+					Label: 76
+					Settings:
+						OilDerricks: 76
+				Choice@N77:
+					Label: 77
+					Settings:
+						OilDerricks: 77
+				Choice@N78:
+					Label: 78
+					Settings:
+						OilDerricks: 78
+				Choice@N79:
+					Label: 79
+					Settings:
+						OilDerricks: 79
+				Choice@N80:
+					Label: 80
+					Settings:
+						OilDerricks: 80
+				Choice@N81:
+					Label: 81
+					Settings:
+						OilDerricks: 81
+				Choice@N82:
+					Label: 82
+					Settings:
+						OilDerricks: 82
+				Choice@N83:
+					Label: 83
+					Settings:
+						OilDerricks: 83
+				Choice@N84:
+					Label: 84
+					Settings:
+						OilDerricks: 84
+				Choice@N85:
+					Label: 85
+					Settings:
+						OilDerricks: 85
+				Choice@N86:
+					Label: 86
+					Settings:
+						OilDerricks: 86
+				Choice@N87:
+					Label: 87
+					Settings:
+						OilDerricks: 87
+				Choice@N88:
+					Label: 88
+					Settings:
+						OilDerricks: 88
+				Choice@N89:
+					Label: 89
+					Settings:
+						OilDerricks: 89
+				Choice@N90:
+					Label: 90
+					Settings:
+						OilDerricks: 90
+				Choice@N91:
+					Label: 91
+					Settings:
+						OilDerricks: 91
+				Choice@N92:
+					Label: 92
+					Settings:
+						OilDerricks: 92
+				Choice@N93:
+					Label: 93
+					Settings:
+						OilDerricks: 93
+				Choice@N94:
+					Label: 94
+					Settings:
+						OilDerricks: 94
+				Choice@N95:
+					Label: 95
+					Settings:
+						OilDerricks: 95
+				Choice@N96:
+					Label: 96
+					Settings:
+						OilDerricks: 96
+				Choice@N97:
+					Label: 97
+					Settings:
+						OilDerricks: 97
+				Choice@N98:
+					Label: 98
+					Settings:
+						OilDerricks: 98
+				Choice@N99:
+					Label: 99
+					Settings:
+						OilDerricks: 99
+				Choice@N100:
+					Label: 100
+					Settings:
+						OilDerricks: 100
+			IntegerOption@Seed:
+				Label: Graine
+				Parameter: Seed
+				Default: 0
+			MultiChoiceOption@TerrainType:
+				Label: Type de terrain
+				Priority: 2
+				Default: Plots
+				Choice@Lakes:
+					Label: Lacs
+					Settings:
+				Choice@Puddles:
+					Label: Mares
+					Settings:
+						Water: 100
+				Choice@Gardens:
+					Label: Jardins
+					Settings:
+						Water: 50
+						Forests: 300
+						ForestCutout: 3
+						EnforceSymmetry: 2
+						RoadSpacing: 3
+						RoadShrink: 4
+				Choice@Plots:
+					Label: Parcelles
+					Settings:
+						TerrainFeatureSize: 10240
+						ForestFeatureSize: 10240
+						ResourceFeatureSize: 10240
+						Water: 100
+						Forests: 300
+						ForestCutout: 5
+						EnforceSymmetry: 2
+						Mountains: 400
+						MinimumTerrainContourSpacing: 8
+						MinimumCliffLength: 8
+						Roughness: 125
+						RoadShrink: 4
+						CivilianBuildings: 100
+				Choice@Plains:
+					Label: Plaines
+					Settings:
+						Water: 0
+						CivilianBuildings: 100
+				Choice@Parks:
+					Label: Parcs
+					Settings:
+						Water: 0
+						Forests: 100
+						CivilianBuildings: 100
+				Choice@Woodlands:
+					Label: Bois
+					Settings:
+						Water: 0
+						Forests: 400
+						ForestCutout: 3
+						EnforceSymmetry: 2
+						RoadSpacing: 3
+						RoadShrink: 4
+				Choice@Overgrown:
+					Label: Jungle
+					Settings:
+						Water: 0
+						Forests: 500
+						EnforceSymmetry: 2
+						Mountains: 500
+						Roughness: 250
+				Choice@Rocky:
+					Label: Rocailles
+					Settings:
+						Water: 0
+						Forests: 300
+						ForestCutout: 3
+						EnforceSymmetry: 2
+						Mountains: 500
+						Roughness: 250
+						RoadSpacing: 3
+						RoadShrink: 4
+				Choice@Mountains:
+					Label: Montagnes
+					Settings:
+						Water: 0
+						Mountains: 900
+						Roughness: 600
+				Choice@MountainLakes:
+					Label: Lacs de montagne
+					Settings:
+						Water: 200
+						Mountains: 900
+						Roughness: 850
+				Choice@Oceanic:
+					Label: Archipel
+					Settings:
+						Water: 800
+						Forests: 0
+						MinimumSpawnRadius: 4
+				Choice@LargeIslands:
+					Label: Grandes îles
+					Settings:
+						Water: 750
+						TerrainFeatureSize: 51200
+						Forests: 0
+				Choice@Continents:
+					Label: Continents
+					Settings:
+						Water: 500
+						TerrainFeatureSize: 102400
+				Choice@Wetlands:
+					Label: Marais
+					Settings:
+						Water: 500
+				Choice@NarrowWetlands:
+					Label: Marais étroits
+					Settings:
+						Water: 500
+						TerrainFeatureSize: 5120
+						Forests: 0
+						SpawnBuildSize: 6
+						MinimumSpawnRadius: 4
+			MultiChoiceOption@Shape:
+				Label: Forme
+				Default: Square
+				Priority: 1
+				Choice@Square:
+					Label: Rectangle
+					Settings:
+						ExternalCircularBias: 0
+				Choice@CircleMountain:
+					Label: Cercle de montagnes
+					Settings:
+						ExternalCircularBias: 1
+				Choice@CircleWater:
+					Label: Île circulaire
+					Settings:
+						ExternalCircularBias: -1
+			MultiIntegerChoiceOption@Players:
+				Label: Joueurs
+				Parameter: Players
+				Choices: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
+				Default: 2
+				Priority: 1
+			MultiChoiceOption@Symmetry:
+				Label: Symétrie
+				Default: 2Rotations
+				Priority: 1
+				Choice@None:
+					Label: Aucune
+					Settings:
+						Mirror: None
+				Choice@LeftMatchesRight:
+					Label: Miroir gauche/droite
+					Players: 2, 4, 6, 8, 10, 12, 14, 16
+					Settings:
+						Mirror: LeftMatchesRight
+				Choice@TopLeftMatchesBottomRight:
+					Label: Miroir diagonal (haut-gauche)
+					Players: 2, 4, 6, 8, 10, 12, 14, 16
+					Settings:
+						Mirror: TopLeftMatchesBottomRight
+				Choice@TopMatchesBottom:
+					Label: Miroir haut/bas
+					Players: 2, 4, 6, 8, 10, 12, 14, 16
+					Settings:
+						Mirror: TopMatchesBottom
+				Choice@TopRightMatchesBottomLeft:
+					Label: Miroir diagonal (haut-droite)
+					Players: 2, 4, 6, 8, 10, 12, 14, 16
+					Settings:
+						Mirror: TopRightMatchesBottomLeft
+				Choice@2Rotations:
+					Label: 2 rotations
+					Players: 2, 4, 6, 8, 10, 12, 14, 16
+					Settings:
+						Rotations: 2
+				Choice@3Rotations:
+					Label: 3 rotations
+					Players: 3, 6, 9, 12, 15
+					Settings:
+						Rotations: 3
+				Choice@4Rotations:
+					Label: 4 rotations
+					Players: 4, 8, 12, 16
+					Settings:
+						Rotations: 4
+				Choice@5Rotations:
+					Label: 5 rotations
+					Players: 5, 10, 15
+					Settings:
+						Rotations: 5
+				Choice@6Rotations:
+					Label: 6 rotations
+					Players: 6, 12
+					Settings:
+						Rotations: 6
+				Choice@7Rotations:
+					Label: 7 rotations
+					Players: 7, 14
+					Settings:
+						Rotations: 7
+				Choice@8Rotations:
+					Label: 8 rotations
+					Players: 8, 16
+					Settings:
+						Rotations: 8
+			MultiChoiceOption@Resources:
+				Label: Ressources
+				Default: Medium
+				Choice@None:
+					Label: Aucune
+					Settings:
+						SpawnResourceSpawns: 0
+						ResourcesPerPlayer: 0
+						ResourceSpawnWeights:
+						MaximumExpansionResourceSpawns: 0
+						MaximumResourceSpawnsPerExpansion: 1
+				Choice@Low:
+					Label: Peu
+					Settings:
+						SpawnResourceSpawns: 2
+						ResourcesPerPlayer: 18750
+						ResourceSpawnWeights:
+							mine: 1
+						MaximumExpansionResourceSpawns: 3
+						MaximumResourceSpawnsPerExpansion: 1
+				Choice@Medium:
+					Label: Moyennes
+					Settings:
+						SpawnResourceSpawns: 3
+						ResourcesPerPlayer: 37500
+						ResourceSpawnWeights:
+							mine: 95
+							gmine: 5
+						MaximumExpansionResourceSpawns: 5
+						MaximumResourceSpawnsPerExpansion: 2
+				Choice@High:
+					Label: Beaucoup
+					Settings:
+						SpawnResourceSpawns: 3
+						ResourcesPerPlayer: 56250
+						ResourceSpawnWeights:
+							mine: 9
+							gmine: 1
+						MaximumExpansionResourceSpawns: 8
+						MaximumResourceSpawnsPerExpansion: 3
+				Choice@VeryHigh:
+					Label: Énormément
+					Settings:
+						SpawnResourceSpawns: 4
+						ResourcesPerPlayer: 75000
+						ResourceSpawnWeights:
+							mine: 8
+							gmine: 2
+						MaximumExpansionResourceSpawns: 10
+						MaximumResourceSpawnsPerExpansion: 3
+				Choice@Full:
+					Label: Tout en minerai
+					Settings:
+						SpawnResourceSpawns: 0
+						ResourcesPerPlayer: 1000000000
+						ResourceSpawnWeights:
+						MaximumExpansionResourceSpawns: 0
+						MaximumResourceSpawnsPerExpansion: 1
+			MultiChoiceOption@Buildings:
+				Label: Bâtiments tech.
+				Default: Standard
+				Choice@None:
+					Label: Aucun
+					Settings:
+						MinimumBuildings: 0
+						MaximumBuildings: 0
+						BuildingWeights:
+				Choice@Standard:
+					Label: Standard
+					Settings:
+						MinimumBuildings: 0
+						MaximumBuildings: 3
+						BuildingWeights:
+							hosp: 2
+							miss: 1
+							oilb: 9
+				Choice@Extra:
+					Label: Nombreux
+					Settings:
+						MinimumBuildings: 3
+						MaximumBuildings: 6
+						BuildingWeights:
+							fcom: 3
+							hosp: 2
+							miss: 1
+							oilb: 9
+				Choice@OilOnly:
+					Label: Derricks seulement
+					Settings:
+						MinimumBuildings: 0
+						MaximumBuildings: 3
+						BuildingWeights:
+							oilb: 1
+				Choice@OilRush:
+					Label: Ruée vers le pétrole
+					Settings:
+						MinimumBuildings: 8
+						MaximumBuildings: 10
+						BuildingWeights:
+							oilb: 1
+			MultiChoiceOption@Density:
+				Label: Zones d'expansion
+				Default: Players
+				Priority: 1
+				Choice@Players:
+					Label: Selon les joueurs
+					Settings:
+						AreaEntityBonus: 0
+						PlayerCountEntityBonus: 1000000
+				Choice@AreaAndPlayers:
+					Label: Selon taille et joueurs
+					Settings:
+						AreaEntityBonus: 200
+						PlayerCountEntityBonus: 500000
+				Choice@AreaVeryLow:
+					Label: Très peu
+					Settings:
+						AreaEntityBonus: 100
+						PlayerCountEntityBonus: 0
+				Choice@AreaLow:
+					Label: Peu
+					Settings:
+						AreaEntityBonus: 200
+						PlayerCountEntityBonus: 0
+				Choice@AreaMedium:
+					Label: Moyennement
+					Settings:
+						AreaEntityBonus: 400
+						PlayerCountEntityBonus: 0
+				Choice@AreaHigh:
+					Label: Beaucoup
+					Settings:
+						AreaEntityBonus: 600
+						PlayerCountEntityBonus: 0
+				Choice@AreaVeryHigh:
+					Label: Énormément
+					Settings:
+						AreaEntityBonus: 800
+						PlayerCountEntityBonus: 0
+			MultiChoiceOption@CivilianDensity:
+				Label: Villages civils
+				Default: Default
+				Priority: 3
+				Choice@Default:
+					Label: Par défaut
+					Settings:
+				Choice@None:
+					Label: Aucun
+					Settings:
+						CivilianBuildings: 0
+				Choice@Low:
+					Label: Peu
+					Settings:
+						CivilianBuildings: 75
+				Choice@Medium:
+					Label: Moyennement
+					Settings:
+						CivilianBuildings: 125
+				Choice@High:
+					Label: Beaucoup
+					Settings:
+						CivilianBuildings: 250
+				Choice@VeryHigh:
+					Label: Énormément
+					Settings:
+						CivilianBuildings: 500
+				Choice@Max:
+					Label: Maximum
+					Settings:
+						CivilianBuildings: 1000
+			BooleanOption@DenyWalledArea:
+				Label: Boucher les enclaves
+				Parameter: DenyWalledAreas
+				Default: True
+				Priority: 1
+			BooleanOption@Roads:
+				Label: Routes
+				Parameter: Roads
+				Default: True
+				Priority: 1

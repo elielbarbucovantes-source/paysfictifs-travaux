@@ -1,0 +1,53 @@
+# Normalisation des fins de ligne (line endings)
+
+# Défaut : texte, normalisé en LF dans le dépôt.
+* text=auto
+
+# Scripts Unix et fichiers de configuration : LF obligatoire (CI : mod.config en LF).
+*.sh text eol=lf
+Makefile text eol=lf
+*.config text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.lua text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.nsi text eol=lf
+*.ponts text eol=lf
+*.ftl text eol=lf
+*.cs text eol=lf diff=csharp
+*.csproj text eol=lf
+*.sln text eol=lf
+*.props text eol=lf
+*.targets text eol=lf
+COPYING text eol=lf
+
+# Scripts Windows : CRLF obligatoire pour cmd/powershell.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Assets binaires : aucune conversion, aucun diff.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.bmp binary
+*.ico binary
+*.shp binary
+*.mix binary
+*.aud binary
+*.vqa binary
+*.oramap binary
+*.ttf binary
+*.otf binary
+*.wav binary
+*.ogg binary
+*.mp3 binary
+*.bin binary
+*.dll binary
+*.exe binary
+*.pdb binary
+*.zip binary
