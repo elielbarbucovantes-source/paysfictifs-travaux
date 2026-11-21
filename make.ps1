@@ -475,19 +475,9 @@ if ($command -eq "all" -or $command -eq "clean" -or $command -eq "check")
 		Move-Item -LiteralPath $topLevelDirs[0].FullName -Destination $enginePath -Force
 		Remove-Item -LiteralPath $extractDir -Recurse -Force
 
-		$downloadedVersion = ""
-		$newVersionFile = Join-Path $enginePath "VERSION"
-		if (Test-Path -LiteralPath $newVersionFile)
+		if (!(Test-Path -LiteralPath (Join-Path $enginePath "OpenRA.sln")))
 		{
-			$reader = [System.IO.File]::OpenText($newVersionFile)
-			$downloadedVersion = $reader.ReadLine()
-			$reader.Close()
-			if ($null -ne $downloadedVersion) { $downloadedVersion = $downloadedVersion.Trim() }
-		}
-
-		if ($downloadedVersion -ne $env:ENGINE_VERSION -or !(Test-Path -LiteralPath (Join-Path $enginePath "OpenRA.sln")))
-		{
-			Write-Host "Downloaded engine is not the expected OpenRA checkout (VERSION or OpenRA.sln missing)." -ForegroundColor Red
+			Write-Host "Downloaded engine is not the expected OpenRA checkout (OpenRA.sln missing)." -ForegroundColor Red
 			exit 1
 		}
 
@@ -500,6 +490,22 @@ if ($command -eq "all" -or $command -eq "clean" -or $command -eq "check")
 			{
 				Write-Host "Engine version stamping failed with exit code $versionExit. Aborting." -ForegroundColor Red
 				exit $versionExit
+			}
+
+			$downloadedVersion = ""
+			$newVersionFile = Join-Path $enginePath "VERSION"
+			if (Test-Path -LiteralPath $newVersionFile)
+			{
+				$reader = [System.IO.File]::OpenText($newVersionFile)
+				$downloadedVersion = $reader.ReadLine()
+				$reader.Close()
+				if ($null -ne $downloadedVersion) { $downloadedVersion = $downloadedVersion.Trim() }
+			}
+
+			if ($downloadedVersion -ne $env:ENGINE_VERSION)
+			{
+				Write-Host "Downloaded engine version stamp mismatch (expected $($env:ENGINE_VERSION), got $downloadedVersion)." -ForegroundColor Red
+				exit 1
 			}
 
 			& ".\make.cmd" $command
