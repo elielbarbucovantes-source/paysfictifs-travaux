@@ -32,7 +32,6 @@ namespace OpenRA.Mods.Fictifs.Traits
 			{ "naval", 1000 },
 			{ "normal", 1100 },
 			{ "rush", 1200 },
-			{ "desperate", 1400 },
 		};
 
 		[Desc("Elo d'une IA dont le type n'est pas listé.")]
